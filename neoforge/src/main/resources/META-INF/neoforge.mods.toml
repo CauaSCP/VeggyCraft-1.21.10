@@ -7,9 +7,9 @@ license = "Insert License Here"
 modId = "veggycraft"
 version = "${version}"
 displayName = "VeggyCraft"
-authors = "Me!"
+authors = "Klayil"
 description = '''
-This is an example description! Tell everyone what your mod is about!
+A mod that adds vegan items and recipes to usual vanilla Minecraft items that aren't vegan themselves!
 '''
 #logoFile = ""
 

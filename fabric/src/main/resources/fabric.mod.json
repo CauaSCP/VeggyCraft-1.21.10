@@ -3,9 +3,9 @@
   "id": "veggycraft",
   "version": "${version}",
   "name": "VeggyCraft",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "A mod that adds vegan items and recipes to usual vanilla Minecraft items that aren't vegan themselves!",
   "authors": [
-    "Me!"
+    "Klayil"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
@@ -16,10 +16,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.klayil.veggycraft.fabric.ExampleModFabric"
+      "net.klayil.veggycraft.fabric.VeggyCraftFabric"
     ],
     "client": [
-      "net.klayil.veggycraft.fabric.client.ExampleModFabricClient"
+      "net.klayil.veggycraft.fabric.client.VeggyCraftFabricClient"
     ]
   },
   "mixins": [
