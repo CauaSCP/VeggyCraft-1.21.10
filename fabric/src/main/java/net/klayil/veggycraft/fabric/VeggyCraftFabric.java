@@ -2,9 +2,11 @@ package net.klayil.veggycraft.fabric;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.minecraft.server.MinecraftServer;
+
 import net.klayil.veggycraft.VeggyCraft;
 
-public final class ExampleModFabric implements ModInitializer {
+public final class VeggyCraftFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         // This code runs as soon as Minecraft is in a mod-load-ready state.

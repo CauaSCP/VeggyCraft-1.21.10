@@ -5,8 +5,8 @@ import net.neoforged.fml.common.Mod;
 import net.klayil.veggycraft.VeggyCraft;
 
 @Mod(VeggyCraft.MOD_ID)
-public final class ExampleModNeoForge {
-    public ExampleModNeoForge() {
+public final class VeggyCraftNeoForge {
+    public VeggyCraftNeoForge() {
         // Run our common setup.
         VeggyCraft.init();
     }

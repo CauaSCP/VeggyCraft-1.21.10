@@ -11,6 +11,29 @@ architectury {
 allprojects {
     group = rootProject.maven_group
     version = rootProject.mod_version
+
+    repositories {
+        maven {
+            name = 'ParchmentMC'
+            url = 'https://maven.parchmentmc.org'
+        }
+
+        mavenCentral()
+        // Add the GitHub Packages Maven repository
+        maven {
+            // URL format: https://maven.pkg.github.com/OWNER/REPOSITORY
+            url = uri("https://maven.pkg.github.com/CauaSCP/klay-api")
+
+            // Configuration for accessing private (or public) packages
+            credentials {
+                // Get username from a property 'gpr.user' or environment variable 'USERNAME'
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+
+                // Get token from a property 'gpr.key' or environment variable 'TOKEN'
+                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+            }
+        }
+    }
 }
 
 subprojects {
@@ -37,7 +60,10 @@ subprojects {
 
     dependencies {
         minecraft "net.minecraft:minecraft:$rootProject.minecraft_version"
-        mappings loom.officialMojangMappings()
+        mappings loom.layered() {
+            officialMojangMappings()
+            parchment("org.parchmentmc.data:parchment-${rootProject.minecraft_version}:2025.10.12@zip")
+        }
     }
 
     java {
