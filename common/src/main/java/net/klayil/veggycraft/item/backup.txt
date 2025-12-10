@@ -1,0 +1,67 @@
+package net.klayil.veggycraft.item;
+
+import dev.architectury.registry.registries.DeferredRegister;
+import dev.architectury.registry.registries.RegistrySupplier;
+import net.klayil.klay_api.item.KlayApiModItems;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+
+import java.util.ArrayList;
+import java.util.function.Supplier;
+
+import static net.klayil.klay_api.item.KlayApiModItems.AllKlayApiItems;
+import static net.klayil.veggycraft.VeggyCraft.MOD_ID;
+
+public class ModItems {
+    private static String currentItemName;
+
+    public static DeferredRegister<Item> ITEMS = KlayApiModItems.createItemsRegister(MOD_ID);
+
+    private static void createDamageableItem(String itemId, int maxStackSize, int maxDamage) {
+        ResourceLocation itemLocation = ResourceLocation.fromNamespaceAndPath(MOD_ID, itemId);
+
+        Supplier<Item> item =
+            () -> new UnrepairableDamageableItems(KlayApiModItems.baseProperties(itemId, MOD_ID).stacksTo(maxStackSize), maxDamage);
+
+        AllKlayApiItems.put(itemLocation.toString(), ITEMS.register(itemLocation, item));
+    }
+
+    public static void initItems() {
+        currentItemName = "wheat_flour";
+        KlayApiModItems.createItem(currentItemName, CreativeModeTabs.INGREDIENTS, () -> KlayApiModItems.baseProperties(currentItemName, MOD_ID).stacksTo(8), MOD_ID);
+
+        final ArrayList<RegistrySupplier<Item>> flourBags = new ArrayList<>();
+
+        RegistrySupplier<Item> _oldFlourBag = KlayApiModItems.createItem(currentItemName, CreativeModeTabs.INGREDIENTS, () -> {
+            currentItemName = "08_items_stacked_of_flour";
+            return KlayApiModItems.baseProperties(currentItemName, MOD_ID).stacksTo(1);
+        }, MOD_ID);
+        flourBags.add(_oldFlourBag);
+
+        for (int index = 16; index <= 64; index += 8) {
+            currentItemName = "%d_items_stacked_of_flour".formatted(index);
+
+            // CAPTURE the current remainder item's supplier in a final variable for the lambda
+//            final RegistrySupplier<Item> remainderSupplier = flourBags.getLast();
+
+            // The Supplier<Item.Properties> now correctly executes the .get()
+            // ONLY when the registration event calls this lambda.
+            RegistrySupplier<Item> newItemSupplier = KlayApiModItems.createItem(
+                    currentItemName,
+                    CreativeModeTabs.INGREDIENTS,
+                    () -> {
+                        return KlayApiModItems.baseProperties(currentItemName, MOD_ID)
+                            .stacksTo(1);
+//                            .craftRemainder(remainderSupplier.get());
+                    },
+                    MOD_ID
+            );
+
+            flourBags.add(newItemSupplier);
+        }
+
+        ITEMS.register();
+    }
+}

@@ -20,6 +20,9 @@
     ],
     "client": [
       "net.klayil.veggycraft.fabric.client.VeggyCraftFabricClient"
+    ],
+    "fabric-datagen": [
+      "net.klayil.veggycraft.fabric.datagen.FabricDatagenEntrypoint"
     ]
   },
   "mixins": [
@@ -30,6 +33,7 @@
     "minecraft": "~1.21.10",
     "java": ">=21",
     "architectury": ">=18.0.6",
+    "klay_api": ">=0.0.4",
     "fabric-api": "*"
   },
   "suggests": {

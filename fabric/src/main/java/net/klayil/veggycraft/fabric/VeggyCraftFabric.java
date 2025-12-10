@@ -9,11 +9,11 @@ import net.klayil.veggycraft.VeggyCraft;
 public final class VeggyCraftFabric implements ModInitializer {
     @Override
     public void onInitialize() {
-        // This code runs as soon as Minecraft is in a mod-load-ready state.
-        // However, some things (like resources) may still be uninitialized.
-        // Proceed with mild caution.
+            // This code runs as soon as Minecraft is in a mod-load-ready state.
+            // However, some things (like resources) may still be uninitialized.
+            // Proceed with mild caution.
 
-        // Run our common setup.
-        VeggyCraft.init();
+            // Run our common setup.
+            VeggyCraft.init();
+        }
     }
-}

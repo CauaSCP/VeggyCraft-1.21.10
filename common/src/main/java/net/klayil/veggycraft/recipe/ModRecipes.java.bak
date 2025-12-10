@@ -1,0 +1,20 @@
+package net.klayil.veggycraft.recipe;
+
+import dev.architectury.registry.registries.DeferredRegister;
+import dev.architectury.registry.registries.RegistrySupplier;
+import net.klayil.veggycraft.VeggyCraft;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.ShapelessRecipe;
+
+public class ModRecipes {
+    public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(VeggyCraft.MOD_ID, Registries.RECIPE_SERIALIZER);
+
+    public static RegistrySupplier<RecipeSerializer<? extends ShapelessRecipe>> FLOUR_CRAFTING_SERI;
+
+    public static void initRecipeSerializers() {
+        FLOUR_CRAFTING_SERI = RECIPE_SERIALIZERS.register("flour_crafting_shapeless_specific", ShapelessRecipe.Serializer::new);
+
+        RECIPE_SERIALIZERS.register();
+    }
+}
