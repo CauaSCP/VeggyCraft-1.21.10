@@ -43,15 +43,6 @@ dependencies {
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
 }
 
-loom {
-    runs {
-        data {
-            data()
-            programArgs "--output", project(":common").file("src/generated").absolutePath
-        }
-    }
-}
-
 processResources {
     inputs.property 'version', project.version
 

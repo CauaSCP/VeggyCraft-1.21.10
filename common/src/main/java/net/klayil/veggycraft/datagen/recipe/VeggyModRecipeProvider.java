@@ -1,20 +1,18 @@
 package net.klayil.veggycraft.datagen.recipe;
 
+import net.klayil.klay_api.KlayApi;
 import net.klayil.veggycraft.VeggyCraft;
+import net.klayil.veggycraft.item.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
-
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.concurrent.CompletableFuture;
+
+import org.jetbrains.annotations.NotNull;
 
 public class VeggyModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
     public VeggyModRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
@@ -36,22 +34,38 @@ public class VeggyModRecipeProvider extends net.minecraft.data.recipes.RecipePro
     }
 
     private Item flourBagSize(int itemSizeAtBeginNum) {
+        final String itemName = "%02d_items_stacked_of_flour".formatted(itemSizeAtBeginNum);
+
         return BuiltInRegistries.ITEM.getValue(
-                ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "%02d_items_stacked_of_flour".formatted(itemSizeAtBeginNum))
+                ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, itemName)
         );
     }
 
     ShapelessRecipeBuilder flourRecipe(int resultItemSize) {
+        Item flour = ModItems.THIS_MOD_FLOUR.get();
         ItemStack result = new ItemStack(flourBagSize(resultItemSize));
-        result.setDamageValue(resultItemSize);
 
-        return shapeless(RecipeCategory.MISC, result).requires(flourBagSize(resultItemSize + 8));
+        result.setDamageValue(64 - resultItemSize + 1);
+
+        ShapelessRecipeBuilder ret = shapeless(RecipeCategory.MISC, result);
+
+        for (int a_i = 0; a_i < 4; a_i++) ret = ret.requires(flour);
+
+        ret = ret.requires(flourBagSize(resultItemSize - 8));
+
+        for (int b_i = 0; b_i < 4; b_i++) ret = ret.requires(flour);
+
+        return ret;
     }
 
     @Override
     protected void buildRecipes() {
-        for (int size = 12; size < 64; size+=8) {
-            flourRecipe(size).save(output);
+        for (int size = 16; size <= 64; size+=8) {
+            flourRecipe(size).unlockedBy("has_before_%d_bag".formatted(size), has(flourBagSize(size-8))).
+                save(
+                    output,
+                    "%s:bag_of_%d_shapeless_crafting_and_advt".formatted(KlayApi.MOD_ID, size)
+                );
         }
     }
 }
