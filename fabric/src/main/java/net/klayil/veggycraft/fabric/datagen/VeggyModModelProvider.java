@@ -38,13 +38,25 @@ public class VeggyModModelProvider extends FabricModelProvider {
 
         metaClass.generateItemModelsCommon();
 
-        for (Item item : metaClass.customModelItemToDeclare) {
+        for (Object[] arr : metaClass.modelTemplatesOfFlatItemsToCreate) {
+            curResourceLocation = (ResourceLocation) arr[0];
+            curTextureMapping = (TextureMapping) arr[1];
+
+            net.minecraft.client.data.models.model.ModelTemplates.FLAT_ITEM.create(curResourceLocation, curTextureMapping, this.generalItemModelGenerators.modelOutput);
+        }
+
+//        VeggyCraft.LOGGER.info("# SIZES 01: %d;%d;%d;\n# SIZES 02: %d;%d;%d;".formatted(
+//            metaClass.sizes[0], metaClass.sizes[1], metaClass.sizes[2],
+//            metaClass.potionsToGenerate.size(), metaClass.flatItemModelsToCreate.size(), metaClass.customModelItemToDeclare.size()
+//        ));
+
+        for (Item item : metaClass.potionsToGenerate) {
             VeggyCraft.LOGGER.info("#ITEM: "+item.toString());
 
             this.generalItemModelGenerators.generatePotion(item);
         }
 
-        for (Item item : metaClass.customModelItemToDeclare) {
+        for (Item item : metaClass.flatItemModelsToCreate) {
             VeggyCraft.LOGGER.info("#ITEM: "+item.toString());
 
             this.generalItemModelGenerators.createFlatItemModel(item, net.minecraft.client.data.models.model.ModelTemplates.FLAT_ITEM);
@@ -54,13 +66,6 @@ public class VeggyModModelProvider extends FabricModelProvider {
             VeggyCraft.LOGGER.info("#ITEM: "+item.toString());
 
             this.generalItemModelGenerators.declareCustomModelItem(item);
-        }
-
-        for (Object[] arr : metaClass.modelTemplatesOfFlatItemsToCreate) {
-            curResourceLocation = (ResourceLocation) arr[0];
-            curTextureMapping = (TextureMapping) arr[1];
-
-            net.minecraft.client.data.models.model.ModelTemplates.FLAT_ITEM.create(curResourceLocation, curTextureMapping, this.generalItemModelGenerators.modelOutput);
         }
     }
 }

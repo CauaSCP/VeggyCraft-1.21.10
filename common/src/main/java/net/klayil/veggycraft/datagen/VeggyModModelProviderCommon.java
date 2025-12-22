@@ -24,6 +24,8 @@ public class VeggyModModelProviderCommon {
     public ArrayList<Item> customModelItemToDeclare = new ArrayList<>();
     public ArrayList<Object[]> modelTemplatesOfFlatItemsToCreate = new ArrayList<>();
 
+    public final int[] sizes = {0, 0, 0};
+
     public class HereModelTemplates {
         public class _FlatItem {
             public void create(ResourceLocation modelLocation, TextureMapping textureMapping) {
@@ -42,14 +44,20 @@ public class VeggyModModelProviderCommon {
     public HereModelTemplates ModelTemplates = new HereModelTemplates();
 
     public void generatePotion(Item item) {
+//        sizes[0]++;
+
         potionsToGenerate.add(item);
     }
 
     public void createFlatItemModel(Item item) {
+//        sizes[1]++;
+
         flatItemModelsToCreate.add(item);
     }
 
     public void declareCustomModelItem(Item item) {
+//        sizes[2]++;
+
         customModelItemToDeclare.add(item);
     }
 
