@@ -6,6 +6,7 @@ sourceSets {
     main {
         resources {
             srcDirs += ["src/generated/resources"]
+            srcDirs += ["src/main/generated/resources"]
         }
     }
 }
