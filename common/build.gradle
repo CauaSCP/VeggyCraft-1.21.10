@@ -14,9 +14,11 @@ dependencies {
     modImplementation "com.github.CauaSCP:klay-api-common:0.0.5"
 }
 
-def generatedResources = file("src/generated")
 sourceSets {
     main {
-        resources.srcDir generatedResources
+        resources {
+            srcDir "src/main/resources"
+            srcDir "src/generated/resources"
+        }
     }
 }
