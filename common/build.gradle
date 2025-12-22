@@ -2,15 +2,6 @@ architectury {
     common rootProject.enabled_platforms.split(',')
 }
 
-sourceSets {
-    main {
-        resources {
-            srcDirs += ["src/generated/resources"]
-            srcDirs += ["src/main/generated/resources"]
-        }
-    }
-}
-
 dependencies {
     // We depend on Fabric Loader here to use the Fabric @Environment annotations,
     // which get remapped to the correct annotations on each platform.
@@ -23,4 +14,11 @@ dependencies {
     modImplementation "com.github.CauaSCP:klay-api-common:0.0.5"
 }
 
-def generatedResources = file("src/generated")
+sourceSets {
+    main {
+        resources {
+            // This adds the generated folder to the common resources
+            srcDirs += ["src/main/generated/resources"]
+        }
+    }
+}
