@@ -7,6 +7,31 @@ architectury {
     neoForge()
 }
 
+loom {
+    runs {
+        data {
+            clientData()
+
+            // example of overriding the workingDirectory set in configureEach above, uncomment if you want to use it
+            // gameDirectory = project.file('run-data')
+
+            name "Data Generation"
+
+            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
+//            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+
+            runDir "run"
+
+            programArgs(
+                    "--mod", "veggycraft",
+                    "--all",
+                    "--output", project(":common").file("src/generated/resources").absolutePath,
+                    "--existing", project(":common").file("src/main/resources").absolutePath
+            )
+        }
+    }
+}
+
 configurations {
     common {
         canBeResolved = true

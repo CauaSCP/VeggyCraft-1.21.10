@@ -24,18 +24,6 @@ configurations {
     }
 }
 
-fabricApi {
-
-    configureDataGeneration() {
-
-        client = true
-
-        outputDirectory.set(project(":common").file(generated_resources_path))
-
-    }
-
-}
-
 dependencies {
     modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
 
