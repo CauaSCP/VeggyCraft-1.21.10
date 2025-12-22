@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "veggycraft:wheat_flour",
+    "veggycraft:wheat_flour",
+    "veggycraft:wheat_flour",
+    "veggycraft:wheat_flour",
+    "veggycraft:wheat_flour",
+    "veggycraft:wheat_flour",
+    "veggycraft:wheat_flour",
+    "veggycraft:wheat_flour"
+  ],
+  "result": {
+    "components": {
+      "minecraft:damage": 57
+    },
+    "id": "veggycraft:08_items_stacked_of_flour",
+    "count": 1
+  }
+}

@@ -51,20 +51,14 @@ public class VeggyModModelProvider extends FabricModelProvider {
 //        ));
 
         for (Item item : metaClass.potionsToGenerate) {
-            VeggyCraft.LOGGER.info("#ITEM: "+item.toString());
-
             this.generalItemModelGenerators.generatePotion(item);
         }
 
         for (Item item : metaClass.flatItemModelsToCreate) {
-            VeggyCraft.LOGGER.info("#ITEM: "+item.toString());
-
             this.generalItemModelGenerators.createFlatItemModel(item, net.minecraft.client.data.models.model.ModelTemplates.FLAT_ITEM);
         }
 
         for (Item item : metaClass.customModelItemToDeclare) {
-            VeggyCraft.LOGGER.info("#ITEM: "+item.toString());
-
             this.generalItemModelGenerators.declareCustomModelItem(item);
         }
     }
