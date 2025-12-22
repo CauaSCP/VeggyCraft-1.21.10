@@ -1,0 +1,7 @@
+{
+    "additional_transformable_modules": [
+        ":common",
+        ":fabric",
+        ":neoforge"
+  ]
+}

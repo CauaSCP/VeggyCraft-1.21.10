@@ -35,6 +35,7 @@ configurations {
 fabricApi {
     configureDataGeneration() {
         client = true
+        outputDirectory.set(project(":common").file("src/main/generated/resources"))
     }
 }
 

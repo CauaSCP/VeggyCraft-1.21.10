@@ -14,7 +14,8 @@ public class FabricDatagenEntrypoint implements DataGeneratorEntrypoint {
         pack.addProvider(VeggyModRecipeProvider.Runner::new);
 
         if (Platform.isFabric()) {
-            pack.addProvider(VeggyModModelProvider::new);
+
+            pack.addProvider((FabricDataGenerator.Pack.Factory<VeggyModModelProvider>) VeggyModModelProvider::new);
         }
     }
 }
