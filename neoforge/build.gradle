@@ -32,6 +32,18 @@ configurations {
     }
 }
 
+loom {
+    runs {
+        data {
+            data()
+            programArgs "--all", "--mod", "veggycraft"
+            programArgs "--output", project(":common").file("src/main/generated/resources").absolutePath
+            programArgs "--existing", project(":common").file("src/main/resources").absolutePath
+            vmArg "-Darchitectury.main.class=${project.group}.${project.archives_base_name}.neoforge.NeoForgeModMain"
+        }
+    }
+}
+
 repositories {
     maven {
         name = 'NeoForged'
