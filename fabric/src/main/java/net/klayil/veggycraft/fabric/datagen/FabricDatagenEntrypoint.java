@@ -3,6 +3,7 @@ package net.klayil.veggycraft.fabric.datagen;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.klayil.veggycraft.datagen.recipe.VeggyModRecipeProvider;
+import net.klayil.veggycraft.fabric.datagen.VeggyModModelProvider;
 
 import dev.architectury.platform.Platform;
 
@@ -14,8 +15,7 @@ public class FabricDatagenEntrypoint implements DataGeneratorEntrypoint {
         pack.addProvider(VeggyModRecipeProvider.Runner::new);
 
         if (Platform.isFabric()) {
-
-            pack.addProvider((FabricDataGenerator.Pack.Factory<VeggyModModelProvider>) VeggyModModelProvider::new);
+            pack.addProvider(VeggyModModelProvider::new);
         }
     }
 }

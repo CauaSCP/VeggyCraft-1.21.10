@@ -52,6 +52,7 @@ public class VeggyModModelProviderCommon {
     public void declareCustomModelItem(Item item) {
         customModelItemToDeclare.add(item);
     }
+
     public void generateItemModelsCommon() {
         final Item flour = ModItems.THIS_MOD_FLOUR.get();
 
