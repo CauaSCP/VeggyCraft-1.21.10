@@ -24,6 +24,18 @@ configurations {
     }
 }
 
+fabricApi {
+
+    configureDataGeneration() {
+
+        client = true
+
+        outputDirectory.set(project(":common").file("src/main/generated/resources"))
+
+    }
+
+}
+
 dependencies {
     modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
 
@@ -37,15 +49,6 @@ dependencies {
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
-}
-
-fabricApi {
-    configureDataGeneration {
-        client = true
-        // This moves the output from the default fabric/src/main/generated
-        // to the common/src/main/generated/resources folder
-        outputDirectory.set(project(":common").file("src/main/generated/resources"))
-    }
 }
 
 processResources {

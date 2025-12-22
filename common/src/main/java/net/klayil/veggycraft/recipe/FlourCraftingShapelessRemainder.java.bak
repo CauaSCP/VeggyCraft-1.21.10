@@ -1,0 +1,180 @@
+package net.klayil.veggycraft.recipe;
+
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.klayil.veggycraft.VeggyCraft;
+import net.klayil.veggycraft.item.ModItems;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+
+import static net.minecraft.world.item.crafting.RecipeSerializer.register;
+
+public class FlourCraftingShapelessRemainder extends ShapelessRecipe {
+    String group;
+    CraftingBookCategory category;
+    ItemStack result;
+    List<Ingredient> ingredients;
+
+    private final String _bagFlourEnding = "_items_stacked_of_flour";
+    private static final ItemStack RESULT_STACK = new ItemStack(ModItems.THIS_MOD_FLOUR, 8);
+
+    private boolean itemIsBagFlour(ItemLike item) {
+        return BuiltInRegistries.ITEM.getKey(
+            item.asItem()
+        ).getPath().endsWith(_bagFlourEnding);
+    }
+    private boolean itemIsBagFlour(ItemStack stack) {
+        return itemIsBagFlour(stack.getItem());
+    }
+
+    private boolean itemIsBagFlour(String itemNameFromId) {
+        return ResourceLocation.isValidPath(itemNameFromId) && itemNameFromId.endsWith(_bagFlourEnding);
+    }
+
+    public FlourCraftingShapelessRemainder(String group, CraftingBookCategory _c, ItemStack result, List<Ingredient> ingredients) {
+        super(group, CraftingBookCategory.MISC, result, ingredients);
+    }
+
+    @Override
+    public @NotNull String group() {
+        return this.group;
+    }
+
+    @Override
+    public @NotNull RecipeType<CraftingRecipe> getType() { return RecipeType.CRAFTING; }
+
+    @Override
+    public boolean matches(CraftingInput input, Level world) {
+        if (world.isClientSide()) {
+            return false;
+        }
+
+        for (int i = 0; i < input.size(); i++) {
+            if (input.getItem(i).isEmpty()) continue;
+
+            if (itemIsBagFlour(input.getItem(i))) return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public @NotNull ItemStack assemble(CraftingInput input, HolderLookup.Provider registries) {
+        return RESULT_STACK;
+    }
+
+    /*
+    public static class Serializer implements RecipeSerializer<FlourCraftingShapelessRemainder> {
+        private static final MapCodec<FlourCraftingShapelessRemainder> CODEC = RecordCodecBuilder.mapCodec(
+                instance -> instance.group(
+                                Codec.STRING.optionalFieldOf("group", "").forGetter(thisCustomRecipe -> thisCustomRecipe.group),
+                                CraftingBookCategory.CODEC.fieldOf("category").orElse(CraftingBookCategory.MISC).forGetter(thisCustomRecipe -> thisCustomRecipe.category),
+                                ItemStack.STRICT_CODEC.fieldOf("result").forGetter(thisCustomRecipe -> thisCustomRecipe.result),
+                                Ingredient.CODEC.listOf(1, 9).fieldOf("ingredients").forGetter(thisCustomRecipe -> thisCustomRecipe.ingredients)
+                        )
+                        .apply(instance, FlourCraftingShapelessRemainder::new)
+        );
+        public static final StreamCodec<RegistryFriendlyByteBuf, FlourCraftingShapelessRemainder> STREAM_CODEC = StreamCodec.composite(
+                ByteBufCodecs.STRING_UTF8,
+                thisCustomRecipe -> thisCustomRecipe.group,
+                CraftingBookCategory.STREAM_CODEC,
+                thisCustomRecipe -> thisCustomRecipe.category,
+                ItemStack.STREAM_CODEC,
+                thisCustomRecipe -> thisCustomRecipe.result,
+                Ingredient.CONTENTS_STREAM_CODEC.apply(ByteBufCodecs.list()),
+                thisCustomRecipe -> thisCustomRecipe.ingredients,
+                FlourCraftingShapelessRemainder::new
+        );
+
+        @Override
+        public MapCodec<FlourCraftingShapelessRemainder> codec() {
+            return CODEC;
+        }
+
+        @Override
+        public StreamCodec<RegistryFriendlyByteBuf, FlourCraftingShapelessRemainder> streamCodec() {
+            return STREAM_CODEC;
+        }
+    }
+    */
+
+//    @Override
+//    public RecipeSerializer<? extends ShapelessRecipe> getSerializer() {
+//        return ModRecipes.FLOUR_CRAFTING_SERI.get();
+//    }
+
+    @Override
+    public @NotNull CraftingBookCategory category() {
+        return CraftingBookCategory.MISC;
+    }
+
+    @Override
+    public @NotNull NonNullList<ItemStack> getRemainingItems(CraftingInput input) {
+        NonNullList<ItemStack> remainingItemList = NonNullList.createWithCapacity(input.size());
+
+        String nameFromId = "";
+
+        int minusOneSize = 0;
+        int nonEmptyIndex = -1;
+        int newBagSize = -1;
+
+        for (int i = 0; i < input.size(); i++) {
+            nameFromId = BuiltInRegistries.ITEM.getKey(input.getItem(i).getItem()).getPath();
+
+            if (!itemIsBagFlour(nameFromId)) {
+                remainingItemList.set(i, ItemStack.EMPTY);
+                minusOneSize++;
+                continue;
+            }
+
+            if (newBagSize < 0) {
+                newBagSize = Integer.getInteger(nameFromId.substring(0, 2));
+
+                remainingItemList.set(i, ItemStack.EMPTY);
+
+                if (newBagSize > 16) nonEmptyIndex = i;
+            }
+        }
+
+        final ResourceLocation replacedItemId = ResourceLocation.fromNamespaceAndPath(
+            VeggyCraft.MOD_ID,
+
+            new StringBuilder()
+                    .append(newBagSize)
+                    .append(nameFromId.substring(2))
+                    .toString()
+        );
+
+        if (
+              nonEmptyIndex >= 0 && minusOneSize + 1 == input.size()
+              && ResourceLocation.isValidPath(replacedItemId.getPath())
+              && VeggyCraft.MOD_ID.equals(replacedItemId.getNamespace())
+           ) {
+
+            final ItemLike replacedItem = BuiltInRegistries.ITEM.getValue(
+                replacedItemId
+            );
+            remainingItemList.set(nonEmptyIndex, new ItemStack(replacedItem));
+        }
+
+        return remainingItemList;
+    }
+
+    @Override
+    public @NotNull RecipeBookCategory recipeBookCategory() {
+        return RecipeBookCategories.CRAFTING_MISC;
+    }
+}

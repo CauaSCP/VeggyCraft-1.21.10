@@ -66,24 +66,48 @@ public class RepairableItemsExtension extends Item {
             ItemStack newItemInHand = null;
 
             if (newStartingNum < 8) {
-                newItemInHand = ItemStack.EMPTY;
+                newItemInHand = new ItemStack(ModItems.THIS_MOD_FLOUR, 8);
             } else if (ResourceLocation.isValidPath(newBagName)) {
-                newItemInHand = new ItemStack(BuiltInRegistries.ITEM.getValue(ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, newBagName)));
+                MinecraftServer server = ((ServerLevel) level).getServer();
+                CommandSourceStack commandSourceStack = server.createCommandSourceStack().withPermission(4).withSuppressedOutput();
 
-                newItemInHand.setDamageValue(64 - newStartingNum + 1);
+                server.getCommands().performPrefixedCommand(commandSourceStack, "give %s veggycraft:wheat_flour 8".formatted(player.getName().getString()));
+
+
+                newItemInHand = new ItemStack(BuiltInRegistries.ITEM.getValue(ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, newBagName)));
             }
 
             assert newItemInHand != null;
             player.setItemInHand(hand, newItemInHand);
-
-            MinecraftServer server = ((ServerLevel) level).getServer();
-            CommandSourceStack commandSourceStack = server.createCommandSourceStack().withPermission(4).withSuppressedOutput();
-
-            server.getCommands().performPrefixedCommand(commandSourceStack, "give %s veggycraft:wheat_flour 8".formatted(player.getName().getString()));
-
         }
 
         return super.use(level, player, hand);
     }
+
+    /*
+    @Override
+    public void onCraftedBy(ItemStack stack, Player player) {
+        String itemNameFromId = BuiltInRegistries.ITEM.getKey(stack.getItem()).getPath();
+
+        if (!itemNameFromId.endsWith("_items_stacked_of_flour") && Integer.getInteger(itemNameFromId.substring(0, 2)) <= 16) {
+            super.onCraftedBy(stack, player);
+            return;
+        }
+
+        Level level = player.level();
+
+        if (level.isClientSide()) {
+            super.onCraftedBy(stack, player);
+            return;
+        }
+
+        MinecraftServer server = ((ServerLevel) level).getServer();
+        CommandSourceStack commandSourceStack = server.createCommandSourceStack().withPermission(4).withSuppressedOutput();
+
+        server.getCommands().performPrefixedCommand(commandSourceStack, "give %s veggycraft:wheat_flour 8".formatted(player.getName().getString()));
+
+        super.onCraftedBy(stack, player);
+    }
+     */
 }
 

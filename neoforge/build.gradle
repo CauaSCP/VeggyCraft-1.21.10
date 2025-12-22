@@ -7,14 +7,6 @@ architectury {
     neoForge()
 }
 
-sourceSets {
-    main {
-        resources {
-            srcDirs += ["src/generated/resources"]
-        }
-    }
-}
-
 configurations {
     common {
         canBeResolved = true
@@ -49,6 +41,15 @@ dependencies {
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
+}
+
+loom {
+    runs {
+        data {
+            data()
+            programArgs "--output", project(":common").file("src/generated").absolutePath
+        }
+    }
 }
 
 processResources {
