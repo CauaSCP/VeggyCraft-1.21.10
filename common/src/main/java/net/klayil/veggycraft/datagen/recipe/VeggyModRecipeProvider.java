@@ -1,6 +1,5 @@
 package net.klayil.veggycraft.datagen.recipe;
 
-import net.klayil.klay_api.KlayApi;
 import net.klayil.veggycraft.VeggyCraft;
 import net.klayil.veggycraft.item.ModItems;
 import net.minecraft.core.HolderLookup;
@@ -64,7 +63,7 @@ public class VeggyModRecipeProvider extends net.minecraft.data.recipes.RecipePro
             flourRecipe(size).unlockedBy("has_before_%d_bag".formatted(size), has(flourBagSize(size-8))).
                 save(
                     output,
-                    "%s:bag_of_%d_shapeless_crafting_and_advt".formatted(KlayApi.MOD_ID, size)
+                    "%s:bag_of_%d_shapeless_crafting_and_advt".formatted(VeggyCraft.MOD_ID, size)
                 );
         }
     }

@@ -43,11 +43,11 @@ dependencies {
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
 }
 
-loom {
-    runs {
-        data {
-            data()
-            programArgs "--output", project(":common").file("src/generated").absolutePath
+sourceSets {
+    main {
+        resources {
+            srcDir project(":common").file("src/generated/resources")
+            srcDir project(":common").file("src/main/resources") // optional but recommended
         }
     }
 }
