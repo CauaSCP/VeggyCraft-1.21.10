@@ -30,7 +30,7 @@ fabricApi {
 
         client = true
 
-        outputDirectory.set(project(":common").file("src/main/generated/resources"))
+        outputDirectory.set(project(":common").file(generated_resources_path))
 
     }
 
