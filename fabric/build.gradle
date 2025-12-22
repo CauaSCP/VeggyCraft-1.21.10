@@ -7,6 +7,14 @@ architectury {
     fabric()
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDirs += ["src/generated/resources"]
+        }
+    }
+}
+
 configurations {
     common {
         canBeResolved = true
@@ -24,34 +32,11 @@ configurations {
     }
 }
 
-//loom {
-//    runs {
-//        datagen {
-//            // Inherit from the 'client' run configuration
-//            // if you specified 'client = true' in the simple block.
-//            inherit client
-//
-//            name "Data Generation"
-//
-//            // Set the custom output directory using a system property
-//            // Replace 'path/to/your/custom/datagen/output' with your desired path
-//            vmArg "-Dfabric-api.datagen.output-dir=${file('../common/src/main/generated')}"
-//
-//            // It's also good practice to include the modid if you have multiple data generators
-//            // vmArg "-Dfabric-api.datagen.modid=your_mod_id"
-//        }
-//    }
-//}
-//
-//// OPTIONAL: Add the custom directory to your main source set resources
-//// so the files are included in your built JAR.
-//sourceSets {
-//    main {
-//        resources {
-//            srcDirs += '../common/src/main/generated'
-//        }
-//    }
-//}
+fabricApi {
+    configureDataGeneration() {
+        client = true
+    }
+}
 
 dependencies {
     modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"

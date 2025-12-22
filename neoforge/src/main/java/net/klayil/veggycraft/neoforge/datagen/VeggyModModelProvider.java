@@ -1,9 +1,4 @@
-package net.klayil.veggycraft.fabric.datagen;
-
-//import net.klayil.klay_api.item.KlayApiModItems;
-
-import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+package net.klayil.veggycraft.neoforge.datagen;
 
 import net.klayil.veggycraft.VeggyCraft;
 import net.klayil.veggycraft.item.ModItems;
@@ -14,32 +9,36 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
-public class VeggyModModelProvider extends FabricModelProvider {
-    public VeggyModModelProvider(FabricDataOutput output) {
+import net.minecraft.data.PackOutput;
+import net.minecraft.client.data.models.ModelProvider;
+
+public class VeggyModModelProvider extends ModelProvider {
+    public VeggyModModelProvider(PackOutput output) {
         super(output);
     }
 
-    @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
     }
 
     @Override
-    public void generateItemModels(ItemModelGenerators itemModelGenerators) {
+    protected void registerModels(BlockModelGenerators blockModelGenerators, ItemModelGenerators itemModelGenerators) {
+        generateBlockStateModels(blockModelGenerators);
+
         final Item flour = ModItems.THIS_MOD_FLOUR.get();
 
         itemModelGenerators.generatePotion(Items.POTION);
 
         itemModelGenerators.createFlatItemModel(
-            flour,
-            ModelTemplates.FLAT_ITEM
+                flour,
+                ModelTemplates.FLAT_ITEM
         );
 
         itemModelGenerators.declareCustomModelItem(flour);
 
         for (int size = 8; size <= 64; size+=8) {
             final Item item = BuiltInRegistries.ITEM.getValue(ResourceLocation.fromNamespaceAndPath(
-                VeggyCraft.MOD_ID,
-                "%02d_items_stacked_of_flour".formatted(size)
+                    VeggyCraft.MOD_ID,
+                    "%02d_items_stacked_of_flour".formatted(size)
             ));
 
             ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(item, ""), TextureMapping.layer0(ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "wheat_flour_in_bundle_all_cases").withPrefix("item/")), itemModelGenerators.modelOutput);
