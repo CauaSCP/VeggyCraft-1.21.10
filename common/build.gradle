@@ -23,8 +23,3 @@ dependencies {
 }
 
 def generatedResources = file("src/generated")
-sourceSets {
-    main {
-        resources.srcDir generatedResources
-    }
-}
