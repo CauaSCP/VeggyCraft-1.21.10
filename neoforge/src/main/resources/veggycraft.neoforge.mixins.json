@@ -1,14 +1,13 @@
 {
   "required": true,
-  "package": "net.klayil.veggycraft.mixin",
+  "package": "net.klayil.veggycraft.neoforge.mixin",
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
   "client": [
   ],
   "mixins": [
-    "AnvilMenuMixin",
-    "CraftingMenuMixin",
-    "GrindstoneMenuMixin"
+    "RepairableItemNeoForgeMixin",
+    "UnrepairableDamageableItemNeoForgeMixin"
   ],
   "injectors": {
     "defaultRequire": 1

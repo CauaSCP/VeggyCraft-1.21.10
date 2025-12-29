@@ -12,9 +12,12 @@
   ],
   "result": {
     "components": {
-      "minecraft:damage": 57
+      "veggycraft:health": {
+        "max": 64,
+        "value": 8
+      }
     },
-    "id": "veggycraft:08_items_stacked_of_flour",
-    "count": 1
+    "count": 1,
+    "id": "veggycraft:08_items_stacked_of_flour"
   }
 }

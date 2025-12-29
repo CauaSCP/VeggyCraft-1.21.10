@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "D",
+    "W"
+  ],
+  "key": {
+    "D": "minecraft:dirt",
+    "W": {
+      "fabric:type": "fabric:components",
+      "base": "minecraft:potion",
+      "components": {
+        "minecraft:potion_contents": {
+          "potion": "minecraft:water"
+        }
+      },
+      "strict": true
+    }
+  },
+  "result": {
+    "id": "minecraft:mud",
+    "count": 1
+  }
+}

@@ -1,51 +1,98 @@
 package net.klayil.veggycraft.item;
 
+import dev.architectury.registry.registries.RegistrySupplier;
 import net.klayil.veggycraft.VeggyCraft;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Repairable;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.function.Supplier;
 
 public class RepairableItemsExtension extends Item {
-    private final Item repairItem;
+    protected final @Nullable Item repairItem;
 
-    public RepairableItemsExtension(Properties itemProperties, int maxDamage, Item repairItem) {
-        super(
-            createSettings(
-                itemProperties, maxDamage, repairItem
-            )
-        );
-
-        this.repairItem = repairItem;
+    public @Nullable Item getRepairItem() {
+        return repairItem;
     }
 
-    private static Properties createSettings(Properties itemProperties, int maxDamage, Item repairItem) {
+    public static ItemStack getCraftingRemainderCommon(ItemStack stack) {
+        if (
+                stack.getItem() instanceof RepairableItemsExtension repairableItem
+                && repairableItem.getRepairItem() == null
+                && !BuiltInRegistries.ITEM.getKey(stack.getItem()).getPath().endsWith("_items_stacked_of_flour")
+
+        ) {
+            return ItemStack.EMPTY;
+        }
+
+        ItemStack result = stack.copy();
+        result.setDamageValue(stack.getDamageValue() + 1);
+
+        if (result.getDamageValue() >= result.getMaxDamage()) {
+            return ItemStack.EMPTY;
+        }
+
+        return result;
+    }
+
+    public RepairableItemsExtension(Properties itemProperties, int maxDamage, Supplier<?> repairItemSupplier) {
+        super(
+                createSettings(
+                        itemProperties, maxDamage, repairItemSupplier
+                )
+        );
+
+        if (repairItemSupplier != null) {
+            this.repairItem = (Item) ((Supplier<?>) repairItemSupplier.get()).get();
+
+            return;
+        }
+
+        repairItem = null;
+    }
+
+    public static Properties createSettings(Properties itemProperties, int maxDamage, @Nullable Supplier<?> repairItemSupplier) {
+        if (repairItemSupplier == null) {
+            return itemProperties.durability(maxDamage);
+        }
+
+        Item repairItem = (Item) ((Supplier<?>) repairItemSupplier.get()).get();
+
+//        VeggyCraft.LOGGER.info("#RepairItem: %s".formatted(repairItem));
+
         itemProperties = itemProperties.component(
                 DataComponents.REPAIRABLE,
-                new Repairable(HolderSet.direct(Holder.direct(repairItem)))
+                new Repairable(
+                        HolderSet.direct(BuiltInRegistries.ITEM.wrapAsHolder(repairItem))
+                )
         );
+
 
 
         return itemProperties.durability(maxDamage);
     }
 
-    public Item getRepairItem() {
-        return repairItem;
-    }
-
+    /*
     private final String flourBagItemEnding = "%s_items_stacked_of_flour";
     @Override
     public @NotNull InteractionResult use(Level level, Player player, InteractionHand hand) {
@@ -85,5 +132,6 @@ public class RepairableItemsExtension extends Item {
 
         return super.use(level, player, hand);
     }
+    */
 }
 

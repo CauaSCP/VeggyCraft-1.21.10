@@ -1,14 +1,14 @@
 {
   "required": true,
-  "package": "net.klayil.veggycraft.mixin",
+  "package": "net.klayil.veggycraft.fabric.mixin",
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
   "client": [
   ],
   "mixins": [
-    "AnvilMenuMixin",
-    "CraftingMenuMixin",
-    "GrindstoneMenuMixin"
+    "RepairableItemFabricMixin",
+    "ResultSlotMixin",
+    "UnrepairableDamageableItemFabricMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,0 +1,17 @@
+{
+  "klay_api.veggycraft.replacements_tab": "Mobs Drops Replacements",
+
+  "architectury.klay_api.flour_proto_bundle": "Flour-Filled Wheat Bundle",
+  "item.veggycraft.wheat_flour": "Wheat Flour",
+
+  "item.veggycraft.seitan_cooked_beef": "Cooked Seitan",
+
+  "veggycraft_overrides": "VeggyCraft Overrides",
+
+  "klay_api.description.flour_proto_bundle": "Hand-use this bundle to retrieve the flours!",
+
+  "item.veggycraft.carbon_prefix": "Carbon",
+  "item.veggycraft.carbon_space_1": " ",
+  "item.veggycraft.carbon_space_2": "",
+  "item.veggycraft.carbon_suffix": ""
+}
