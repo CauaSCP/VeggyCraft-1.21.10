@@ -1,0 +1,19 @@
+{
+  "model": {
+    "type": "select",
+    "property": "custom_model_data",
+    "fallback": {
+      "type": "model",
+      "model": "item/black_dye"
+    },
+    "cases": [
+      {
+        "when": "carbon_black_dye",
+        "model": {
+          "type": "model",
+          "model": "item/carbon_black_dye"
+        }
+      }
+    ]
+  }
+}
