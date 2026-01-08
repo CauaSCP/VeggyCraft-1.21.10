@@ -16,14 +16,18 @@ import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import java.util.ArrayList;
+import java.util.function.Supplier;
 
 public class ModBlocks {
     public static DeferredRegister<Block> BLOCKS;
-    public final static ArrayList<RegistrySupplier<Block>> modalFabrics = new ArrayList<>();
+    public static ArrayList<RegistrySupplier<Block>> modalFabrics;
 
     public static void initBlocks() {
+        KlayApiModBlocks.initBlocks();
+
         BLOCKS = KlayApiModBlocks.createBlocksRegister(VeggyCraft.MOD_ID);
 
+        modalFabrics = new ArrayList<>();
         for (int i = 1; i <= 16; i++) {
             RegistrySupplier<Block> tmp = KlayApiModBlocks.createBlock(
                     "modal_fabric_%02d".formatted(i),
@@ -33,7 +37,6 @@ public class ModBlocks {
                             ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "modal_fabric_%02d".formatted(i))
                     )),
                     VeggyCraft.MOD_ID);
-
             modalFabrics.add(tmp);
         }
 

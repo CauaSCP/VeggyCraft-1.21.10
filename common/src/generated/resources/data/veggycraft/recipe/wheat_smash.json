@@ -1,8 +1,0 @@
-{
-  "type": "veggycraft:piston_smashin",
-  "ingredient": "minecraft:wheat",
-  "result": {
-    "count": 1,
-    "id": "veggycraft:wheat_flour"
-  }
-}

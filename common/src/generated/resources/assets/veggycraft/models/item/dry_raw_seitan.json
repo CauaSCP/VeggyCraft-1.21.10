@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "veggycraft:item/dry_raw_seitan"
-  }
-}

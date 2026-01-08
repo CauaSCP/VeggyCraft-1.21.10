@@ -108,6 +108,8 @@ public class ModItems {
     }
 
     public static void initItems() {
+        KlayApiModItems.initItems();
+
         BLACK_DYE_STACK = new ItemStack(Items.BLACK_DYE);
         CustomModelData data = new CustomModelData(
                 List.of(),

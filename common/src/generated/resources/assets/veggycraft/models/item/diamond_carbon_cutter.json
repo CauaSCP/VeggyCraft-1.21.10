@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "veggycraft:item/diamond_carbon_cutter"
-  }
-}

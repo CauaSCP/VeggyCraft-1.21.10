@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "veggycraft:item/plant_meat",
-    "layer1": "veggycraft:item/plant_meat_outline",
-    "layer2": "veggycraft:item/seitan_cooked_beef_extra"
-  }
-}

@@ -2,26 +2,27 @@ package net.klayil.veggycraft.neoforge.datagen;
 
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.klayil.veggycraft.VeggyCraft;
+import net.klayil.veggycraft.block.ModBlocks;
+import net.klayil.veggycraft.datagen.ColoursList;
 import net.klayil.veggycraft.item.ModItems;
-import net.minecraft.client.color.item.ItemTintSource;
 import net.minecraft.client.data.models.*;
+import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.model.*;
-import net.minecraft.client.renderer.item.BlockModelWrapper;
-import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.client.data.models.ModelProvider;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 
 import net.minecraft.client.data.models.model.ItemModelUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
-import static net.minecraft.client.data.models.model.ItemModelUtils.plainModel;
+import static net.minecraft.client.data.models.BlockModelGenerators.plainVariant;
 
 public class VeggyModModelProvider extends ModelProvider {
     private ItemModelGenerators generalItemModelGenerators;
@@ -31,9 +32,21 @@ public class VeggyModModelProvider extends ModelProvider {
     }
 
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
-        VeggyCraft.LOGGER.info(blockModelGenerators.toString());
+//        VeggyCraft.LOGGER.info("#Registered is %s".formatted(ModBlocks.BLOCKS));
+//        VeggyCraft.LOGGER.info(blockModelGenerators.toString());
 
         blockModelGenerators.run();
+//        ModBlocks.initBlocks();
+
+        for (int color_id = 1; color_id < 16; color_id++) {
+            Block curBlock = ModBlocks.modalFabrics.get(color_id).get();
+
+            String colorName = ColoursList.listOfColours[color_id];
+            ResourceLocation woolId = ResourceLocation.withDefaultNamespace(colorName + "_wool");
+            Block curWool = BuiltInRegistries.BLOCK.getValue(woolId);
+
+            blockModelGenerators.copyModel(curWool, curBlock);
+        }
     }
 
     private void registerFlatItemModel(RegistrySupplier<Item> item, ModelTemplate modelTemplate) {
@@ -47,12 +60,11 @@ public class VeggyModModelProvider extends ModelProvider {
 
     @Override
     protected void registerModels(@NotNull BlockModelGenerators blockModelGenerators, ItemModelGenerators itemModelGenerators) {
-        generateBlockStateModels(blockModelGenerators);
 
         itemModelGenerators.run();
 
         this.generalItemModelGenerators = itemModelGenerators;
-
+        generateBlockStateModels(blockModelGenerators);
 
         ResourceLocation cookendSeitanResourceLocation = ModelLocationUtils.getModelLocation(ModItems.SEITAN_COOKED_BEEF.get());
 
@@ -122,24 +134,6 @@ public class VeggyModModelProvider extends ModelProvider {
         registerFlatItemModel(ModItems.DIAMOND_CARBON_CUTTER, ModelTemplates.FLAT_HANDHELD_ITEM);
 
         registerFlatItemModel(ModItems.FLOUR_BAG, ModelTemplates.FLAT_ITEM);
-
-
-
-        for (int size = 1; size <= 16; size++) {
-            final Item item = BuiltInRegistries.ITEM.getValue(ResourceLocation.fromNamespaceAndPath(
-                    VeggyCraft.MOD_ID,
-                    "modal_fabric_%02d".formatted(size)
-            ));
-
-            net.minecraft.client.data.models.model.ModelTemplates.CUBE_ALL.create(
-                    ModelLocationUtils.getModelLocation(item, ""),
-                    TextureMapping.layer0(ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "%s_wool")
-                            .withPrefix("block/")),
-                    this.generalItemModelGenerators.modelOutput
-            );
-
-            this.generalItemModelGenerators.declareCustomModelItem(item);
-        }
 
         ModelTemplates.FLAT_ITEM.create(
                 ResourceLocation.withDefaultNamespace("carbon_black_dye").withPrefix("item/"),
