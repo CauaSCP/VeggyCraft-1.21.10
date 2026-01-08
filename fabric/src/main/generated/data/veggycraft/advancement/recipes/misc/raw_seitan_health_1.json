@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "veggycraft:raw_seitan_health_1"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_water": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:water_bucket"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_water"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "veggycraft:raw_seitan_health_1"
+    ]
+  }
+}

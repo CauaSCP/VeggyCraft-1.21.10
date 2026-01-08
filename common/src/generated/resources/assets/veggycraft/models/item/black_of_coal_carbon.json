@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "veggycraft:item/black_of_coal_carbon"
+  }
+}

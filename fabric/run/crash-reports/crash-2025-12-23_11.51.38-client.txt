@@ -1,0 +1,161 @@
+---- Minecraft Crash Report ----
+// I let you down. Sorry :(
+
+Time: 2025-12-23 11:51:38
+Description: Initializing game
+
+java.lang.RuntimeException: Could not execute entrypoint stage 'main' due to errors, provided by 'veggycraft' at 'net.klayil.veggycraft.fabric.VeggyCraftFabric'!
+	at net.fabricmc.loader.impl.FabricLoaderImpl.lambda$invokeEntrypoints$0(FabricLoaderImpl.java:409)
+	at net.fabricmc.loader.impl.util.ExceptionUtil.gatherExceptions(ExceptionUtil.java:33)
+	at net.fabricmc.loader.impl.FabricLoaderImpl.invokeEntrypoints(FabricLoaderImpl.java:407)
+	at net.fabricmc.loader.impl.game.minecraft.Hooks.startClient(Hooks.java:52)
+	at knot//net.minecraft.client.Minecraft.<init>(Minecraft.java:483)
+	at knot//net.minecraft.client.main.Main.main(Main.java:234)
+	at net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:514)
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:72)
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23)
+	at net.fabricmc.devlaunchinjector.Main.main(Main.java:86)
+	at dev.architectury.transformer.TransformerRuntime.main(TransformerRuntime.java:220)
+Caused by: java.lang.IllegalStateException: Adding duplicate key 'ResourceKey[minecraft:item / veggycraft:coal_carbon_cutter]' to registry
+	at knot//net.minecraft.core.MappedRegistry.register(MappedRegistry.java:106)
+	at knot//net.minecraft.core.DefaultedMappedRegistry.register(DefaultedMappedRegistry.java:23)
+	at knot//net.minecraft.core.Registry.register(Registry.java:126)
+	at knot//net.minecraft.core.Registry.register(Registry.java:122)
+	at knot//dev.architectury.registry.registries.fabric.RegistrarManagerImpl$RegistrarImpl.register(RegistrarManagerImpl.java:232)
+	at knot//dev.architectury.registry.registries.DeferredRegister.register(DeferredRegister.java:78)
+	at knot//net.klayil.veggycraft.item.ModItems.initItems(ModItems.java:165)
+	at knot//net.klayil.veggycraft.VeggyCraft.init(VeggyCraft.java:15)
+	at knot//net.klayil.veggycraft.fabric.VeggyCraftFabric.onInitialize(VeggyCraftFabric.java:17)
+	at net.fabricmc.loader.impl.FabricLoaderImpl.invokeEntrypoints(FabricLoaderImpl.java:405)
+	... 8 more
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at net.fabricmc.loader.impl.FabricLoaderImpl.lambda$invokeEntrypoints$0(FabricLoaderImpl.java:409)
+	at net.fabricmc.loader.impl.util.ExceptionUtil.gatherExceptions(ExceptionUtil.java:33)
+	at net.fabricmc.loader.impl.FabricLoaderImpl.invokeEntrypoints(FabricLoaderImpl.java:407)
+	at net.fabricmc.loader.impl.game.minecraft.Hooks.startClient(Hooks.java:52)
+	at knot//net.minecraft.client.Minecraft.<init>(Minecraft.java:483)
+
+-- Initialization --
+Details:
+	Modules: 
+Stacktrace:
+	at knot//net.minecraft.client.main.Main.main(Main.java:234)
+	at net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:514)
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:72)
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23)
+	at net.fabricmc.devlaunchinjector.Main.main(Main.java:86)
+	at dev.architectury.transformer.TransformerRuntime.main(TransformerRuntime.java:220)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21.10
+	Minecraft Version ID: 1.21.10
+	Operating System: Linux (amd64) version 6.17.0-8-generic
+	Java Version: 21.0.9, Eclipse Adoptium
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Eclipse Adoptium
+	Memory: 110362600 bytes (105 MiB) / 1053818880 bytes (1005 MiB) up to 2000683008 bytes (1908 MiB)
+	CPUs: 12
+	Processor Vendor: GenuineIntel
+	Processor Name: 13th Gen Intel(R) Core(TM) i5-1335U
+	Identifier: Intel64 Family 6 Model 186 Stepping 3
+	Microarchitecture: Raptor Lake
+	Frequency (GHz): 4.60
+	Number of physical packages: 1
+	Number of physical CPUs: 10
+	Number of logical CPUs: 12
+	Graphics card #0 name: Raptor Lake-P [Iris Xe Graphics]
+	Graphics card #0 vendor: Intel Corporation (0x8086)
+	Graphics card #0 VRAM (MiB): 256.00
+	Graphics card #0 deviceId: 0xa7a1
+	Graphics card #0 versionInfo: unknown
+	Virtual memory max (MiB): 39653.04
+	Virtual memory used (MiB): 15847.06
+	Swap memory total (MiB): 35840.00
+	Swap memory used (MiB): 8797.67
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 3795.86, total: 3813.04
+	Space in storage for workdir (MiB): available: 100949.16, total: 211890.00
+	JVM Flags: 0 total; 
+	Debug Flags: 0 total; 
+	Fabric Mods: 
+		appleskin: AppleSkin 3.0.7+mc1.21.9
+		architectury: Architectury 18.0.6
+		cloth-basic-math: cloth-basic-math 0.6.1
+		cloth-config: Cloth Config v20 20.0.148
+		fabric-api: Fabric API 0.138.3+1.21.10
+		fabric-api-base: Fabric API Base 1.0.0+14b92d897d
+		fabric-api-lookup-api-v1: Fabric API Lookup API (v1) 1.6.106+d17682156f
+		fabric-biome-api-v1: Fabric Biome API (v1) 16.1.0+c2417d4f6f
+		fabric-block-api-v1: Fabric Block API (v1) 1.1.5+d17682156f
+		fabric-block-view-api-v2: Fabric BlockView API (v2) 1.0.34+e4fd1b926f
+		fabric-client-gametest-api-v1: Fabric Client Game Test API (v1) 4.2.13+14b92d896f
+		fabric-command-api-v2: Fabric Command API (v2) 2.4.0+c0ab2d5d6f
+		fabric-content-registries-v0: Fabric Content Registries (v0) 10.2.6+b6a242646f
+		fabric-convention-tags-v1: Fabric Convention Tags 2.1.49+7f945d5b6f
+		fabric-convention-tags-v2: Fabric Convention Tags (v2) 2.17.0+ff7bc77d6f
+		fabric-crash-report-info-v1: Fabric Crash Report Info (v1) 0.3.18+33df5e6e6f
+		fabric-data-attachment-api-v1: Fabric Data Attachment API (v1) 1.8.33+cd3b9e596f
+		fabric-data-generation-api-v1: Fabric Data Generation API (v1) 23.2.27+d8b85ef16f
+		fabric-dimensions-v1: Fabric Dimensions API (v1) 4.0.22+38b9cc196f
+		fabric-entity-events-v1: Fabric Entity Events (v1) 2.1.13+fde3702c6f
+		fabric-events-interaction-v0: Fabric Events Interaction (v0) 4.0.36+5ba217126f
+		fabric-game-rule-api-v1: Fabric Game Rule API (v1) 1.1.1+e47eaae56f
+		fabric-gametest-api-v1: Fabric Game Test API (v1) 3.1.21+33df5e6e6f
+		fabric-item-api-v1: Fabric Item API (v1) 11.5.11+9bce411b6f
+		fabric-item-group-api-v1: Fabric Item Group API (v1) 4.2.27+86b3ae576f
+		fabric-key-binding-api-v1: Fabric Key Binding API (v1) 1.1.1+b3ba9c487d
+		fabric-lifecycle-events-v1: Fabric Lifecycle Events (v1) 2.6.9+33df5e6e7d
+		fabric-loot-api-v2: Fabric Loot API (v2) 3.0.67+3f89f5a56f
+		fabric-loot-api-v3: Fabric Loot API (v3) 2.0.14+d17682156f
+		fabric-message-api-v1: Fabric Message API (v1) 6.1.7+3154c1c86f
+		fabric-model-loading-api-v1: Fabric Model Loading API (v1) 6.0.4+3ffd6ef06f
+		fabric-networking-api-v1: Fabric Networking API (v1) 5.1.0+b095d8db6f
+		fabric-object-builder-api-v1: Fabric Object Builder API (v1) 21.1.28+9bce411b6f
+		fabric-particles-v1: Fabric Particles (v1) 4.2.3+a0ee59a46f
+		fabric-recipe-api-v1: Fabric Recipe API (v1) 8.2.0+39709ef06f
+		fabric-registry-sync-v0: Fabric Registry Sync (v0) 6.1.42+679c8c5c6f
+		fabric-renderer-api-v1: Fabric Renderer API (v1) 7.2.2+3706cdf36f
+		fabric-renderer-indigo: Fabric Renderer - Indigo 4.1.3+d7df91576f
+		fabric-rendering-fluids-v1: Fabric Rendering Fluids (v1) 3.1.38+86b3ae576f
+		fabric-rendering-v1: Fabric Rendering (v1) 16.2.0+bee81f016f
+		fabric-resource-conditions-api-v1: Fabric Resource Conditions API (v1) 5.0.28+33df5e6e6f
+		fabric-resource-loader-v0: Fabric Resource Loader (v0) 3.3.1+d4d4122a6f
+		fabric-resource-loader-v1: Fabric Resource Loader (v1) 1.0.4+14959b836f
+		fabric-screen-api-v1: Fabric Screen API (v1) 3.1.0+9c82a7987d
+		fabric-screen-handler-api-v1: Fabric Screen Handler API (v1) 1.3.151+d17682156f
+		fabric-serialization-api-v1: Fabric Serialization API (v1) 1.0.0+d857c9766f
+		fabric-sound-api-v1: Fabric Sound API (v1) 1.0.45+328a75ba6f
+		fabric-tag-api-v1: Fabric Tag API (v1) 1.2.13+2fa446b26f
+		fabric-transfer-api-v1: Fabric Transfer API (v1) 6.0.15+79ec2c126f
+		fabric-transitive-access-wideners-v1: Fabric Transitive Access Wideners (v1) 6.5.3+41eb43436f
+		fabricloader: Fabric Loader 0.18.1
+		generated_3fa1bbf: Generated Mod (Please Ignore) 1.0.0
+		java: OpenJDK 64-Bit Server VM 21
+		jei: Just Enough Items 26.1.0.7
+		klay_api: KlayApi 0.0.5
+		minecraft: Minecraft 1.21.10
+		mixinextras: MixinExtras 0.5.0
+		veggycraft: VeggyCraft 1.0.0
+	Launched Version: Fabric
+	Backend library: LWJGL version 3.3.3-snapshot
+	Backend API: Unknown
+	Window size: <not initialized>
+	GFLW Platform: <error>
+	Render Extensions: ERR
+	GL debug messages: <no renderer available>
+	Is Modded: Definitely; Client brand changed to 'fabric'
+	Universe: 404
+	Type: Client (map_client.txt)
+	Locale: pt_BR
+	System encoding: UTF-8
+	File encoding: UTF-8
+	CPU: 12x 13th Gen Intel(R) Core(TM) i5-1335U

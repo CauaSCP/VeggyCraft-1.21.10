@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "veggycraft:black_of_coal_carbon",
+    "veggycraft:black_of_coal_carbon",
+    "veggycraft:coal_carbon_cutter",
+    "veggycraft:black_of_coal_carbon",
+    "veggycraft:black_of_coal_carbon"
+  ],
+  "result": {
+    "components": {
+      "minecraft:custom_model_data": {
+        "strings": [
+          "carbon_black_dye"
+        ]
+      },
+      "minecraft:item_name": {
+        "extra": [
+          {
+            "translate": "item.veggycraft.carbon_space_1"
+          },
+          {
+            "translate": "item.minecraft.black_dye"
+          },
+          {
+            "translate": "item.veggycraft.carbon_space_2"
+          },
+          {
+            "translate": "item.veggycraft.carbon_suffix"
+          }
+        ],
+        "translate": "item.veggycraft.carbon_prefix"
+      }
+    },
+    "count": 1,
+    "id": "minecraft:black_dye"
+  }
+}

@@ -1,0 +1,1 @@
+scoreboard objectives add flour.net.klayil.klayil_api dummy "Flour Score (KlayilApi)"

@@ -1,0 +1,102 @@
+package net.klayil.veggycraft.datagen.recipe;
+
+import dev.architectury.platform.Platform;
+import net.klayil.klay_api.KlayApi;
+import net.klayil.veggycraft.VeggyCraft;
+import net.klayil.veggycraft.item.ModItems;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.PackOutput;
+
+
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+
+
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import java.util.concurrent.CompletableFuture;
+
+import net.minecraft.world.item.Items;
+import org.jetbrains.annotations.NotNull;
+
+public class VeggyModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
+    public VeggyModRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
+        super(provider, recipeOutput);
+    }
+
+    public static class Runner extends RecipeProvider.Runner{
+        public Runner(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> provider) {
+            super(packOutput, provider);
+        }
+
+        @Override
+        protected @NotNull RecipeProvider createRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
+            return new VeggyModRecipeProvider(provider, recipeOutput);
+        }
+        @Override
+        public @NotNull String getName() { return "My Recipes"; }
+
+    }
+
+    protected Item flourBagSize(int itemSizeAtBeginNum) {
+        final String itemName = "%02d_items_stacked_of_flour".formatted(itemSizeAtBeginNum);
+
+        return BuiltInRegistries.ITEM.getValue(
+                ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, itemName)
+        );
+    }
+
+    public ShapedRecipeBuilder flourRecipe(int resultItemSize) {
+        Item flour = ModItems.THIS_MOD_FLOUR.get();
+        ItemStack result = new ItemStack(flourBagSize(resultItemSize));
+
+        result.setDamageValue(64 - resultItemSize + 1);
+
+        ShapedRecipeBuilder ret = shaped(RecipeCategory.MISC, result);
+
+        ret = ret
+                .pattern("fff") // Caused by: java.lang.NullPointerException: Cannot invoke "net.minecraft.data.recipes.ShapedRecipeBuilder.pattern(String)" because "ret" is null
+                .pattern("fBf")
+                .pattern("fff")
+                .define('f', flour)
+                .define('B', flourBagSize(resultItemSize - 8));
+
+        return ret;
+    }
+
+    @Override
+    protected void buildRecipes() {
+
+        buildRecipesCommon();
+
+    }
+
+    public void buildRecipesCommon() {
+//        if (!Platform.isForgeLike()) return;
+
+        for (int size = 16; size <= 64; size+=8) {
+            flourRecipe(size).unlockedBy("has_before_%d_bag".formatted(size), has(flourBagSize(size-8))).
+                save(
+                    output,
+                    "%s:bag_of_%d_shapeless_crafting_and_advt".formatted(KlayApi.MOD_ID, size)
+                );
+        }
+
+        shaped(RecipeCategory.MISC, new ItemStack(ModItems.BLACK_OF_COAL_CARBON))
+                .pattern("##")
+                .pattern("##")
+                .define('#', ItemTags.COALS)
+                //.unlockedBy("has_normal_coal", has(Items.COAL))
+                //.unlockedBy("has_coal_tag", has(ItemTags.COALS))
+                .unlockedBy("has_charcoal", has(Items.CHARCOAL))
+                .save(output);
+    }
+}

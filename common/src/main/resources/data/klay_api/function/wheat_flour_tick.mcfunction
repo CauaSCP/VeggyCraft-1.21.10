@@ -1,0 +1,3 @@
+execute as @e[scores={flour.net.klayil.klayil_api=1..}, type=item, nbt={Item:{id:"minecraft:wheat"}}] run data merge entity @s {Item:{id:"veggycraft:wheat_flour"}}
+tag @e[scores={flour.net.klayil.klayil_api=1..}, tag=!hasFlourScore.net.klayil.klay_api] add hasFlourScore.net.klayil.klay_api
+execute as @e[type=item, nbt={Item:{id:"minecraft:wheat"}}, tag=!hasFlourScore.net.klayil.klay_api] at @s store result score @s flour.net.klayil.klayil_api run clone ~0 ~-1 ~0 ~0 ~1 ~0 ~0 ~-1 ~0 filtered minecraft:moving_piston force

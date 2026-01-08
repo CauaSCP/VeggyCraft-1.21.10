@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "veggycraft:black_of_coal_carbon",
+    "veggycraft:black_of_coal_carbon",
+    "veggycraft:black_of_coal_carbon",
+    "veggycraft:black_of_coal_carbon",
+    "minecraft:diamond",
+    "minecraft:diamond",
+    "minecraft:diamond",
+    "minecraft:diamond",
+    "minecraft:diamond"
+  ],
+  "result": {
+    "count": 1,
+    "id": "veggycraft:shiny_of_diamond_coal_carbon"
+  }
+}

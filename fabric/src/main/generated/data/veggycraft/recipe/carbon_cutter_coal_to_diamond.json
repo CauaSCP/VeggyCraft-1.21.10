@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "minecraft:coal",
+  "base": "veggycraft:coal_carbon_cutter",
+  "result": {
+    "id": "veggycraft:diamond_carbon_cutter"
+  },
+  "template": "veggycraft:shiny_of_diamond_coal_carbon"
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "veggycraft:item/colored_carbon_layer0",
+    "layer1": "veggycraft:item/colored_carbon_layer1",
+    "layer2": "veggycraft:item/colored_carbon_layer2"
+  }
+}

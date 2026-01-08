@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_black_of_coal_carbon": {
+      "conditions": {
+        "items": [
+          {
+            "items": "veggycraft:black_of_coal_carbon"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "veggycraft:carbon_dye_coal_cut"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_black_of_coal_carbon"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "veggycraft:carbon_dye_coal_cut"
+    ]
+  }
+}

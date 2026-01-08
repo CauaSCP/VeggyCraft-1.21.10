@@ -1,0 +1,124 @@
+---- Minecraft Crash Report ----
+// Oh - I know what I did wrong!
+
+Time: 2025-12-22 22:17:49
+Description: Initializing game
+
+java.lang.NullPointerException: Initializing game
+	at com.google.common.base.Preconditions.checkNotNull(Preconditions.java:904) ~[guava-33.3.1-jre.jar:?] {}
+	at com.google.common.collect.ImmutableList$Builder.add(ImmutableList.java:841) ~[guava-33.3.1-jre.jar:?] {}
+	at java.base/java.util.stream.ReduceOps$3ReducingSink.accept(ReduceOps.java:169) ~[?:?] {}
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[?:?] {}
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024) ~[?:?] {}
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[?:?] {}
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[?:?] {}
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921) ~[?:?] {}
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[?:?] {}
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682) ~[?:?] {}
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.server.packs.repository.PackRepository.openAllSelected(PackRepository.java:142) ~[client-extra.jar:?] {neoforge:access_transformer}
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.Minecraft.<init>(Minecraft.java:698) [client-extra.jar:?] {neoforge:access_transformer,neoforge:access_transformer,neoforge:mixin[APP:architectury.mixins.json:MixinMinecraft from mod architectury],unprotect:processor}
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.main.Main.main(Main.java:208) [client-extra.jar:?] {unprotect:processor}
+	at net.neoforged.fml.startup.Client.main(Client.java:26) [loader-10.0.14.jar:10.0] {}
+	at net.fabricmc.devlaunchinjector.Main.main(Main.java:86) [dev-launch-injector-0.2.1+build.8.jar:?] {}
+	at dev.architectury.transformer.TransformerRuntime.main(TransformerRuntime.java:220) [architectury-transformer-5.2.87-runtime.jar:5.2.87] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at com.google.common.base.Preconditions.checkNotNull(Preconditions.java:904) ~[guava-33.3.1-jre.jar:?] {}
+	at com.google.common.collect.ImmutableList$Builder.add(ImmutableList.java:841) ~[guava-33.3.1-jre.jar:?] {}
+	at java.base/java.util.stream.ReduceOps$3ReducingSink.accept(ReduceOps.java:169) ~[?:?] {}
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[?:?] {}
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024) ~[?:?] {}
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[?:?] {}
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[?:?] {}
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921) ~[?:?] {}
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[?:?] {}
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682) ~[?:?] {}
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.server.packs.repository.PackRepository.openAllSelected(PackRepository.java:142) ~[client-extra.jar:?] {neoforge:access_transformer}
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.Minecraft.<init>(Minecraft.java:698) ~[client-extra.jar:?] {neoforge:access_transformer,neoforge:access_transformer,neoforge:mixin[APP:architectury.mixins.json:MixinMinecraft from mod architectury],unprotect:processor}
+-- Initialization --
+Details:
+	Modules: 
+Stacktrace:
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.main.Main.main(Main.java:208) [client-extra.jar:?] {unprotect:processor}
+	at net.neoforged.fml.startup.Client.main(Client.java:26) [loader-10.0.14.jar:10.0] {}
+	at net.fabricmc.devlaunchinjector.Main.main(Main.java:86) [dev-launch-injector-0.2.1+build.8.jar:?] {}
+	at dev.architectury.transformer.TransformerRuntime.main(TransformerRuntime.java:220) [architectury-transformer-5.2.87-runtime.jar:5.2.87] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21.10
+	Minecraft Version ID: 1.21.10
+	Operating System: Linux (amd64) version 6.17.0-8-generic
+	Java Version: 21.0.9, Eclipse Adoptium
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Eclipse Adoptium
+	Memory: 389021696 bytes (371 MiB) / 1207959552 bytes (1152 MiB) up to 2000683008 bytes (1908 MiB)
+	CPUs: 12
+	Processor Vendor: GenuineIntel
+	Processor Name: 13th Gen Intel(R) Core(TM) i5-1335U
+	Identifier: Intel64 Family 6 Model 186 Stepping 3
+	Microarchitecture: Raptor Lake
+	Frequency (GHz): 4.60
+	Number of physical packages: 1
+	Number of physical CPUs: 10
+	Number of logical CPUs: 12
+	Graphics card #0 name: Raptor Lake-P [Iris Xe Graphics]
+	Graphics card #0 vendor: Intel Corporation (0x8086)
+	Graphics card #0 VRAM (MiB): 256.00
+	Graphics card #0 deviceId: 0xa7a1
+	Graphics card #0 versionInfo: unknown
+	Virtual memory max (MiB): 12525.03
+	Virtual memory used (MiB): 14113.65
+	Swap memory total (MiB): 8711.99
+	Swap memory used (MiB): 7273.38
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 3798.47, total: 3813.04
+	Space in storage for workdir (MiB): available: 100959.20, total: 211890.00
+	JVM Flags: 0 total; 
+	Debug Flags: 0 total; 
+	Launched Version: 21.10.1-beta
+	Backend library: LWJGL version 3.3.3+5
+	Backend API: Mesa Intel(R) Iris(R) Xe Graphics (RPL-U) GL version 4.6 (Core Profile) Mesa 25.2.3-1ubuntu1, Intel
+	Window size: <not initialized>
+	GFLW Platform: x11
+	Render Extensions: GL_ARB_buffer_storage, GL_KHR_debug, GL_ARB_vertex_attrib_binding, GL_ARB_direct_state_access
+	GL debug messages: 
+	Is Modded: Definitely; Client brand changed to 'neoforge'
+	Universe: 404
+	Type: Client (map_client.txt)
+	Locale: pt_BR
+	System encoding: UTF-8
+	File encoding: UTF-8
+	CPU: 12x 13th Gen Intel(R) Core(TM) i5-1335U
+	Class Processors: 
+		00,00%: neoforge:neoforge_dev_dist_cleaner
+		00,00%: neoforge:computing_frames (marker)
+		00,00%: neoforge:runtime_enum_extender
+		05,76%: neoforge:access_transformer
+		00,29%: neoforge:mixin
+		00,00%: neoforge:simple_processors_default (marker)
+		00,02%: neoforge.coremods:field_to_getter.net.minecraft.world.level.biome.biome
+		00,02%: neoforge.coremods:field_to_getter.net.minecraft.world.level.block.flowerpotblock
+		00,02%: neoforge.coremods:field_to_getter.net.minecraft.world.level.levelgen.structure.structure
+		00,25%: neoforge.coremods:method_redirector
+		79,84%: unprotect:processor
+	Mod List: 
+		appleskin-neoforge-mc1.21.9-3.0.7.jar             |AppleSkin                     |appleskin                     |3.0.7+mc1.21.9      |Manifest: fb423ccc6f9189e57d5e16c4d7d691dc2dd8bbc4efd91338a280ff5be7ef2c30
+		architectury-neoforge-68902170-18.0.6.jar         |Architectury                  |architectury                  |18.0.6              |Manifest: b7ee331b95159de7f03618802caf3cd94c179ae7052ed3fbec0aef93d046d1b8
+		9439378741142217363.jar                           |generated_e9e5dd0             |generated_e9e5dd0             |1                   |Manifest: 2d12d7fd550d675647a1989712137ca63dc0f3116fc87714306225dda44cd1f9
+		jei-1.21.10-neoforge-26.1.0.7.jar                 |Just Enough Items             |jei                           |26.1.0.7            |Manifest: 58d84edcd0bfdfeebf835990d32b8ac145458073872b2769a1dac91941157cd4
+		klay-api-neoforge-68902170-0.0.5.jar              |KlayApi                       |klay_api                      |0.0.5               |Manifest: 2f463d8455d2d1a456d1d0ec28f6b3afa7dc77e069b3b0c0bcbcf76521948907
+		client-extra.jar                                  |Minecraft                     |minecraft                     |1.21.10             |Manifest: NOSIGNATURE
+		neoforge-21.10.1-beta-minecraft-merged-1.21.10-loo|NeoForge                      |neoforge                      |21.10.1-beta        |Manifest: NOSIGNATURE
+		main                                              |VeggyCraft                    |veggycraft                    |1.0.0               |Manifest: NOSIGNATURE
+	Crash Report UUID: 93b15c36-f399-4df6-bf38-d8a06778dfcd
+	FML: 10.0.14
+	NeoForge: 21.10.1-beta
