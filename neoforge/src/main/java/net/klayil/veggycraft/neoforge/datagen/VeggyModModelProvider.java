@@ -123,23 +123,23 @@ public class VeggyModModelProvider extends ModelProvider {
 
         registerFlatItemModel(ModItems.FLOUR_BAG, ModelTemplates.FLAT_ITEM);
 
-        /*
-        for (int size = 8; size <= 64; size+=8) {
+
+
+        for (int size = 1; size <= 16; size++) {
             final Item item = BuiltInRegistries.ITEM.getValue(ResourceLocation.fromNamespaceAndPath(
                     VeggyCraft.MOD_ID,
-                    "%02d_items_stacked_of_flour".formatted(size)
+                    "modal_fabric_%02d".formatted(size)
             ));
 
-            net.minecraft.client.data.models.model.ModelTemplates.FLAT_ITEM.create(
+            net.minecraft.client.data.models.model.ModelTemplates.CUBE_ALL.create(
                     ModelLocationUtils.getModelLocation(item, ""),
-                    TextureMapping.layer0(ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "wheat_flour_in_bundle_all_cases")
-                            .withPrefix("item/")),
+                    TextureMapping.layer0(ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "%s_wool")
+                            .withPrefix("block/")),
                     this.generalItemModelGenerators.modelOutput
             );
 
             this.generalItemModelGenerators.declareCustomModelItem(item);
         }
-        */
 
         ModelTemplates.FLAT_ITEM.create(
                 ResourceLocation.withDefaultNamespace("carbon_black_dye").withPrefix("item/"),

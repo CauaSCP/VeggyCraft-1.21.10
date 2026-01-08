@@ -1,5 +1,5 @@
 [Architectury Transformer] Architectury Runtime 5.2.87
-[Architectury Transformer DEBUG] Closed File Systems for /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/common/build/devlibs/veggycraft-common-1.0.0-dev.jar
+[Architectury Transformer DEBUG] Closed File Systems for /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/common/build/devlibs/veggycraft-common-1.0.0-dev.jar
 [Architectury Transformer DEBUG] Preparing tiny remapper prepared transformer: dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Provided 120 classpath jar(s):
 [Architectury Transformer DEBUG]  - /home/caua/.gradle/caches/modules-2/files-2.1/dev.architectury/architectury-injectables/1.0.10/62db2a366d662606d1b23ad02ccc3212ed37ec3/architectury-injectables-1.0.10.jar
@@ -73,69 +73,71 @@
 [Architectury Transformer DEBUG]  - /home/caua/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl/3.3.3/29589b5f87ed335a6c7e7ee6a5775f81f97ecb84/lwjgl-3.3.3.jar
 [Architectury Transformer DEBUG]  - /home/caua/.gradle/caches/modules-2/files-2.1/org.lz4/lz4-java/1.8.0/4b986a99445e49ea5fbf5d149c4b63f6ed6c6780/lz4-java-1.8.0.jar
 [Architectury Transformer DEBUG]  - /home/caua/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/2.0.16/172931663a09a1fa515567af5fbef00897d3c04/slf4j-api-2.0.16.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/minecraftMaven/net/minecraft/minecraft-merged-df915cd0ac/1.21.10-loom.mappings.1_21_10.layered+hash.1032846016-v2/minecraft-merged-df915cd0ac-1.21.10-loom.mappings.1_21_10.layered+hash.1032846016-v2.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-918d5e9e/0.138.3+1.21.10/fabric-api-918d5e9e-0.138.3+1.21.10.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/dev/architectury/architectury-fabric-918d5e9e/18.0.6/architectury-fabric-918d5e9e-18.0.6.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/com/github/CauaSCP/klay-api-fabric-918d5e9e/0.0.5/klay-api-fabric-918d5e9e-0.0.5.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-transfer-api-v1-918d5e9e/6.0.15+79ec2c126f/fabric-transfer-api-v1-918d5e9e-6.0.15+79ec2c126f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-lookup-api-v1-918d5e9e/1.6.106+d17682156f/fabric-api-lookup-api-v1-918d5e9e-1.6.106+d17682156f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-command-api-v2-918d5e9e/2.4.0+c0ab2d5d6f/fabric-command-api-v2-918d5e9e-2.4.0+c0ab2d5d6f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-content-registries-v0-918d5e9e/10.2.6+b6a242646f/fabric-content-registries-v0-918d5e9e-10.2.6+b6a242646f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-data-generation-api-v1-918d5e9e/23.2.27+d8b85ef16f/fabric-data-generation-api-v1-918d5e9e-23.2.27+d8b85ef16f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-convention-tags-v1-918d5e9e/2.1.49+7f945d5b6f/fabric-convention-tags-v1-918d5e9e-2.1.49+7f945d5b6f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-convention-tags-v2-918d5e9e/2.17.0+ff7bc77d6f/fabric-convention-tags-v2-918d5e9e-2.17.0+ff7bc77d6f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-data-attachment-api-v1-918d5e9e/1.8.33+cd3b9e596f/fabric-data-attachment-api-v1-918d5e9e-1.8.33+cd3b9e596f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-entity-events-v1-918d5e9e/2.1.13+fde3702c6f/fabric-entity-events-v1-918d5e9e-2.1.13+fde3702c6f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-events-interaction-v0-918d5e9e/4.0.36+5ba217126f/fabric-events-interaction-v0-918d5e9e-4.0.36+5ba217126f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-gametest-api-v1-918d5e9e/3.1.21+33df5e6e6f/fabric-gametest-api-v1-918d5e9e-3.1.21+33df5e6e6f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-item-api-v1-918d5e9e/11.5.11+9bce411b6f/fabric-item-api-v1-918d5e9e-11.5.11+9bce411b6f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-item-group-api-v1-918d5e9e/4.2.27+86b3ae576f/fabric-item-group-api-v1-918d5e9e-4.2.27+86b3ae576f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-recipe-api-v1-918d5e9e/8.2.0+39709ef06f/fabric-recipe-api-v1-918d5e9e-8.2.0+39709ef06f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-model-loading-api-v1-918d5e9e/6.0.4+3ffd6ef06f/fabric-model-loading-api-v1-918d5e9e-6.0.4+3ffd6ef06f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-renderer-indigo-918d5e9e/4.1.3+d7df91576f/fabric-renderer-indigo-918d5e9e-4.1.3+d7df91576f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-renderer-api-v1-918d5e9e/7.2.2+3706cdf36f/fabric-renderer-api-v1-918d5e9e-7.2.2+3706cdf36f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-rendering-v1-918d5e9e/16.2.0+bee81f016f/fabric-rendering-v1-918d5e9e-16.2.0+bee81f016f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-lifecycle-events-v1-918d5e9e/2.6.9+33df5e6e6f/fabric-lifecycle-events-v1-918d5e9e-2.6.9+33df5e6e6f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-loot-api-v2-918d5e9e/3.0.67+3f89f5a56f/fabric-loot-api-v2-918d5e9e-3.0.67+3f89f5a56f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-loot-api-v3-918d5e9e/2.0.14+d17682156f/fabric-loot-api-v3-918d5e9e-2.0.14+d17682156f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-message-api-v1-918d5e9e/6.1.7+3154c1c86f/fabric-message-api-v1-918d5e9e-6.1.7+3154c1c86f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-particles-v1-918d5e9e/4.2.3+a0ee59a46f/fabric-particles-v1-918d5e9e-4.2.3+a0ee59a46f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-object-builder-api-v1-918d5e9e/21.1.28+9bce411b6f/fabric-object-builder-api-v1-918d5e9e-21.1.28+9bce411b6f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-screen-handler-api-v1-918d5e9e/1.3.151+d17682156f/fabric-screen-handler-api-v1-918d5e9e-1.3.151+d17682156f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-registry-sync-v0-918d5e9e/6.1.42+679c8c5c6f/fabric-registry-sync-v0-918d5e9e-6.1.42+679c8c5c6f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-networking-api-v1-918d5e9e/5.1.0+b095d8db6f/fabric-networking-api-v1-918d5e9e-5.1.0+b095d8db6f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-rendering-fluids-v1-918d5e9e/3.1.38+86b3ae576f/fabric-rendering-fluids-v1-918d5e9e-3.1.38+86b3ae576f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-tag-api-v1-918d5e9e/1.2.13+2fa446b26f/fabric-tag-api-v1-918d5e9e-1.2.13+2fa446b26f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-loader-v0-918d5e9e/3.3.1+d4d4122a6f/fabric-resource-loader-v0-918d5e9e-3.3.1+d4d4122a6f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-loader-v1-918d5e9e/1.0.4+14959b836f/fabric-resource-loader-v1-918d5e9e-1.0.4+14959b836f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-screen-api-v1-918d5e9e/3.1.0+9c82a7986f/fabric-screen-api-v1-918d5e9e-3.1.0+9c82a7986f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-base-918d5e9e/1.0.0+14b92d896f/fabric-api-base-918d5e9e-1.0.0+14b92d896f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-biome-api-v1-918d5e9e/16.1.0+c2417d4f6f/fabric-biome-api-v1-918d5e9e-16.1.0+c2417d4f6f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-block-api-v1-918d5e9e/1.1.5+d17682156f/fabric-block-api-v1-918d5e9e-1.1.5+d17682156f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-block-view-api-v2-918d5e9e/1.0.34+e4fd1b926f/fabric-block-view-api-v2-918d5e9e-1.0.34+e4fd1b926f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-client-gametest-api-v1-918d5e9e/4.2.13+14b92d896f/fabric-client-gametest-api-v1-918d5e9e-4.2.13+14b92d896f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-crash-report-info-v1-918d5e9e/0.3.18+33df5e6e6f/fabric-crash-report-info-v1-918d5e9e-0.3.18+33df5e6e6f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-dimensions-v1-918d5e9e/4.0.22+38b9cc196f/fabric-dimensions-v1-918d5e9e-4.0.22+38b9cc196f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-game-rule-api-v1-918d5e9e/1.1.1+e47eaae56f/fabric-game-rule-api-v1-918d5e9e-1.1.1+e47eaae56f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-key-binding-api-v1-918d5e9e/1.1.1+b3ba9c486f/fabric-key-binding-api-v1-918d5e9e-1.1.1+b3ba9c486f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-conditions-api-v1-918d5e9e/5.0.28+33df5e6e6f/fabric-resource-conditions-api-v1-918d5e9e-5.0.28+33df5e6e6f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-serialization-api-v1-918d5e9e/1.0.0+d857c9766f/fabric-serialization-api-v1-918d5e9e-1.0.0+d857c9766f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-sound-api-v1-918d5e9e/1.0.45+328a75ba6f/fabric-sound-api-v1-918d5e9e-1.0.45+328a75ba6f.jar
-[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-transitive-access-wideners-v1-918d5e9e/6.5.3+41eb43436f/fabric-transitive-access-wideners-v1-918d5e9e-6.5.3+41eb43436f.jar
-[Architectury Transformer] Read classpath in 2.895 s
-[Architectury Transformer DEBUG] Closed File Systems for /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/common/build/devlibs/veggycraft-common-1.0.0-dev.jar
-[Architectury Transformer DEBUG] Transforming 5 transformer(s) from /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/common/build/devlibs/veggycraft-common-1.0.0-dev.jar to /tmp/15317907400287922466.jar: 
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RuntimeMixinRefmapDetector@14624acc
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.GenerateFakeFabricMod@1b6e4761
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@f453129
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@642ec6
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@656302c
-[Architectury Transformer DEBUG] Transforming from /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/common/build/devlibs/veggycraft-common-1.0.0-dev.jar to /tmp/15317907400287922466.jar with 5 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/minecraftMaven/net/minecraft/minecraft-merged-df915cd0ac/1.21.10-loom.mappings.1_21_10.layered+hash.1032846016-v2/minecraft-merged-df915cd0ac-1.21.10-loom.mappings.1_21_10.layered+hash.1032846016-v2.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-918d5e9e/0.138.3+1.21.10/fabric-api-918d5e9e-0.138.3+1.21.10.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/dev/architectury/architectury-fabric-918d5e9e/18.0.6/architectury-fabric-918d5e9e-18.0.6.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/com/github/CauaSCP/klay-api-fabric-918d5e9e/0.0.5/klay-api-fabric-918d5e9e-0.0.5.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-transfer-api-v1-918d5e9e/6.0.15+79ec2c126f/fabric-transfer-api-v1-918d5e9e-6.0.15+79ec2c126f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-lookup-api-v1-918d5e9e/1.6.106+d17682156f/fabric-api-lookup-api-v1-918d5e9e-1.6.106+d17682156f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-command-api-v2-918d5e9e/2.4.0+c0ab2d5d6f/fabric-command-api-v2-918d5e9e-2.4.0+c0ab2d5d6f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-content-registries-v0-918d5e9e/10.2.6+b6a242646f/fabric-content-registries-v0-918d5e9e-10.2.6+b6a242646f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-data-generation-api-v1-918d5e9e/23.2.27+d8b85ef16f/fabric-data-generation-api-v1-918d5e9e-23.2.27+d8b85ef16f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-convention-tags-v1-918d5e9e/2.1.49+7f945d5b6f/fabric-convention-tags-v1-918d5e9e-2.1.49+7f945d5b6f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-convention-tags-v2-918d5e9e/2.17.0+ff7bc77d6f/fabric-convention-tags-v2-918d5e9e-2.17.0+ff7bc77d6f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-data-attachment-api-v1-918d5e9e/1.8.33+cd3b9e596f/fabric-data-attachment-api-v1-918d5e9e-1.8.33+cd3b9e596f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-entity-events-v1-918d5e9e/2.1.13+fde3702c6f/fabric-entity-events-v1-918d5e9e-2.1.13+fde3702c6f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-events-interaction-v0-918d5e9e/4.0.36+5ba217126f/fabric-events-interaction-v0-918d5e9e-4.0.36+5ba217126f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-gametest-api-v1-918d5e9e/3.1.21+33df5e6e6f/fabric-gametest-api-v1-918d5e9e-3.1.21+33df5e6e6f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-item-api-v1-918d5e9e/11.5.11+9bce411b6f/fabric-item-api-v1-918d5e9e-11.5.11+9bce411b6f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-item-group-api-v1-918d5e9e/4.2.27+86b3ae576f/fabric-item-group-api-v1-918d5e9e-4.2.27+86b3ae576f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-recipe-api-v1-918d5e9e/8.2.0+39709ef06f/fabric-recipe-api-v1-918d5e9e-8.2.0+39709ef06f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-model-loading-api-v1-918d5e9e/6.0.4+3ffd6ef06f/fabric-model-loading-api-v1-918d5e9e-6.0.4+3ffd6ef06f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-renderer-indigo-918d5e9e/4.1.3+d7df91576f/fabric-renderer-indigo-918d5e9e-4.1.3+d7df91576f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-renderer-api-v1-918d5e9e/7.2.2+3706cdf36f/fabric-renderer-api-v1-918d5e9e-7.2.2+3706cdf36f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-rendering-v1-918d5e9e/16.2.0+bee81f016f/fabric-rendering-v1-918d5e9e-16.2.0+bee81f016f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-lifecycle-events-v1-918d5e9e/2.6.9+33df5e6e6f/fabric-lifecycle-events-v1-918d5e9e-2.6.9+33df5e6e6f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-loot-api-v2-918d5e9e/3.0.67+3f89f5a56f/fabric-loot-api-v2-918d5e9e-3.0.67+3f89f5a56f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-loot-api-v3-918d5e9e/2.0.14+d17682156f/fabric-loot-api-v3-918d5e9e-2.0.14+d17682156f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-message-api-v1-918d5e9e/6.1.7+3154c1c86f/fabric-message-api-v1-918d5e9e-6.1.7+3154c1c86f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-particles-v1-918d5e9e/4.2.3+a0ee59a46f/fabric-particles-v1-918d5e9e-4.2.3+a0ee59a46f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-object-builder-api-v1-918d5e9e/21.1.28+9bce411b6f/fabric-object-builder-api-v1-918d5e9e-21.1.28+9bce411b6f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-screen-handler-api-v1-918d5e9e/1.3.151+d17682156f/fabric-screen-handler-api-v1-918d5e9e-1.3.151+d17682156f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-registry-sync-v0-918d5e9e/6.1.42+679c8c5c6f/fabric-registry-sync-v0-918d5e9e-6.1.42+679c8c5c6f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-networking-api-v1-918d5e9e/5.1.0+b095d8db6f/fabric-networking-api-v1-918d5e9e-5.1.0+b095d8db6f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-rendering-fluids-v1-918d5e9e/3.1.38+86b3ae576f/fabric-rendering-fluids-v1-918d5e9e-3.1.38+86b3ae576f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-tag-api-v1-918d5e9e/1.2.13+2fa446b26f/fabric-tag-api-v1-918d5e9e-1.2.13+2fa446b26f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-loader-v0-918d5e9e/3.3.1+d4d4122a6f/fabric-resource-loader-v0-918d5e9e-3.3.1+d4d4122a6f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-loader-v1-918d5e9e/1.0.4+14959b836f/fabric-resource-loader-v1-918d5e9e-1.0.4+14959b836f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-screen-api-v1-918d5e9e/3.1.0+9c82a7986f/fabric-screen-api-v1-918d5e9e-3.1.0+9c82a7986f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-base-918d5e9e/1.0.0+14b92d896f/fabric-api-base-918d5e9e-1.0.0+14b92d896f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-biome-api-v1-918d5e9e/16.1.0+c2417d4f6f/fabric-biome-api-v1-918d5e9e-16.1.0+c2417d4f6f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-block-api-v1-918d5e9e/1.1.5+d17682156f/fabric-block-api-v1-918d5e9e-1.1.5+d17682156f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-block-view-api-v2-918d5e9e/1.0.34+e4fd1b926f/fabric-block-view-api-v2-918d5e9e-1.0.34+e4fd1b926f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-client-gametest-api-v1-918d5e9e/4.2.13+14b92d896f/fabric-client-gametest-api-v1-918d5e9e-4.2.13+14b92d896f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-crash-report-info-v1-918d5e9e/0.3.18+33df5e6e6f/fabric-crash-report-info-v1-918d5e9e-0.3.18+33df5e6e6f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-dimensions-v1-918d5e9e/4.0.22+38b9cc196f/fabric-dimensions-v1-918d5e9e-4.0.22+38b9cc196f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-game-rule-api-v1-918d5e9e/1.1.1+e47eaae56f/fabric-game-rule-api-v1-918d5e9e-1.1.1+e47eaae56f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-key-binding-api-v1-918d5e9e/1.1.1+b3ba9c486f/fabric-key-binding-api-v1-918d5e9e-1.1.1+b3ba9c486f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-conditions-api-v1-918d5e9e/5.0.28+33df5e6e6f/fabric-resource-conditions-api-v1-918d5e9e-5.0.28+33df5e6e6f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-serialization-api-v1-918d5e9e/1.0.0+d857c9766f/fabric-serialization-api-v1-918d5e9e-1.0.0+d857c9766f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-sound-api-v1-918d5e9e/1.0.45+328a75ba6f/fabric-sound-api-v1-918d5e9e-1.0.45+328a75ba6f.jar
+[Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-transitive-access-wideners-v1-918d5e9e/6.5.3+41eb43436f/fabric-transitive-access-wideners-v1-918d5e9e-6.5.3+41eb43436f.jar
+[Architectury Transformer] Read classpath in 1.816 s
+[Architectury Transformer DEBUG] Closed File Systems for /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/common/build/devlibs/veggycraft-common-1.0.0-dev.jar
+[Architectury Transformer DEBUG] Transforming 5 transformer(s) from /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/common/build/devlibs/veggycraft-common-1.0.0-dev.jar to /tmp/12573690114617062621.jar: 
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RuntimeMixinRefmapDetector@6963b0bd
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.GenerateFakeFabricMod@68a94e58
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@49741274
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@4a49919c
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@3e5b2630
+[Architectury Transformer DEBUG] Transforming from /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/common/build/devlibs/veggycraft-common-1.0.0-dev.jar to /tmp/12573690114617062621.jar with 5 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/block/ModBlocks with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/BuiltinPackRegister with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/BuiltinResourcePacks with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/component/ModDataComponentTypes$ItemHealth with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/component/ModDataComponentTypes with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/datagen/ModTagsProvider with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/datagen/recipe/PistonSmashRecipeBuilder with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/datagen/recipe/ShapedRecipeBuilder with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/datagen/recipe/VeggyModRecipeProviderCommon$Runner with maxs=true frames=true
@@ -166,77 +168,81 @@
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/VeggyCraft with maxs=true frames=true
 [Architectury Transformer DEBUG] Checking whether /veggycraft-common-common-refmap.json is a mixin config.
 [Architectury Transformer DEBUG] Checking whether /veggycraft.mixins.json is a mixin config.
-[Architectury Transformer DEBUG] Closed File Systems for /tmp/15317907400287922466.jar
-[Architectury Transformer] Listening at /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/common/build/devlibs/veggycraft-common-1.0.0-dev.jar
-[Architectury Transformer DEBUG] Temporary jar [/tmp/15317907400287922466.jar] contains packages: net.klayil.veggycraft.recipe, net.klayil.veggycraft, net.klayil.veggycraft.mixin, net.klayil.veggycraft.item, net.klayil.veggycraft.component, net.klayil.veggycraft.item.tabs, net.klayil.veggycraft.datagen.recipe
-[Architectury Transformer DEBUG] Closed File Systems for /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/common/build/devlibs/veggycraft-common-1.0.0-dev.jar
-[Architectury Transformer DEBUG] Classpath entry [/media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/fabric/build/classes/java/main] contains packages: net.klayil.veggycraft.fabric.datagen, net.klayil.veggycraft.fabric.mixin, net.klayil.veggycraft.fabric, net.klayil.veggycraft.fabric.client
-[Architectury Transformer DEBUG] Classpath entry [/media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/fabric/build/resources/main] contains packages: 
-[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/recipe/ReiClientPlugin.class to net/klayil/veggycraft/recipe/ReiClientPlugin.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/recipe/ReiClientPlugin with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/ReiClientPlugin in 17.03 ms
+[Architectury Transformer DEBUG] Closed File Systems for /tmp/12573690114617062621.jar
+[Architectury Transformer] Listening at /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/common/build/devlibs/veggycraft-common-1.0.0-dev.jar
+[Architectury Transformer DEBUG] Temporary jar [/tmp/12573690114617062621.jar] contains packages: net.klayil.veggycraft.block, net.klayil.veggycraft.datagen, net.klayil.veggycraft.recipe, net.klayil.veggycraft, net.klayil.veggycraft.mixin, net.klayil.veggycraft.item, net.klayil.veggycraft.component, net.klayil.veggycraft.item.tabs, net.klayil.veggycraft.datagen.recipe
+[Architectury Transformer DEBUG] Closed File Systems for /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/common/build/devlibs/veggycraft-common-1.0.0-dev.jar
+[Architectury Transformer DEBUG] Classpath entry [/media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/fabric/build/classes/java/main] contains packages: net.klayil.veggycraft.fabric.datagen, net.klayil.veggycraft.fabric.mixin, net.klayil.veggycraft.fabric, net.klayil.veggycraft.fabric.client
+[Architectury Transformer DEBUG] Classpath entry [/media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/fabric/build/resources/main] contains packages: 
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/VeggyCraft.class to net/klayil/veggycraft/VeggyCraft.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/VeggyCraft with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/VeggyCraft in 1.445 ms
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/VeggyCraft in 1.002 ms
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/recipe/ModRecipes.class to net/klayil/veggycraft/recipe/ModRecipes.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/recipe/ModRecipes with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/ModRecipes in 1.368 ms
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/ModRecipes in 504.1 μs
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/recipe/PistonSmashRecipe$Serializer.class to net/klayil/veggycraft/recipe/PistonSmashRecipe$Serializer.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/recipe/PistonSmashRecipe$Serializer with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/PistonSmashRecipe$Serializer in 1.290 ms
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/PistonSmashRecipe$Serializer in 562.7 μs
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/recipe/PistonSmashRecipe.class to net/klayil/veggycraft/recipe/PistonSmashRecipe.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/recipe/PistonSmashRecipe with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/PistonSmashRecipe in 3.298 ms
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/PistonSmashRecipe in 813.2 μs
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/recipe/ModRecipes$1.class to net/klayil/veggycraft/recipe/ModRecipes$1.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/recipe/ModRecipes$1 with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/ModRecipes$1 in 2.128 ms
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/ModRecipes$1 in 373.8 μs
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/component/ModDataComponentTypes.class to net/klayil/veggycraft/component/ModDataComponentTypes.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/component/ModDataComponentTypes with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/component/ModDataComponentTypes in 1.091 ms
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/component/ModDataComponentTypes in 366.0 μs
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/component/ModDataComponentTypes$ItemHealth.class to net/klayil/veggycraft/component/ModDataComponentTypes$ItemHealth.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/component/ModDataComponentTypes$ItemHealth with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/component/ModDataComponentTypes$ItemHealth in 3.694 ms
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/component/ModDataComponentTypes$ItemHealth in 448.6 μs
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/item/tabs/VeggyCraftTabsCode.class to net/klayil/veggycraft/item/tabs/VeggyCraftTabsCode.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/item/tabs/VeggyCraftTabsCode with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/tabs/VeggyCraftTabsCode in 1.555 ms
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/tabs/VeggyCraftTabsCode in 546.6 μs
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/item/tabs/VeggyCraftCreativeTabsToGet.class to net/klayil/veggycraft/item/tabs/VeggyCraftCreativeTabsToGet.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/item/tabs/VeggyCraftCreativeTabsToGet with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/tabs/VeggyCraftCreativeTabsToGet in 911.2 μs
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/tabs/VeggyCraftCreativeTabsToGet in 524.6 μs
+[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/block/ModBlocks.class to net/klayil/veggycraft/block/ModBlocks.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/block/ModBlocks with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/block/ModBlocks in 696.8 μs
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/item/ModItems.class to net/klayil/veggycraft/item/ModItems.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/item/ModItems with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/ModItems in 8.026 ms
-[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/item/UnrepairableDamageableItems.class to net/klayil/veggycraft/item/UnrepairableDamageableItems.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/item/UnrepairableDamageableItems with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/UnrepairableDamageableItems in 5.198 ms
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/ModItems in 1.736 ms
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/item/RepairableItemsExtension.class to net/klayil/veggycraft/item/RepairableItemsExtension.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/item/RepairableItemsExtension with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/RepairableItemsExtension in 1.608 ms
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/RepairableItemsExtension in 707.8 μs
+[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/item/UnrepairableDamageableItems.class to net/klayil/veggycraft/item/UnrepairableDamageableItems.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/item/UnrepairableDamageableItems with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/UnrepairableDamageableItems in 602.1 μs
+[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/recipe/ReiClientPlugin.class to net/klayil/veggycraft/recipe/ReiClientPlugin.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/recipe/ReiClientPlugin with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/ReiClientPlugin in 1.657 ms
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/BuiltinPackRegister.class to net/klayil/veggycraft/BuiltinPackRegister.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/BuiltinPackRegister with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/BuiltinPackRegister in 752.4 μs
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/BuiltinPackRegister in 327.2 μs
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/BuiltinResourcePacks.class to net/klayil/veggycraft/BuiltinResourcePacks.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/BuiltinResourcePacks with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/BuiltinResourcePacks in 1.109 ms
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/BuiltinResourcePacks in 297.5 μs
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/recipe/AutoMixingCategory.class to net/klayil/veggycraft/recipe/AutoMixingCategory.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/recipe/AutoMixingCategory with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/AutoMixingCategory in 6.114 ms
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/AutoMixingCategory in 3.235 ms
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/recipe/MetaDisplay.class to net/klayil/veggycraft/recipe/MetaDisplay.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/recipe/MetaDisplay with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/MetaDisplay in 1.312 ms
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/MetaDisplay in 1.264 ms

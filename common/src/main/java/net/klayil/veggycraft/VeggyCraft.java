@@ -1,6 +1,7 @@
 package net.klayil.veggycraft;
 
 //import net.klayil.veggycraft.compat.recipe.ModRecipes;
+import net.klayil.veggycraft.block.ModBlocks;
 import net.klayil.veggycraft.component.ModDataComponentTypes;
 import net.klayil.veggycraft.item.ModItems;
 
@@ -14,13 +15,12 @@ public final class VeggyCraft {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     public static void init() {
-//        ModRecipes.init();
-
         ModRecipes.register();
 
         ModDataComponentTypes.registerDataComponentTypes();
 
         VeggyCraftTabsCode.initTabs();
+        ModBlocks.initBlocks();
         ModItems.initItems();
 
         VeggyCraftTabsCode.initAfterItems.run();

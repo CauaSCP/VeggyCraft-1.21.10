@@ -2,8 +2,6 @@ package net.klayil.veggycraft.fabric;
 
 import net.fabricmc.api.ModInitializer;
 
-import net.minecraft.server.MinecraftServer;
-
 import net.klayil.veggycraft.VeggyCraft;
 
 public final class VeggyCraftFabric implements ModInitializer {
@@ -14,6 +12,7 @@ public final class VeggyCraftFabric implements ModInitializer {
         // Proceed with mild caution.
 
         // Run our common setup.
+
         VeggyCraft.init();
     }
 }

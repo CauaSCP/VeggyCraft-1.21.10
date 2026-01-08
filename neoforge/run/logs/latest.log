@@ -1,67 +1,68 @@
-[15:07:58] [main/INFO] (Entrypoint) JVM Uptime at startup: 5054ms
-[15:07:58] [main/INFO] (FMLLoader) Starting FancyModLoader version 10.0.14 (CLIENT in DEV)
-[15:07:58] [main/INFO] (FMLLoader) Game directory: /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/neoforge/run
-[15:07:58] [main/INFO] (EarlyServiceDiscovery) Found 0 early service jars (out of 0) in 2ms
-[15:07:58] [main/INFO] (ImmediateWindowHandler) Not loading early display in headless mode.
-[15:07:58] [main/INFO] (GameLocator) Detected a joined NeoForge and Minecraft configuration. Applying filtering...
-[15:07:58] [main/INFO] (ModDiscoverer) Found mod file "client-extra.jar" [locator: game locator]
-[15:07:58] [main/INFO] (ModDiscoverer) Found mod file "neoforge-21.10.1-beta-minecraft-merged-1.21.10-loom.mappings.1_21_10.layered+hash.1032846016-v2-neoforge-21.10.1-beta.jar" [locator: game locator]
-[15:07:58] [main/INFO] (InDevFolderLocator) Got mod coordinates main%%/media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/neoforge/build/resources/main:main%%/media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/neoforge/build/classes/java/main:main%%/media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/neoforge/out/production/classes:main%%/media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/neoforge/out/production/resources from env
-[15:07:58] [main/INFO] (ModDiscoverer) Found mod file "main" [locator: indevfolder, reader: mod manifest]
-[15:07:58] [main/INFO] (ModDiscoverer) Found mod file "klay-api-neoforge-68902170-0.0.5.jar" [locator: indevjar, reader: mod manifest]
-[15:07:58] [main/INFO] (ModDiscoverer) Found mod file "architectury-neoforge-68902170-18.0.6.jar" [locator: indevjar, reader: mod manifest]
-[15:07:58] [main/INFO] (ModDiscoverer) Found mod file "jei-1.21.10-neoforge-26.1.0.7.jar" [locator: indevjar, reader: mod manifest]
-[15:07:58] [main/INFO] (ModDiscoverer) Found mod file "appleskin-neoforge-mc1.21.9-3.0.7.jar" [locator: indevjar, reader: mod manifest]
-[15:07:58] [main/INFO] (ModDiscoverer) Found mod file "9341540520901888008.jar" [locator: indevjar, reader: mod manifest]
-[15:07:58] [main/INFO] (ModDiscoverer) Found gamelibrary file "mixinextras-neoforge-0.5.0.jar" [locator: indevjar, reader: mod manifest]
-[15:07:58] [main/WARN] (JarSelector) Attempted to select a dependency jar for JarJar which was passed in as source: library:mixinextras.neoforge. Using Jar[/home/caua/.gradle/caches/modules-2/files-2.1/io.github.llamalad7/mixinextras-neoforge/0.5.0/d734b83ce6542bb70ea31755c1595b88992dbe65/mixinextras-neoforge-0.5.0.jar]
-[15:07:58] [main/INFO] (JarInJarDependencyLocator) Found 1 dependencies adding them to mods collection
-[15:07:58] [main/INFO] (ModDiscoverer) Found library file "net.neoforged.neoforge-coremods-21.10.1-beta.jar" [parent: neoforge-21.10.1-beta-minecraft-merged-1.21.10-loom.mappings.1_21_10.layered+hash.1032846016-v2-neoforge-21.10.1-beta.jar, locator: jarinjar, reader: mod manifest]
-[15:07:58] [main/INFO] (ModDiscoverer) 
+[13:45:16] [main/INFO] (Entrypoint) JVM Uptime at startup: 3813ms
+[13:45:16] [main/INFO] (FMLLoader) Starting FancyModLoader version 10.0.14 (CLIENT in DEV)
+[13:45:16] [main/INFO] (FMLLoader) Game directory: /media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/neoforge/run
+[13:45:16] [main/INFO] (EarlyServiceDiscovery) Found 0 early service jars (out of 0) in 3ms
+[13:45:16] [main/INFO] (ImmediateWindowHandler) Not loading early display in headless mode.
+[13:45:16] [main/INFO] (GameLocator) Detected a joined NeoForge and Minecraft configuration. Applying filtering...
+[13:45:16] [main/INFO] (ModDiscoverer) Found mod file "client-extra.jar" [locator: game locator]
+[13:45:16] [main/INFO] (ModDiscoverer) Found mod file "neoforge-21.10.1-beta-minecraft-merged-1.21.10-loom.mappings.1_21_10.layered+hash.1032846016-v2-neoforge-21.10.1-beta.jar" [locator: game locator]
+[13:45:16] [main/INFO] (InDevFolderLocator) Got mod coordinates main%%/media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/neoforge/build/resources/main:main%%/media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/neoforge/build/classes/java/main:main%%/media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/neoforge/out/production/classes:main%%/media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/neoforge/out/production/resources from env
+[13:45:16] [main/INFO] (ModDiscoverer) Found mod file "main" [locator: indevfolder, reader: mod manifest]
+[13:45:16] [main/INFO] (ModDiscoverer) Found mod file "klay-api-neoforge-68902170-0.0.5.jar" [locator: indevjar, reader: mod manifest]
+[13:45:16] [main/INFO] (ModDiscoverer) Found mod file "architectury-neoforge-68902170-18.0.6.jar" [locator: indevjar, reader: mod manifest]
+[13:45:16] [main/INFO] (ModDiscoverer) Found mod file "jei-1.21.10-neoforge-26.1.0.7.jar" [locator: indevjar, reader: mod manifest]
+[13:45:16] [main/INFO] (ModDiscoverer) Found mod file "appleskin-neoforge-mc1.21.9-3.0.7.jar" [locator: indevjar, reader: mod manifest]
+[13:45:16] [main/INFO] (ModDiscoverer) Found mod file "5316232559935179367.jar" [locator: indevjar, reader: mod manifest]
+[13:45:16] [main/INFO] (ModDiscoverer) Found gamelibrary file "mixinextras-neoforge-0.5.0.jar" [locator: indevjar, reader: mod manifest]
+[13:45:16] [main/WARN] (JarSelector) Attempted to select a dependency jar for JarJar which was passed in as source: library:mixinextras.neoforge. Using Jar[/home/caua/.gradle/caches/modules-2/files-2.1/io.github.llamalad7/mixinextras-neoforge/0.5.0/d734b83ce6542bb70ea31755c1595b88992dbe65/mixinextras-neoforge-0.5.0.jar]
+[13:45:16] [main/INFO] (JarInJarDependencyLocator) Found 1 dependencies adding them to mods collection
+[13:45:16] [main/INFO] (ModDiscoverer) Found library file "net.neoforged.neoforge-coremods-21.10.1-beta.jar" [parent: neoforge-21.10.1-beta-minecraft-merged-1.21.10-loom.mappings.1_21_10.layered+hash.1032846016-v2-neoforge-21.10.1-beta.jar, locator: jarinjar, reader: mod manifest]
+[13:45:16] [main/INFO] (ModDiscoverer) 
      Mod List:
 		Name Version (Mod Id)
 
 		AppleSkin 3.0.7+mc1.21.9 (appleskin)
 		Architectury 18.0.6 (architectury)
-		generated_d5f235c 1 (generated_d5f235c)
+		generated_38fe74e 1 (generated_38fe74e)
 		Just Enough Items 26.1.0.7 (jei)
 		KlayApi 0.0.5 (klay_api)
 		Minecraft 1.21.10 (minecraft)
 		NeoForge 21.10.1-beta (neoforge)
 		VeggyCraft 1.0.0 (veggycraft)
-[15:07:59] [main/INFO] (mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/home/caua/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.16.4+mixin.0.8.7/26d01f0567ab46e9ca0d2ed89d0ecc11aadbd433/sponge-mixin-0.16.4+mixin.0.8.7.jar Service=FML Env=CLIENT
-[15:07:59] [main/INFO] (FMLLoader) Loading FML Plugins:
-[15:07:59] [main/INFO] (FMLLoader)  - .cache/jij/51629231fe2baaddd60d570ef06ada2b2f1fe8a34133e63afdd748b9ef93f9f1/net.neoforged.neoforge-coremods-21.10.1-beta.jar
-[15:07:59] [main/INFO] (unprotect) Initializing Unprotect using FancyModLoader backend, target: Minecraft and loader classes (minecraft+forge)
-[15:07:59] [main/INFO] (FMLLoader) Building game content classloader:
+[13:45:16] [main/INFO] (mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/home/caua/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.16.4+mixin.0.8.7/26d01f0567ab46e9ca0d2ed89d0ecc11aadbd433/sponge-mixin-0.16.4+mixin.0.8.7.jar Service=FML Env=CLIENT
+[13:45:16] [main/INFO] (FMLLoader) Loading FML Plugins:
+[13:45:16] [main/INFO] (FMLLoader)  - .cache/jij/51629231fe2baaddd60d570ef06ada2b2f1fe8a34133e63afdd748b9ef93f9f1/net.neoforged.neoforge-coremods-21.10.1-beta.jar
+[13:45:17] [main/INFO] (unprotect) Initializing Unprotect using FancyModLoader backend, target: Minecraft and loader classes (minecraft+forge)
+[13:45:17] [main/INFO] (FMLLoader) Building game content classloader:
  - appleskin (jar(/home/caua/.gradle/caches/modules-2/files-2.1/squeek.appleskin/appleskin-neoforge/mc1.21.9-3.0.7/16688f04edeee0450a777191422079e14505d140/appleskin-neoforge-mc1.21.9-3.0.7.jar))
- - architectury (jar(/media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/dev/architectury/architectury-neoforge-68902170/18.0.6/architectury-neoforge-68902170-18.0.6.jar))
- - generated_d5f235c (jar(/tmp/9341540520901888008.jar))
+ - architectury (jar(/media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/dev/architectury/architectury-neoforge-68902170/18.0.6/architectury-neoforge-68902170-18.0.6.jar))
+ - generated_38fe74e (jar(/tmp/5316232559935179367.jar))
  - jei (jar(/home/caua/.gradle/caches/modules-2/files-2.1/mezz.jei/jei-1.21.10-neoforge/26.1.0.7/c62157c956a38d45cf9ac983a2e803f2d36d7bc6/jei-1.21.10-neoforge-26.1.0.7.jar))
- - klay_api (jar(/media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/com/github/CauaSCP/klay-api-neoforge-68902170/0.0.5/klay-api-neoforge-68902170-0.0.5.jar))
+ - klay_api (jar(/media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/com/github/CauaSCP/klay-api-neoforge-68902170/0.0.5/klay-api-neoforge-68902170-0.0.5.jar))
  - minecraft (composite(jar(/home/caua/.gradle/caches/fabric-loom/1.21.10/neoforge/21.10.1-beta/client-extra.jar), filtered(jar(/home/caua/.gradle/caches/fabric-loom/minecraftMaven/net/minecraft/neoforge-21.10.1-beta-minecraft-merged/1.21.10-loom.mappings.1_21_10.layered+hash.1032846016-v2-neoforge-21.10.1-beta/neoforge-21.10.1-beta-minecraft-merged-1.21.10-loom.mappings.1_21_10.layered+hash.1032846016-v2-neoforge-21.10.1-beta.jar))))
  - mixinextras.neoforge (jar(/home/caua/.gradle/caches/modules-2/files-2.1/io.github.llamalad7/mixinextras-neoforge/0.5.0/d734b83ce6542bb70ea31755c1595b88992dbe65/mixinextras-neoforge-0.5.0.jar))
  - neoforge (composite(filtered(jar(/home/caua/.gradle/caches/fabric-loom/minecraftMaven/net/minecraft/neoforge-21.10.1-beta-minecraft-merged/1.21.10-loom.mappings.1_21_10.layered+hash.1032846016-v2-neoforge-21.10.1-beta/neoforge-21.10.1-beta-minecraft-merged-1.21.10-loom.mappings.1_21_10.layered+hash.1032846016-v2-neoforge-21.10.1-beta.jar))))
  - net.neoforged.fml.generated (empty(VirtualJar/net.neoforged.fml.generated))
- - veggycraft (composite(folder(/media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/neoforge/build/resources/main), folder(/media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/neoforge/build/classes/java/main)))
-[15:07:59] [main/INFO] (FMLLoader) Built game content classloader in 244ms
-[15:07:59] [main/WARN] (MixinFacade) Mod file Jar[/media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/neoforge/build/resources/main] declares mixin config veggycraft.mixins.json, but it actually comes from Jar[/tmp/9341540520901888008.jar]
-[15:07:59] [main/INFO] (unprotect) Found 9922 Minecraft classes
-[15:08:00] [main/INFO] (MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.0).
-[15:08:08] [main/INFO] (DatagenModLoader) Initializing Data Gatherer for mods [veggycraft]
-[15:08:08] [modloading-worker-0/INFO] (NeoForgeMod) NeoForge mod loading, version 21.10.1-beta, for MC 1.21.10
-[15:08:08] [modloading-worker-0/INFO] (klay_api) Initializing KlayApi Mod
-[15:08:08] [modloading-worker-0/INFO] (PluginCaller) Sending ConfigManager...
-[15:08:08] [modloading-worker-0/INFO] (PluginCaller) Sending ConfigManager took 3.307 milliseconds
-[15:08:08] [modloading-worker-0/INFO] (veggycraft) #SUP: net.klayil.veggycraft.item.ModItems$$Lambda/0x00007453e8e3e018@67142aae
-[15:08:08] [modloading-worker-0/INFO] (veggycraft) #SUP: net.klayil.veggycraft.item.ModItems$$Lambda/0x00007453e8e3e460@37621ad6
-[15:08:09] [main/INFO] (veggycraft) #DONE: CLIENT | java.util.concurrent.CompletableFuture@3a54756f[Not completed] | net.klayil.veggycraft.neoforge.datagen.VeggyModModelProvider@cfad553
-[15:08:09] [main/INFO] (Minecraft) Starting provider: Model Definitions - minecraft
-[15:08:09] [main/INFO] (veggycraft) net.minecraft.client.data.models.BlockModelGenerators@2a93a76d
-[15:08:11] [main/INFO] (Minecraft) Model Definitions - minecraft finished after 1614 ms
-[15:08:11] [main/INFO] (Minecraft) Starting provider: My Recipes
-[15:08:11] [main/INFO] (Minecraft) My Recipes finished after 257 ms
-[15:08:11] [main/INFO] (Minecraft) All providers took: 1884 ms
-[15:08:12] [main/INFO] (Minecraft) Caching: total files: 5973, old count: 0, new count: 5974, removed stale: 0, written: 5973
-[15:08:12] [main/INFO] (FMLLoader) Closing FML Loader 1d4a11ce
-[15:08:12] [main/INFO] (ModLoader) Clearing ModLoader
+ - veggycraft (composite(folder(/media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/neoforge/build/resources/main), folder(/media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/neoforge/build/classes/java/main)))
+[13:45:17] [main/INFO] (FMLLoader) Built game content classloader in 310ms
+[13:45:17] [main/WARN] (MixinFacade) Mod file Jar[/media/caua/1830DBD630DBB948/IntelliJProjects/veggy_parent/VeggyCraft-1.21.10/neoforge/build/resources/main] declares mixin config veggycraft.mixins.json, but it actually comes from Jar[/tmp/5316232559935179367.jar]
+[13:45:17] [main/INFO] (unprotect) Found 9922 Minecraft classes
+[13:45:18] [main/INFO] (MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.0).
+[13:45:23] [main/INFO] (DatagenModLoader) Initializing Data Gatherer for mods [veggycraft]
+[13:45:23] [modloading-worker-0/INFO] (NeoForgeMod) NeoForge mod loading, version 21.10.1-beta, for MC 1.21.10
+[13:45:23] [modloading-worker-0/INFO] (PluginCaller) Sending ConfigManager...
+[13:45:23] [modloading-worker-0/INFO] (PluginCaller) Sending ConfigManager took 1.666 milliseconds
+[13:45:23] [modloading-worker-0/INFO] (klay_api) Initializing KlayApi Mod
+[13:45:23] [modloading-worker-0/WARN] (veggycraft) #ERR `Registry Object not present: veggycraft:modal_fabric_01` ignored.
+[13:45:23] [modloading-worker-0/INFO] (veggycraft) #SUP: net.klayil.veggycraft.item.ModItems$$Lambda/0x00007c5e7ce3ad40@6afbabe8
+[13:45:23] [modloading-worker-0/INFO] (veggycraft) #SUP: net.klayil.veggycraft.item.ModItems$$Lambda/0x00007c5e7ce3b188@23af6c0d
+[13:45:24] [main/INFO] (veggycraft) #DONE: CLIENT | java.util.concurrent.CompletableFuture@43432499[Not completed] | net.klayil.veggycraft.neoforge.datagen.VeggyModModelProvider@78653a03
+[13:45:24] [main/INFO] (Minecraft) Starting provider: Model Definitions - minecraft
+[13:45:24] [main/INFO] (veggycraft) net.minecraft.client.data.models.BlockModelGenerators@461fcba6
+[13:45:24] [main/INFO] (Minecraft) Model Definitions - minecraft finished after 747 ms
+[13:45:24] [main/INFO] (Minecraft) Starting provider: My Recipes
+[13:45:24] [main/INFO] (Minecraft) My Recipes finished after 85 ms
+[13:45:24] [main/INFO] (Minecraft) All providers took: 834 ms
+[13:45:25] [main/INFO] (Minecraft) Caching: total files: 5973, old count: 5973, new count: 5974, removed stale: 0, written: 0
+[13:45:25] [main/INFO] (FMLLoader) Closing FML Loader 139b600
+[13:45:25] [main/INFO] (ModLoader) Clearing ModLoader
