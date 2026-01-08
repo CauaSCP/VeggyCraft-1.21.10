@@ -1,6 +1,20 @@
 {
+  "klay_api.veggycraft.replacements_tab": "Substituições de itens de mobs",
+  "architectury.klay_api.flour_proto_bundle": "Saco de Farinha de Trigo",
+  "item.veggycraft.wheat_flour": "Farinha de Trigo",
+  "item.veggycraft.seitan_cooked_beef": "Carne de Seitan Cozida",
+  "klay_api.description.flour_proto_bundle": "Hand-use this bundle to retrieve the flours!",
+
   "item.veggycraft.carbon_prefix": "",
   "item.veggycraft.carbon_space_1": "",
   "item.veggycraft.carbon_space_2": " ",
-  "item.veggycraft.carbon_suffix": "de Carbono"
+  "item.veggycraft.carbon_suffix": "de Carbono",
+
+  "klay_api.veggycraft.carbon_dying_tab": "Process. de corante por carb.",
+  "item.veggycraft.coal_carbon_cutter": "Cortador de Carbono (Carvão)",
+  "item.veggycraft.diamond_carbon_cutter": "Cortador de Carbono (Diamante)",
+  "item.veggycraft.black_of_coal_carbon": "Carbono Impuro de Carvão",
+  "item.veggycraft.shiny_of_diamond_coal_carbon": "Carbono Mestiço e Brilhoso de Carvão e Diamante",
+  "item.veggycraft.dry_raw_seitan": "Seitan Cru Seco",
+  "item.veggycraft.wet_raw_seitan": "Seitan Cru Cozinhável (Molhado)"
 }

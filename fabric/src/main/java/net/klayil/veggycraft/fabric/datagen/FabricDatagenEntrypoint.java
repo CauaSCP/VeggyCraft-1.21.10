@@ -10,7 +10,7 @@ public class FabricDatagenEntrypoint implements DataGeneratorEntrypoint {
     public void onInitializeDataGenerator(FabricDataGenerator fabricGen) {
         FabricDataGenerator.Pack pack = fabricGen.createPack();
 
-//        pack.addProvider(VeggyModRecipeProvider.Runner::new);
+        pack.addProvider(net.klayil.veggycraft.fabric.datagen.VeggyModRecipeProviderFabric.Runner::new);
 
         // if (Platform.isFabric()) {
             // pack.addProvider(VeggyModModelProvider::new);

@@ -13,7 +13,7 @@ import net.minecraft.server.level.ServerPlayer;
 public final class CraftEventsNeoForge {
     @SubscribeEvent
     public static void onCraft(PlayerEvent.ItemCraftedEvent event) {
-        if (!(event.getEntity() instanceof ServerPlayer)) return;
+//        if (!(event.getEntity() instanceof ServerPlayer)) return;
 
         SharedCraftHandler.onCraft((CraftingContainer) event.getInventory(), event.getCrafting());
     }

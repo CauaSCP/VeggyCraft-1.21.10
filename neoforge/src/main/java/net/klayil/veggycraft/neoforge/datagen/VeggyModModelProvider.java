@@ -98,27 +98,32 @@ public class VeggyModModelProvider extends ModelProvider {
         registerFlatItemModel(ModItems.THIS_MOD_FLOUR, ModelTemplates.FLAT_ITEM);
         registerFlatItemModel(ModItems.WET_RAW_SEITAN, ModelTemplates.FLAT_ITEM);
 
-        for (int i = 0; i < 3; i++) {
-            final Item item = BuiltInRegistries.ITEM.getValue(ResourceLocation.fromNamespaceAndPath(
-                    VeggyCraft.MOD_ID,
-                    "dry_raw_seitan_%d".formatted(i)
-            ));
+//        for (int i = 0; i < 3; i++) {
+//            final Item item = BuiltInRegistries.ITEM.getValue(ResourceLocation.fromNamespaceAndPath(
+//                    VeggyCraft.MOD_ID,
+//                    "dry_raw_seitan_%d".formatted(i)
+//            ));
+//
+//            net.minecraft.client.data.models.model.ModelTemplates.FLAT_ITEM.create(
+//                    ModelLocationUtils.getModelLocation(item, ""),
+//                    TextureMapping.layer0(ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "dry_raw_seitan")
+//                            .withPrefix("item/")),
+//                    this.generalItemModelGenerators.modelOutput
+//            );
+//
+//            this.generalItemModelGenerators.declareCustomModelItem(item);
+//        }
 
-            net.minecraft.client.data.models.model.ModelTemplates.FLAT_ITEM.create(
-                    ModelLocationUtils.getModelLocation(item, ""),
-                    TextureMapping.layer0(ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "dry_raw_seitan")
-                            .withPrefix("item/")),
-                    this.generalItemModelGenerators.modelOutput
-            );
-
-            this.generalItemModelGenerators.declareCustomModelItem(item);
-        }
+        registerFlatItemModel(ModItems.DRY_RAW_SEITAN_0, ModelTemplates.FLAT_ITEM);
 
         registerFlatItemModel(ModItems.BLACK_OF_COAL_CARBON, ModelTemplates.FLAT_ITEM);
 
         registerFlatItemModel(ModItems.COAL_CARBON_CUTTER, ModelTemplates.FLAT_HANDHELD_ITEM);
         registerFlatItemModel(ModItems.DIAMOND_CARBON_CUTTER, ModelTemplates.FLAT_HANDHELD_ITEM);
 
+        registerFlatItemModel(ModItems.FLOUR_BAG, ModelTemplates.FLAT_ITEM);
+
+        /*
         for (int size = 8; size <= 64; size+=8) {
             final Item item = BuiltInRegistries.ITEM.getValue(ResourceLocation.fromNamespaceAndPath(
                     VeggyCraft.MOD_ID,
@@ -134,6 +139,7 @@ public class VeggyModModelProvider extends ModelProvider {
 
             this.generalItemModelGenerators.declareCustomModelItem(item);
         }
+        */
 
         ModelTemplates.FLAT_ITEM.create(
                 ResourceLocation.withDefaultNamespace("carbon_black_dye").withPrefix("item/"),

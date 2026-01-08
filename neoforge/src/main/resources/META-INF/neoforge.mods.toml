@@ -45,7 +45,7 @@ side = "BOTH"
 [[dependencies.veggycraft]]
 modId="jei"
 mandatory=false
-versionRange="[26.1.0.7,)"
+versionRange="(25.0.1.4,)"
 ordering="NONE"
 side="CLIENT"
 

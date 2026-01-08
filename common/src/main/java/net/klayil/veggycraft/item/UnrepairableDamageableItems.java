@@ -1,5 +1,6 @@
 package net.klayil.veggycraft.item;
 
+import net.klayil.veggycraft.VeggyCraft;
 import net.klayil.veggycraft.component.ModDataComponentTypes;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class UnrepairableDamageableItems extends Item {
-    private static final String FLOUR_ENDING = "_items_stacked_of_flour";
+    private static final String FLOUR_ENDING = "_stacked_of_flour";
     private ModDataComponentTypes.ItemHealth health;
 
     public UnrepairableDamageableItems(Item.Properties itemProperties, int health) {
@@ -44,8 +45,9 @@ public class UnrepairableDamageableItems extends Item {
     }
 
     public static ItemStack getCraftingRemainderCommon(ItemStack stack) {
+//        VeggyCraft.LOGGER.info("#StackItem: %s".formatted(stack.getItem().toString()));
         if (
-            !BuiltInRegistries.ITEM.getKey(stack.getItem()).getPath().endsWith("_items_stacked_of_flour")
+            !BuiltInRegistries.ITEM.getKey(stack.getItem()).getPath().endsWith(FLOUR_ENDING)
         ) {
             return ItemStack.EMPTY;
         }

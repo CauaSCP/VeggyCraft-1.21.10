@@ -6,7 +6,24 @@ dependencies {
     // We depend on Fabric Loader here to use the Fabric @Environment annotations,
     // which get remapped to the correct annotations on each platform.
     // Do NOT use other classes from Fabric Loader.
-    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+
+//    implementation 'org.apache.commons:commons-collections4:4.5.0'
+
+    // For IO (to use FileUtils/IOUtils)
+//    implementation 'commons-io:commons-io:2.21.0'
+
+    // For Lang (to use StringUtils/ObjectUtils)
+//    implementation 'org.apache.commons:commons-lang3:3.18.0'
+
+    modImplementation "maven.modrinth:eiv:${eiv_version}+${minecraft_version}"
+//    implementation "maven.modrinth:eiv:${eiv_version}+${minecraft_version}"
+//    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+//    modImplementation "mezz.jei:jei-${minecraft_version}-fabric:${jei_version}"
+//
+//    modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:17.0.803"
+//    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:17.0.803"
+
+    modCompileOnly "me.shedaniel:RoughlyEnoughItems-api:21.9.812"
 
     // Architectury API. This is optional, and you can comment it out if you don't need it.
     modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"

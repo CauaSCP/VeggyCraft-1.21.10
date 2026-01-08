@@ -25,7 +25,8 @@ public class VeggyCraftTabsCode extends VeggyCraftCreativeTabsToGet {
                 () -> new ItemStack(ModItems.THIS_MOD_FLOUR),
                 () -> {
                     ItemStack bundledAtMaximum = new ItemStack(
-                            KlayApiModItems.AllKlayApiItems.get("veggycraft:64_items_stacked_of_flour")
+                            FLOUR_BAG
+//                            KlayApiModItems.AllKlayApiItems.get("veggycraft:64_items_stacked_of_flour")
                     );
                     bundledAtMaximum.set(ModDataComponentTypes.HEALTH.get(), new ModDataComponentTypes.ItemHealth(64, 64));
                     return bundledAtMaximum;

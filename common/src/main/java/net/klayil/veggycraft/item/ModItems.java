@@ -51,9 +51,11 @@ public class ModItems {
     public static RegistrySupplier<Item> SEITAN_COOKED_BEEF;
     public static RegistrySupplier<Item> WET_RAW_SEITAN;
     public static RegistrySupplier<Item> DRY_RAW_SEITAN_0;
-    public static RegistrySupplier<Item> DRY_RAW_SEITAN_1;
-    public static RegistrySupplier<Item> DRY_RAW_SEITAN_2;
+//    public static RegistrySupplier<Item> DRY_RAW_SEITAN_1;
+//    public static RegistrySupplier<Item> DRY_RAW_SEITAN_2;
     public static RegistrySupplier<Item> BLACK_OF_COAL_CARBON;
+
+    public static RegistrySupplier<Item> FLOUR_BAG;
 
     public static ItemStack BLACK_DYE_STACK;
 
@@ -88,7 +90,10 @@ public class ModItems {
             registeredItem = ITEMS.register(
                     itemLocation,
                     () -> new UnrepairableDamageableItems(
-                            KlayApiModItems.baseProperties(itemId, VeggyCraft.MOD_ID).stacksTo(maxStackSize), maxDamage
+                            KlayApiModItems.baseProperties(itemId, VeggyCraft.MOD_ID).stacksTo(maxStackSize)
+                            //.craftRemainder(Items.BLUE_STAINED_GLASS_PANE)
+                            ,
+                            maxDamage
                     )
             );
         }
@@ -129,14 +134,14 @@ public class ModItems {
         final FoodProperties SEITAN_COOKED_BEEF_PROPS = new FoodProperties(5 * 2, 7 * 2, false);
         SEITAN_COOKED_BEEF = KlayApiModItems.createItem("seitan_cooked_beef", null, () -> KlayApiModItems.baseProperties("seitan_cooked_beef", VeggyCraft.MOD_ID).food(SEITAN_COOKED_BEEF_PROPS), VeggyCraft.MOD_ID);
 
-        currentItemName = "08_items_stacked_of_flour";
-        createDamageableItem(currentItemName, 1, 64, null);
+//        currentItemName = "08_items_stacked_of_flour";
+        FLOUR_BAG = createDamageableItem("items_stacked_of_flour", 1, 64, null);
 
-        for (int index = 16; index <= 64; index += 8) {
-            currentItemName = "%d_items_stacked_of_flour".formatted(index);
-
-            createDamageableItem(currentItemName, 1, 64, null);
-        }
+//        for (int index = 16; index <= 64; index += 8) {
+//            currentItemName = "%d_items_stacked_of_flour".formatted(index);
+//
+//            createDamageableItem(currentItemName, 1, 64, null);
+//        }
 
 
         BLACK_OF_COAL_CARBON = KlayApiModItems.createItem("black_of_coal_carbon", null, VeggyCraft.MOD_ID);
@@ -145,9 +150,9 @@ public class ModItems {
         DIAMOND_CARBON_CUTTER = createDamageableItem("diamond_carbon_cutter", 1, 813, VeggyCraftCreativeTabsToGet.CARBON_AND_DYES_TAB, () -> Items.DIAMOND);
 
 
-        DRY_RAW_SEITAN_0 = createDamageableItem("dry_raw_seitan_0", 1, 3, null);
-        DRY_RAW_SEITAN_1 = createDamageableItem("dry_raw_seitan_1", 1, 3, null);
-        DRY_RAW_SEITAN_2 = createDamageableItem("dry_raw_seitan_2", 1, 3, null);
+        DRY_RAW_SEITAN_0 = createDamageableItem("dry_raw_seitan", 1, 3, null);
+//        DRY_RAW_SEITAN_1 = createDamageableItem("dry_raw_seitan_1", 1, 3, null);
+//        DRY_RAW_SEITAN_2 = createDamageableItem("dry_raw_seitan_2", 1, 3, null);
         WET_RAW_SEITAN = KlayApiModItems.createItem("wet_raw_seitan", null, VeggyCraft.MOD_ID);
 
         VeggyMeats = new RegistrySupplier[]{SEITAN_COOKED_BEEF};

@@ -122,15 +122,15 @@
 [Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-serialization-api-v1-918d5e9e/1.0.0+d857c9766f/fabric-serialization-api-v1-918d5e9e-1.0.0+d857c9766f.jar
 [Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-sound-api-v1-918d5e9e/1.0.45+328a75ba6f/fabric-sound-api-v1-918d5e9e-1.0.45+328a75ba6f.jar
 [Architectury Transformer DEBUG]  - /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-transitive-access-wideners-v1-918d5e9e/6.5.3+41eb43436f/fabric-transitive-access-wideners-v1-918d5e9e-6.5.3+41eb43436f.jar
-[Architectury Transformer] Read classpath in 1.869 s
+[Architectury Transformer] Read classpath in 2.895 s
 [Architectury Transformer DEBUG] Closed File Systems for /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/common/build/devlibs/veggycraft-common-1.0.0-dev.jar
-[Architectury Transformer DEBUG] Transforming 5 transformer(s) from /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/common/build/devlibs/veggycraft-common-1.0.0-dev.jar to /tmp/14909772583464445346.jar: 
+[Architectury Transformer DEBUG] Transforming 5 transformer(s) from /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/common/build/devlibs/veggycraft-common-1.0.0-dev.jar to /tmp/15317907400287922466.jar: 
 [Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RuntimeMixinRefmapDetector@14624acc
 [Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.GenerateFakeFabricMod@1b6e4761
 [Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@f453129
 [Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@642ec6
 [Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@656302c
-[Architectury Transformer DEBUG] Transforming from /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/common/build/devlibs/veggycraft-common-1.0.0-dev.jar to /tmp/14909772583464445346.jar with 5 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
+[Architectury Transformer DEBUG] Transforming from /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/common/build/devlibs/veggycraft-common-1.0.0-dev.jar to /tmp/15317907400287922466.jar with 5 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/BuiltinPackRegister with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/BuiltinResourcePacks with maxs=true frames=true
@@ -166,77 +166,77 @@
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/VeggyCraft with maxs=true frames=true
 [Architectury Transformer DEBUG] Checking whether /veggycraft-common-common-refmap.json is a mixin config.
 [Architectury Transformer DEBUG] Checking whether /veggycraft.mixins.json is a mixin config.
-[Architectury Transformer DEBUG] Closed File Systems for /tmp/14909772583464445346.jar
+[Architectury Transformer DEBUG] Closed File Systems for /tmp/15317907400287922466.jar
 [Architectury Transformer] Listening at /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/common/build/devlibs/veggycraft-common-1.0.0-dev.jar
-[Architectury Transformer DEBUG] Temporary jar [/tmp/14909772583464445346.jar] contains packages: net.klayil.veggycraft.recipe, net.klayil.veggycraft, net.klayil.veggycraft.mixin, net.klayil.veggycraft.item, net.klayil.veggycraft.component, net.klayil.veggycraft.item.tabs, net.klayil.veggycraft.datagen.recipe
+[Architectury Transformer DEBUG] Temporary jar [/tmp/15317907400287922466.jar] contains packages: net.klayil.veggycraft.recipe, net.klayil.veggycraft, net.klayil.veggycraft.mixin, net.klayil.veggycraft.item, net.klayil.veggycraft.component, net.klayil.veggycraft.item.tabs, net.klayil.veggycraft.datagen.recipe
 [Architectury Transformer DEBUG] Closed File Systems for /media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/common/build/devlibs/veggycraft-common-1.0.0-dev.jar
 [Architectury Transformer DEBUG] Classpath entry [/media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/fabric/build/classes/java/main] contains packages: net.klayil.veggycraft.fabric.datagen, net.klayil.veggycraft.fabric.mixin, net.klayil.veggycraft.fabric, net.klayil.veggycraft.fabric.client
 [Architectury Transformer DEBUG] Classpath entry [/media/caua/1830DBD630DBB948/IntelliJProjects/VeggyCraft-1.21.10/fabric/build/resources/main] contains packages: 
-[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/VeggyCraft.class to net/klayil/veggycraft/VeggyCraft.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/VeggyCraft with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/VeggyCraft in 1.345 ms
-[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/recipe/ModRecipes.class to net/klayil/veggycraft/recipe/ModRecipes.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/recipe/ModRecipes with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/ModRecipes in 606.8 μs
-[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/recipe/PistonSmashRecipe$Serializer.class to net/klayil/veggycraft/recipe/PistonSmashRecipe$Serializer.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/recipe/PistonSmashRecipe$Serializer with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/PistonSmashRecipe$Serializer in 868.2 μs
-[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/recipe/PistonSmashRecipe.class to net/klayil/veggycraft/recipe/PistonSmashRecipe.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/recipe/PistonSmashRecipe with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/PistonSmashRecipe in 1.179 ms
-[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/recipe/ModRecipes$1.class to net/klayil/veggycraft/recipe/ModRecipes$1.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/recipe/ModRecipes$1 with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/ModRecipes$1 in 398.9 μs
-[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/component/ModDataComponentTypes.class to net/klayil/veggycraft/component/ModDataComponentTypes.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/component/ModDataComponentTypes with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/component/ModDataComponentTypes in 464.1 μs
-[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/component/ModDataComponentTypes$ItemHealth.class to net/klayil/veggycraft/component/ModDataComponentTypes$ItemHealth.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/component/ModDataComponentTypes$ItemHealth with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/component/ModDataComponentTypes$ItemHealth in 794.7 μs
-[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/item/tabs/VeggyCraftTabsCode.class to net/klayil/veggycraft/item/tabs/VeggyCraftTabsCode.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/item/tabs/VeggyCraftTabsCode with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/tabs/VeggyCraftTabsCode in 642.3 μs
-[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/item/tabs/VeggyCraftCreativeTabsToGet.class to net/klayil/veggycraft/item/tabs/VeggyCraftCreativeTabsToGet.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/item/tabs/VeggyCraftCreativeTabsToGet with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/tabs/VeggyCraftCreativeTabsToGet in 498.4 μs
-[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/item/ModItems.class to net/klayil/veggycraft/item/ModItems.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/item/ModItems with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/ModItems in 1.742 ms
-[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/item/RepairableItemsExtension.class to net/klayil/veggycraft/item/RepairableItemsExtension.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/item/RepairableItemsExtension with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/RepairableItemsExtension in 1.264 ms
-[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/item/UnrepairableDamageableItems.class to net/klayil/veggycraft/item/UnrepairableDamageableItems.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/item/UnrepairableDamageableItems with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/UnrepairableDamageableItems in 932.6 μs
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/recipe/ReiClientPlugin.class to net/klayil/veggycraft/recipe/ReiClientPlugin.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/recipe/ReiClientPlugin with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/ReiClientPlugin in 834.3 μs
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/ReiClientPlugin in 17.03 ms
+[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/VeggyCraft.class to net/klayil/veggycraft/VeggyCraft.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/VeggyCraft with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/VeggyCraft in 1.445 ms
+[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/recipe/ModRecipes.class to net/klayil/veggycraft/recipe/ModRecipes.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/recipe/ModRecipes with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/ModRecipes in 1.368 ms
+[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/recipe/PistonSmashRecipe$Serializer.class to net/klayil/veggycraft/recipe/PistonSmashRecipe$Serializer.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/recipe/PistonSmashRecipe$Serializer with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/PistonSmashRecipe$Serializer in 1.290 ms
+[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/recipe/PistonSmashRecipe.class to net/klayil/veggycraft/recipe/PistonSmashRecipe.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/recipe/PistonSmashRecipe with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/PistonSmashRecipe in 3.298 ms
+[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/recipe/ModRecipes$1.class to net/klayil/veggycraft/recipe/ModRecipes$1.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/recipe/ModRecipes$1 with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/ModRecipes$1 in 2.128 ms
+[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/component/ModDataComponentTypes.class to net/klayil/veggycraft/component/ModDataComponentTypes.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/component/ModDataComponentTypes with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/component/ModDataComponentTypes in 1.091 ms
+[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/component/ModDataComponentTypes$ItemHealth.class to net/klayil/veggycraft/component/ModDataComponentTypes$ItemHealth.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/component/ModDataComponentTypes$ItemHealth with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/component/ModDataComponentTypes$ItemHealth in 3.694 ms
+[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/item/tabs/VeggyCraftTabsCode.class to net/klayil/veggycraft/item/tabs/VeggyCraftTabsCode.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/item/tabs/VeggyCraftTabsCode with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/tabs/VeggyCraftTabsCode in 1.555 ms
+[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/item/tabs/VeggyCraftCreativeTabsToGet.class to net/klayil/veggycraft/item/tabs/VeggyCraftCreativeTabsToGet.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/item/tabs/VeggyCraftCreativeTabsToGet with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/tabs/VeggyCraftCreativeTabsToGet in 911.2 μs
+[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/item/ModItems.class to net/klayil/veggycraft/item/ModItems.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/item/ModItems with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/ModItems in 8.026 ms
+[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/item/UnrepairableDamageableItems.class to net/klayil/veggycraft/item/UnrepairableDamageableItems.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/item/UnrepairableDamageableItems with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/UnrepairableDamageableItems in 5.198 ms
+[Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/item/RepairableItemsExtension.class to net/klayil/veggycraft/item/RepairableItemsExtension.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing net/klayil/veggycraft/item/RepairableItemsExtension with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/item/RepairableItemsExtension in 1.608 ms
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/BuiltinPackRegister.class to net/klayil/veggycraft/BuiltinPackRegister.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/BuiltinPackRegister with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/BuiltinPackRegister in 534.5 μs
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/BuiltinPackRegister in 752.4 μs
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/BuiltinResourcePacks.class to net/klayil/veggycraft/BuiltinResourcePacks.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/BuiltinResourcePacks with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/BuiltinResourcePacks in 1.006 ms
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/BuiltinResourcePacks in 1.109 ms
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/recipe/AutoMixingCategory.class to net/klayil/veggycraft/recipe/AutoMixingCategory.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/recipe/AutoMixingCategory with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/AutoMixingCategory in 5.383 ms
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/AutoMixingCategory in 6.114 ms
 [Architectury Transformer DEBUG] Transforming from net/klayil/veggycraft/recipe/MetaDisplay.class to net/klayil/veggycraft/recipe/MetaDisplay.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/klayil/veggycraft/recipe/MetaDisplay with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/MetaDisplay in 1.731 ms
+[Architectury Transformer DEBUG] Transformed net/klayil/veggycraft/recipe/MetaDisplay in 1.312 ms

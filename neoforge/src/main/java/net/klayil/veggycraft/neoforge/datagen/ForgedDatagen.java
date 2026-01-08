@@ -27,7 +27,7 @@ public class ForgedDatagen {
         );
 
         event.addProvider(
-            new VeggyModRecipeProvider.Runner(packOutput, lookupProvider)
+            new VeggyModRecipeProviderNeoForge.Runner(packOutput, lookupProvider)
         );
 
         VeggyCraft.LOGGER.info("#DONE: CLIENT | %s | %s".formatted(lookupProvider.toString(), modelProvider.toString()));

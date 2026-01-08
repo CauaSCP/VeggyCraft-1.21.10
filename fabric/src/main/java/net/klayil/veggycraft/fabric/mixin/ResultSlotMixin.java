@@ -1,6 +1,5 @@
 package net.klayil.veggycraft.fabric.mixin;
 
-import net.klayil.veggycraft.VeggyCraft;
 import net.klayil.veggycraft.recipe.SharedCraftHandler;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -19,6 +18,8 @@ public abstract class ResultSlotMixin {
     @Shadow @Final
     private CraftingContainer craftSlots;
 
+    private boolean shiftUsed;
+
     @Inject(
             method = "onTake",
             at = @At("HEAD")
@@ -28,8 +29,18 @@ public abstract class ResultSlotMixin {
             ItemStack stack,
             CallbackInfo ci
     ) {
-        if (!(player instanceof ServerPlayer)) return;
+//        if (!(player instanceof ServerPlayer)) return;
 
-        SharedCraftHandler.onCraft(craftSlots, stack);
+        if (!shiftUsed) {
+            SharedCraftHandler.onCraft(craftSlots, stack);
+        }
+
+        shiftUsed = false;
+    }
+
+    @Inject(method = "onQuickCraft", at = @At("HEAD"))
+    private void veggycraft$onQuickCraft(ItemStack stack, int amount, CallbackInfo ci) {
+        // This method is ONLY called for shift-click crafts
+        shiftUsed = true;
     }
 }

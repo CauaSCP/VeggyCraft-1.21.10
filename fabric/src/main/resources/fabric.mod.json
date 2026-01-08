@@ -12,7 +12,6 @@
     "sources": "https://github.com/FabricMC/fabric-example-mod"
   },
   "license": "CC0-1.0",
-  "icon": "assets/veggycraft/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -21,8 +20,13 @@
     "client": [
       "net.klayil.veggycraft.fabric.client.VeggyCraftFabricClient"
     ],
+
+
     "fabric-datagen": [
       "net.klayil.veggycraft.fabric.datagen.FabricDatagenEntrypoint"
+    ],
+    "rei_client": [
+      "net.klayil.veggycraft.recipe.ReiClientPlugin"
     ]
   },
   "mixins": [
@@ -33,13 +37,17 @@
     "fabricloader": ">=0.18.1",
     "minecraft": "~1.21.10",
     "java": ">=21",
+    "roughlyenoughitems": ">21.9.809",
     "cloth-config": ">=20.0.148",
     "architectury": ">=18.0.6",
     "klay_api": ">=0.0.4",
     "fabric-api": "*"
   },
   "suggests": {
-    "jei": ">=26.1.0.7",
+    "eiv": ">4.0.7",
+    "voxy": "*",
+    "sodium": ">0.6.14",
+    "jei": ">25.0.1.4",
     "appleskin": ">=3.0.7"
   }
 }

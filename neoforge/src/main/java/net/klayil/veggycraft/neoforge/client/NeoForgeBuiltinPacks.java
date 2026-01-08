@@ -1,12 +1,16 @@
 package net.klayil.veggycraft.neoforge.client;
 
+import dev.architectury.registry.registries.DeferredRegister;
+import net.klayil.klay_api.KlayApi;
 import net.klayil.veggycraft.BuiltinResourcePacks;
 import net.klayil.veggycraft.VeggyCraft;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.*;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -54,6 +58,5 @@ public final class NeoForgeBuiltinPacks {
         if (pack != null) {
             event.addRepositorySource(consumer -> consumer.accept(pack));
         }
-
     }
 }
