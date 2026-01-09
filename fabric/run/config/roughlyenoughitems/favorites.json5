@@ -1,9 +1,0 @@
-{
-	"favorites": [
-		"{data:{type:\"minecraft:item\",value:{count:1,id:\"minecraft:stone_shovel\"}},type:\"roughlyenoughitems:entry_stack\"}",
-		"{data:{type:\"minecraft:item\",value:{count:1,id:\"minecraft:leather_leggings\"}},type:\"roughlyenoughitems:entry_stack\"}",
-		"{data:{type:\"minecraft:item\",value:{count:1,id:\"minecraft:cobweb\"}},type:\"roughlyenoughitems:entry_stack\"}"
-	],
-	"hiddenFavorites": [],
-	"displays": []
-}

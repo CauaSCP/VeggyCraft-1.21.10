@@ -32,21 +32,17 @@ public class VeggyModModelProvider extends ModelProvider {
     }
 
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
-//        VeggyCraft.LOGGER.info("#Registered is %s".formatted(ModBlocks.BLOCKS));
-//        VeggyCraft.LOGGER.info(blockModelGenerators.toString());
-
         blockModelGenerators.run();
-//        ModBlocks.initBlocks();
 
-        for (int color_id = 1; color_id < 16; color_id++) {
-            Block curBlock = ModBlocks.modalFabrics.get(color_id).get();
-
-            String colorName = ColoursList.listOfColours[color_id];
-            ResourceLocation woolId = ResourceLocation.withDefaultNamespace(colorName + "_wool");
-            Block curWool = BuiltInRegistries.BLOCK.getValue(woolId);
-
-            blockModelGenerators.copyModel(curWool, curBlock);
-        }
+//        for (int color_id = 1; color_id < 16; color_id++) {
+//            Block curBlock = ModBlocks.modalFabrics.get(color_id).get();
+//
+//            String colorName = ColoursList.listOfColours[color_id];
+//            ResourceLocation woolId = ResourceLocation.withDefaultNamespace(colorName + "_wool");
+//            Block curWool = BuiltInRegistries.BLOCK.getValue(woolId);
+//
+//            blockModelGenerators.copyModel(curWool, curBlock);
+//        }
     }
 
     private void registerFlatItemModel(RegistrySupplier<Item> item, ModelTemplate modelTemplate) {

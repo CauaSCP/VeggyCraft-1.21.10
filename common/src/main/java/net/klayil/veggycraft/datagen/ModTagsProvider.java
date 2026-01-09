@@ -23,8 +23,8 @@ public class ModTagsProvider extends TagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        for (int i = 0; i < 16; i++) {
-            getOrCreateRawBuilder(BlockTags.WOOL).add(TagEntry.element(ModBlocks.modalFabrics.get(i).getId()));
-        }
+//        for (int i = 0; i < 16; i++) {
+//            getOrCreateRawBuilder(BlockTags.WOOL).add(TagEntry.element(ModBlocks.modalFabrics.get(i).getId()));
+//        }
     }
 }

@@ -1,5 +1,0 @@
-[
-  {"version":1},
-  {"ingredient":{"id":"minecraft:diamond_block"},"type":"item_stack","bookmarkType":"INGREDIENT"},
-  {"ingredient":{"id":"minecraft:crafter"},"type":"item_stack","bookmarkType":"INGREDIENT"}
-]
