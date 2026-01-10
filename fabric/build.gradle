@@ -31,8 +31,8 @@ configurations {
 }
 
 dependencies {
-//    modCompileOnly "mezz.jei:jei-${minecraft_version}-fabric:${jei_version}"
-//    modRuntimeOnly "mezz.jei:jei-${minecraft_version}-fabric:${jei_version}"
+    modCompileOnly "mezz.jei:jei-${minecraft_version}-fabric:${jei_version}"
+    modRuntimeOnly "mezz.jei:jei-${minecraft_version}-fabric:${jei_version}"
 
 
 
@@ -41,7 +41,7 @@ dependencies {
 
 //    modImplementation "net.blay09.mods:balm-fabric:${balm_version}"
 
-    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}"
+//    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}"
 //    modCompileOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}"
 
     modRuntimeOnly "squeek.appleskin:appleskin-fabric:${appleskin_version}"

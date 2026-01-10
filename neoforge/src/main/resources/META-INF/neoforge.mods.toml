@@ -43,9 +43,8 @@ ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.veggycraft]]
-modId="jei"
-mandatory=false
-versionRange="(25.0.1.4,)"
+type="incompatible"
+versionRange="(0.1,)"
 ordering="NONE"
 side="CLIENT"
 
@@ -55,6 +54,14 @@ mandatory=false
 versionRange="[3.0.7,)"
 ordering="NONE"
 side="CLIENT"
+
+#[[dependencies.veggycraft]]
+#modId="cloth"
+#type = "required"
+#mandatory=false
+#versionRange="[3.0.7,)"
+#ordering="NONE"
+#side="BOTH"
 
 [[mixins]]
 config = "veggycraft.mixins.json"

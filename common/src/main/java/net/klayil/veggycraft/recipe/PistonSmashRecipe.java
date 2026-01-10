@@ -21,6 +21,12 @@ public record PistonSmashRecipe(Ingredient inputItem, ItemStack output) implemen
         return list;
     }
 
+    public ItemStack getResultItem(Object ignoredParameter) {
+
+        return output;
+
+    }
+
     @Override
     public boolean matches(PistonSmashRecipeInput pistonSmashRecipeInput, Level level) {
         if (level.isClientSide()) {

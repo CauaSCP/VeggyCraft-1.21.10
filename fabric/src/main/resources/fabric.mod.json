@@ -37,8 +37,7 @@
     "fabricloader": ">=0.18.1",
     "minecraft": "~1.21.10",
     "java": ">=21",
-    "roughlyenoughitems": ">21.9.809",
-    "cloth-config": ">=20.0.148",
+    "cloth-config": ">=20.0.149",
     "architectury": ">=18.0.6",
     "klay_api": ">=0.0.4",
     "fabric-api": "*"
@@ -48,6 +47,7 @@
     "voxy": "*",
     "sodium": ">0.6.14",
     "jei": ">25.0.1.4",
-    "appleskin": ">=3.0.7"
+    "appleskin": ">=3.0.7",
+    "roughlyenoughitems": ">21.9.809"
   }
 }
