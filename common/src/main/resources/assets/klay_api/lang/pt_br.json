@@ -16,5 +16,12 @@
   "item.veggycraft.black_of_coal_carbon": "Carbono Impuro de Carvão",
   "item.veggycraft.shiny_of_diamond_coal_carbon": "Carbono Mestiço e Brilhoso de Carvão e Diamante",
   "item.veggycraft.dry_raw_seitan": "Seitan Cru Seco",
-  "item.veggycraft.wet_raw_seitan": "Seitan Cru Cozinhável (Molhado)"
+  "item.veggycraft.wet_raw_seitan": "Seitan Cru Cozinhável (Molhado)",
+
+  "veggycraft_overrides": "VeggyCraft Overrides",
+  "klay_api.smash.predicate": "Esmague com o",
+  "klay_api.smash.wan": "!",
+
+  "item.veggycraft.modal": "Block de tecido modal de cor",
+  "suffix.veggycraft.modal": ""
 }

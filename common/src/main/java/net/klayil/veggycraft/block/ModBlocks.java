@@ -23,7 +23,7 @@ public class ModBlocks {
     public static ArrayList<RegistrySupplier<Block>> modalFabrics;
 
     public static void initBlocks() {
-        KlayApiModBlocks.initBlocks();
+//        KlayApiModBlocks.initBlocks();
 
         BLOCKS = KlayApiModBlocks.createBlocksRegister(VeggyCraft.MOD_ID);
 

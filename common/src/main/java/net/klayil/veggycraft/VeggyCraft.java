@@ -7,6 +7,7 @@ import net.klayil.veggycraft.item.ModItems;
 
 import net.klayil.veggycraft.item.tabs.VeggyCraftTabsCode;
 import net.klayil.veggycraft.recipe.ModRecipes;
+import net.klayil.veggycraft.tags.ModItemTags;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,6 +23,8 @@ public final class VeggyCraft {
         VeggyCraftTabsCode.initTabs();
         ModBlocks.initBlocks();
         ModItems.initItems();
+
+        ModItemTags.init();
 
         VeggyCraftTabsCode.initAfterItems.run();
     }

@@ -1,30 +1,26 @@
 package net.klayil.veggycraft.item;
 
-import net.klayil.veggycraft.VeggyCraft;
 import net.klayil.veggycraft.component.ModDataComponentTypes;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipDisplay;
 import org.jetbrains.annotations.NotNull;
 import net.minecraft.network.chat.Component;
-
-import java.util.List;
-import java.util.function.Consumer;
 
 public class UnrepairableDamageableItems extends Item {
     private static final String FLOUR_ENDING = "_stacked_of_flour";
     private ModDataComponentTypes.ItemHealth health;
+    private int healthMax = -1;
 
     public UnrepairableDamageableItems(Item.Properties itemProperties, int health) {
         super(
                 itemProperties.component(ModDataComponentTypes.HEALTH.get(), new ModDataComponentTypes.ItemHealth(health, health))
                 //, maxDamage, null
         );
+
+        healthMax = health;
     }
 
     @Override
@@ -57,6 +53,7 @@ public class UnrepairableDamageableItems extends Item {
 
     @Override
     public boolean isBarVisible(ItemStack stack) {
+        if (this.healthMax == -1) return false;
         if (!stack.has(ModDataComponentTypes.HEALTH.get())) return false;
 
         this.health = stack.get(ModDataComponentTypes.HEALTH.get());

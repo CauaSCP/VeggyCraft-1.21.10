@@ -5,8 +5,12 @@ import dev.architectury.registry.registries.RegistrarManager;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
+import net.klayil.klay_api.KlayApi;
+import net.klayil.klay_api.block.KlayApiModBlocks;
 import net.klayil.klay_api.item.KlayApiModItems;
 import net.klayil.veggycraft.VeggyCraft;
+import net.klayil.veggycraft.block.ModBlocks;
+import net.klayil.veggycraft.datagen.ColoursList;
 import net.klayil.veggycraft.item.tabs.VeggyCraftCreativeTabsToGet;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.component.DataComponentPatch;
@@ -14,6 +18,7 @@ import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.locale.Language;
 import net.minecraft.nbt.IntTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
@@ -27,16 +32,20 @@ import net.minecraft.world.food.FoodProperties;
 
 import net.minecraft.nbt.CompoundTag;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Supplier;
 
 import static net.klayil.klay_api.item.KlayApiModItems.AllKlayApiItems;
+import static net.klayil.klay_api.item.KlayApiModItems.baseProperties;
 import static net.klayil.veggycraft.item.tabs.VeggyCraftCreativeTabsToGet.REPLACEMENTS;
 
 import net.minecraft.core.Holder;
 import net.minecraft.world.item.component.CustomModelData;
 import net.minecraft.world.item.enchantment.Repairable;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.Nullable;
 
 public class ModItems {
@@ -45,6 +54,8 @@ public class ModItems {
     public static RegistrySupplier<Item> COAL_CARBON_CUTTER;
     public static RegistrySupplier<Item> DIAMOND_CARBON_CUTTER;
     public static RegistrySupplier<Item> SHINY_OF_DIAMOND_COAL_CARBON;
+
+    public static ArrayList<RegistrySupplier<Item>> modalFabricItems = new ArrayList<>();
 
 
     public static RegistrySupplier<Item> THIS_MOD_FLOUR;
@@ -65,6 +76,54 @@ public class ModItems {
 //    Items.POTION
 
     public static DeferredRegister<Item> ITEMS = KlayApiModItems.createItemsRegister(VeggyCraft.MOD_ID);
+
+    private static RegistrySupplier<Item> createBlockItemWithCustomName(String itemId, Component nameToTranslate, RegistrySupplier<Block> block, int maxStackSize) {
+        ResourceLocation itemLocation = ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, itemId);
+
+        @Nullable
+        ResourceKey<CreativeModeTab> tabRemove = null;
+        int remove_index = -1;
+
+
+        for (ResourceKey<CreativeModeTab> curTab : KlayApiModBlocks.blockItemCreativeModeTabs.keySet()) {
+            if (!((ArrayList) KlayApiModBlocks.blockItemCreativeModeTabs.get(curTab)).isEmpty()) {
+                ArrayList<String> arr = (ArrayList) KlayApiModBlocks.blockItemCreativeModeTabs.get(curTab);
+
+                for(int index = 0; index < arr.size(); ++index) {
+                    ResourceLocation blockLocation = ResourceLocation.parse((String)arr.get(index));
+
+                    RegistrySupplier<Block> blockOfLoop = ((RegistrySupplier)KlayApiModBlocks.AllKlayApiBlocks.get(blockLocation.toString()));
+
+
+                    if (blockOfLoop.getKey().location() == block.getKey().location()) {
+                        remove_index = index;
+                        tabRemove = curTab;
+
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (remove_index >= 0) {
+            KlayApiModBlocks.blockItemCreativeModeTabs.get(tabRemove).remove(remove_index);
+        }
+
+        RegistrySupplier<Item> item = ITEMS.register(
+                itemLocation,
+                () -> new BlockItemWithCustomName(
+                        KlayApiModItems.baseProperties(itemId, VeggyCraft.MOD_ID).stacksTo(maxStackSize),
+                        nameToTranslate,
+                        block
+                )
+        );
+
+        if (remove_index >= 0) {
+            CreativeTabRegistry.append(tabRemove, item);
+        }
+
+        return item;
+    }
 
     private static RegistrySupplier<Item> createDamageableItem(String itemId, int maxStackSize, int maxDamage, @Nullable ResourceKey<CreativeModeTab> creativeModeTab, @Nullable Supplier<Item>... repairItemViaList) {
         ResourceLocation itemLocation = ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, itemId);
@@ -108,7 +167,7 @@ public class ModItems {
     }
 
     public static void initItems() {
-        KlayApiModItems.initItems();
+//        KlayApiModItems.initItems();
 
         BLACK_DYE_STACK = new ItemStack(Items.BLACK_DYE);
         CustomModelData data = new CustomModelData(
@@ -158,6 +217,29 @@ public class ModItems {
         WET_RAW_SEITAN = KlayApiModItems.createItem("wet_raw_seitan", null, VeggyCraft.MOD_ID);
 
         VeggyMeats = new RegistrySupplier[]{SEITAN_COOKED_BEEF};
+
+        int index = 0;
+
+        for (RegistrySupplier<Block> curModal : ModBlocks.modalFabrics) {
+            RegistrySupplier<Item> curItem = createBlockItemWithCustomName(
+                    curModal.getKey().location().getPath() //"%s_item".formatted(curModal.getKey().location().getPath())
+                    ,
+                    Component.translatable("item.veggycraft.modal")
+                            .append(Component.literal(" "))
+                            .append(Component.translatable("color.minecraft.%s".formatted(ColoursList.listOfColours[index])))
+                            .append(Component.translatable("suffix.veggycraft.modal")),
+                    curModal,
+                    64
+            );
+
+            modalFabricItems.add(curItem);
+//
+
+//            createDamageableItem("%s_item".formatted(curModal.getKey().location().getPath()), 64, 1000, CreativeModeTabs.INGREDIENTS);
+            index++;
+        }
+
+        KlayApiModItems.createItemsOfBlocks();
 
         ITEMS.register();
     }

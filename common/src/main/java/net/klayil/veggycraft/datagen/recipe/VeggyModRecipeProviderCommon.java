@@ -1,9 +1,18 @@
 package net.klayil.veggycraft.datagen.recipe;
 
+import dev.architectury.registry.registries.RegistrySupplier;
 import net.klayil.veggycraft.VeggyCraft;
 
+import net.klayil.veggycraft.block.ModBlocks;
+import net.klayil.veggycraft.datagen.ColoursList;
+import net.klayil.veggycraft.tags.ModItemTags;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.crafting.Recipe;
 
 import net.klayil.veggycraft.component.ModDataComponentTypes;
@@ -17,6 +26,9 @@ import net.minecraft.data.recipes.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 
 import net.minecraft.tags.ItemTags;
@@ -27,12 +39,17 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 //import net.fabricmc.fabric.api.recipe.v1.ingredient.DefaultCustomIngredients;
 
 public class VeggyModRecipeProviderCommon extends RecipeProvider {
+    @Nullable
+    private HolderGetter.Provider holderGetterProvider = null;
+
     public VeggyModRecipeProviderCommon(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
         super(provider, recipeOutput);
+        this.holderGetterProvider = provider;
     }
 
     public static class Runner extends RecipeProvider.Runner{
@@ -49,7 +66,7 @@ public class VeggyModRecipeProviderCommon extends RecipeProvider {
 
     }
 
-    public ShapedRecipeBuilder shaped(RecipeCategory category, ItemStack result) {
+    public ShapedRecipeBuilder shapedLocal(RecipeCategory category, ItemStack result) {
         HolderGetter<Item> itemLookup = this.registries.lookupOrThrow(Registries.ITEM);
 
         return ShapedRecipeBuilder.shaped(itemLookup, category, result);
@@ -79,7 +96,7 @@ public class VeggyModRecipeProviderCommon extends RecipeProvider {
         Item flour = ModItems.THIS_MOD_FLOUR.get();
         ItemStack result = flourBagSize(resultItemSize);
 
-        ShapedRecipeBuilder ret = shaped(RecipeCategory.MISC, result);
+        ShapedRecipeBuilder ret = shapedLocal(RecipeCategory.MISC, result);
 
         ret = ret
                 .pattern("fff")
@@ -172,7 +189,7 @@ public class VeggyModRecipeProviderCommon extends RecipeProvider {
                         "%s:carbon_dye_diamon_cut".formatted(VeggyCraft.MOD_ID)
                 );
 
-        shaped(RecipeCategory.MISC, new ItemStack(ModItems.BLACK_OF_COAL_CARBON))
+        shapedLocal(RecipeCategory.MISC, new ItemStack(ModItems.BLACK_OF_COAL_CARBON))
                 .pattern("##")
                 .pattern("##")
                 .define('#', ItemTags.COALS)
@@ -217,7 +234,7 @@ public class VeggyModRecipeProviderCommon extends RecipeProvider {
                 has(ModItems.COAL_CARBON_CUTTER.get())
         ).save(output, "%s:carbon_cutter_coal_to_diamond_charcoal_addition".formatted(VeggyCraft.MOD_ID));
 
-        shaped(RecipeCategory.MISC, new ItemStack(ModItems.COAL_CARBON_CUTTER))
+        shapedLocal(RecipeCategory.MISC, new ItemStack(ModItems.COAL_CARBON_CUTTER))
                 .pattern("CBC")
                 .pattern(" | ")
                 .pattern(" | ")
@@ -256,7 +273,7 @@ public class VeggyModRecipeProviderCommon extends RecipeProvider {
                     new ModDataComponentTypes.ItemHealth(health+1, 3)
             );
 
-            shaped(RecipeCategory.MISC, drySeitanWithHealth)
+            shapedLocal(RecipeCategory.MISC, drySeitanWithHealth)
                     .pattern("SB")
                     .define('B', Items.WATER_BUCKET)
                     .unlockedBy("has_water", has(Items.WATER_BUCKET))
@@ -264,7 +281,7 @@ public class VeggyModRecipeProviderCommon extends RecipeProvider {
                     .save(output, "%s:raw_seitan_health_%d".formatted(VeggyCraft.MOD_ID, health+1));
         }
 
-        shaped(RecipeCategory.MISC, drySeitanHealthFirstHealth).
+        shapedLocal(RecipeCategory.MISC, drySeitanHealthFirstHealth).
                 pattern("FB")
                 .define('B', Items.WATER_BUCKET)
                 .define('F', ModItems.THIS_MOD_FLOUR.get())
@@ -283,6 +300,149 @@ public class VeggyModRecipeProviderCommon extends RecipeProvider {
                 .save(output);
 
         cookingRecipeFood(new ItemStack(ModItems.WET_RAW_SEITAN), ModItems.SEITAN_COOKED_BEEF.get(), 0.35f, 200);
+
+        Item dye;
+        String curColor = null;
+        Item modalValueI = null;
+
+        for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 16; j++) {
+
+                curColor = ColoursList.listOfColours[i];
+                dye = BuiltInRegistries.ITEM.getValue(
+                    ResourceLocation.withDefaultNamespace("%s_dye".formatted(curColor))
+                );
+
+                modalValueI = ModBlocks.modalFabrics.get(i).get().asItem();
+
+
+                if (j==i) continue;
+
+                shapeless(RecipeCategory.DECORATIONS, modalValueI)
+                    .requires(dye)
+                    .requires(ModBlocks.modalFabrics.get(j).get().asItem())
+                    .unlockedBy("has_%s_dye".formatted(curColor), has(dye))
+                    .save(output, "dying_%s_modal_fabric_%s_block_ingredient".formatted(curColor, ColoursList.listOfColours[j]));
+            }
+            // noinspection ConstantConditions
+            if (modalValueI == null | curColor == null) continue;
+            bedAndBannerFromModal(modalValueI, curColor);
+
+            shaped(
+                RecipeCategory.DECORATIONS,
+                BuiltInRegistries.ITEM.getValue(
+                    ResourceLocation.withDefaultNamespace(
+                        "%s_carpet".formatted(curColor)
+                    )
+                )
+                ,
+          3
+            ).pattern("Mn")
+            .define('M', modalValueI)
+            .define('n', ModItemTags.TAG_MODAL_FABRIC_ITEMS)
+            .unlockedBy("has_%s_modal".formatted(curColor), has(modalValueI))
+            .save(output, "carpet_from_modal_color_%s".formatted(curColor));
+
+
+        }
+    }
+
+//    boolean whiteBedRecipeDone = false;
+
+    final Item WHITE_MODAL_FABRIC_BLOCK = ModBlocks.modalFabrics.getFirst().get().asItem();
+
+    private void bedAndBannerFromModal(ItemLike _modal, String colorText) {
+//        if (whiteBedRecipeDone) return;
+
+        assert holderGetterProvider != null;
+
+        final HolderGetter<Item> itemGetter = holderGetterProvider.lookupOrThrow(Registries.ITEM);
+
+        Item modal = _modal.asItem();
+
+        int atLeast = 3;
+        String patternTop = "MMM";
+        boolean isWhite = false;
+
+        if (modal.asItem() == ModBlocks.modalFabrics.getFirst().get().asItem()) {
+            atLeast = 1;
+            patternTop = "WMM";
+            isWhite = true;
+        }
+
+
+        ShapedRecipeBuilder bedRecipe = shapedLocal(RecipeCategory.DECORATIONS, new ItemStack(
+                BuiltInRegistries.ITEM.getValue(
+                        ResourceLocation.withDefaultNamespace("%s_bed".formatted(colorText))
+                )
+        ));
+
+        ShapedRecipeBuilder banner = shapedLocal(RecipeCategory.DECORATIONS, new ItemStack(
+                BuiltInRegistries.ITEM.getValue(
+                        ResourceLocation.withDefaultNamespace("%s_banner".formatted(colorText))
+                )
+        ));
+
+        banner = banner.pattern(patternTop)
+        .pattern("MMM")
+        .pattern(" | ")
+        .define('|', Items.STICK);
+
+        bedRecipe = bedRecipe.pattern(patternTop)
+        .pattern("PPP")
+        .define('P', ItemTags.PLANKS);
+
+        if (isWhite) {
+            bedRecipe = bedRecipe
+                       .define('M', ModItemTags.TAG_MODAL_FABRIC_ITEMS)
+                       .define('W', WHITE_MODAL_FABRIC_BLOCK);
+
+            banner = banner
+                    .define('M', ModItemTags.TAG_MODAL_FABRIC_ITEMS)
+                    .define('W', WHITE_MODAL_FABRIC_BLOCK);
+        } else {
+            bedRecipe = bedRecipe.define('M', modal);
+
+            banner = banner.define('M', modal);
+        }
+
+        bedRecipe.unlockedBy(
+            "has_three_%s_modals".formatted(colorText),
+            CriteriaTriggers.INVENTORY_CHANGED.createCriterion(
+                new InventoryChangeTrigger.TriggerInstance(
+                    Optional.empty(),
+                    InventoryChangeTrigger.TriggerInstance.Slots.ANY,
+                    List.of(
+                        ItemPredicate.Builder.item()
+                            .of(
+                                itemGetter,
+                                modal
+                            )
+                            .withCount(MinMaxBounds.Ints.atLeast(atLeast))
+                            .build()
+                    )
+                )
+            )
+        ).save(output, "%s_bed_with_modal".formatted(colorText/*, Math.abs(new Random().nextInt())*/));
+
+        banner.unlockedBy(
+                "has_six_%s_modals".formatted(colorText),
+                CriteriaTriggers.INVENTORY_CHANGED.createCriterion(
+                        new InventoryChangeTrigger.TriggerInstance(
+                                Optional.empty(),
+                                InventoryChangeTrigger.TriggerInstance.Slots.ANY,
+                                List.of(
+                                        ItemPredicate.Builder.item()
+                                                .of(
+                                                        itemGetter,
+                                                        modal
+                                                )
+                                                .withCount(MinMaxBounds.Ints.atLeast((int) Math.pow(atLeast, 1.631)))
+                                                .build()
+                                )
+                        )
+                )
+        ).save(output, "%s_banner_with_modal".formatted(colorText));
     }
 
     private void cookingRecipeFood(ItemStack ingredientStack, ItemLike result, float experience, int cookingTime) {

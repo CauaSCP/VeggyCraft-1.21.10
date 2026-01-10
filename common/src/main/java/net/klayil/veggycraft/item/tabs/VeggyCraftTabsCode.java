@@ -2,8 +2,12 @@ package net.klayil.veggycraft.item.tabs;
 
 import dev.architectury.registry.CreativeTabRegistry;
 import net.klayil.klay_api.item.KlayApiModItems;
+import net.klayil.veggycraft.VeggyCraft;
+import net.klayil.veggycraft.block.ModBlocks;
 import net.klayil.veggycraft.component.ModDataComponentTypes;
 import net.klayil.veggycraft.item.ModItems;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
@@ -38,6 +42,14 @@ public class VeggyCraftTabsCode extends VeggyCraftCreativeTabsToGet {
                 },
                 () -> new ItemStack(WET_RAW_SEITAN),
                 () -> new ItemStack(SEITAN_COOKED_BEEF),
+                () -> new ItemStack(
+                        BuiltInRegistries.ITEM.getValue(
+                                ResourceLocation.fromNamespaceAndPath(
+                                        VeggyCraft.MOD_ID,
+                                        ModBlocks.modalFabrics.getFirst().getKey().location().getPath()
+                                )
+                        )
+                )
 
         };
 

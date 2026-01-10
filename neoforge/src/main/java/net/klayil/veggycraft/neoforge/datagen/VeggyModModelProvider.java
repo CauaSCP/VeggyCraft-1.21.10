@@ -10,6 +10,7 @@ import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 
 import net.minecraft.data.PackOutput;
@@ -34,15 +35,32 @@ public class VeggyModModelProvider extends ModelProvider {
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
         blockModelGenerators.run();
 
-//        for (int color_id = 1; color_id < 16; color_id++) {
-//            Block curBlock = ModBlocks.modalFabrics.get(color_id).get();
-//
-//            String colorName = ColoursList.listOfColours[color_id];
-//            ResourceLocation woolId = ResourceLocation.withDefaultNamespace(colorName + "_wool");
-//            Block curWool = BuiltInRegistries.BLOCK.getValue(woolId);
-//
-//            blockModelGenerators.copyModel(curWool, curBlock);
-//        }
+        for (int color_id = 0; color_id < 16; color_id++) {
+            RegistrySupplier<Block> curBlockSupplier = ModBlocks.modalFabrics.get(color_id);
+
+            String colorName = ColoursList.listOfColours[color_id];
+            ResourceLocation woolId = ResourceLocation.withDefaultNamespace(colorName + "_wool");
+            Block curWool = BuiltInRegistries.BLOCK.getValue(woolId);
+
+//            blockModelGenerators.copyModel(curWool, curBlockSupplier.get());
+
+            MultiVariant multivariant = plainVariant(ModelLocationUtils.getModelLocation(curWool));
+            blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(curBlockSupplier.get(), multivariant));
+
+            BlockItem curBlockItem = (BlockItem) BuiltInRegistries.ITEM.getValue(
+                    ResourceLocation.fromNamespaceAndPath(
+                            VeggyCraft.MOD_ID,
+                            curBlockSupplier.getKey().location().getPath()
+                    )
+            );
+
+//            blockModelGenerators.createFlatItemModelWithBlockTexture(curBlockItem, curWool);
+
+            blockModelGenerators.itemModelOutput.copy(
+                curWool.asItem(),
+                curBlockItem
+            );
+        }
     }
 
     private void registerFlatItemModel(RegistrySupplier<Item> item, ModelTemplate modelTemplate) {

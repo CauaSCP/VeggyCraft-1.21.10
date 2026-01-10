@@ -52,7 +52,7 @@ public class AutoMixingCategory implements DisplayCategory<BasicDisplay> {
 
     @Override
     public Component getTitle() {
-        return Component.translatable("klay_api.smash.predicate").append(Component.translatable("block.minecraft.piston")).append(Component.literal(" ")).append(Component.translatable("klay_api.smash.wan"));
+        return Component.translatable("klay_api.smash.predicate").append(Component.translatable("block.minecraft.piston")).append(Component.translatable("klay_api.smash.wan"));
     }
 
     @Override

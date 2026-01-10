@@ -1,7 +1,6 @@
 package net.klayil.veggycraft.mixin;
 
 import net.klayil.veggycraft.item.RepairableItemsExtension;
-import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.inventory.GrindstoneMenu;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
