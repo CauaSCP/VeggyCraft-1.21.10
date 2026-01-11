@@ -31,6 +31,11 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                     BuiltInRegistries.ITEM.getValue(drop_id)
             );
         }
+
+        dropOther(
+                ModBlocks.MOLASSES_BLOCK.get(),
+                ModBlocks.MOLASSES_BLOCK_ITEM.get()
+        );
     }
 
     @Override

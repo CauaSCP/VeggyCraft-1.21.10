@@ -1,5 +1,7 @@
 package net.klayil.veggycraft.neoforge.datagen;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.klayil.veggycraft.VeggyCraft;
 import net.klayil.veggycraft.block.ModBlocks;
@@ -8,6 +10,7 @@ import net.klayil.veggycraft.item.ModItems;
 import net.minecraft.client.data.models.*;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.model.*;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -16,12 +19,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.data.PackOutput;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 
 import net.minecraft.client.data.models.model.ItemModelUtils;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 
 import static net.minecraft.client.data.models.BlockModelGenerators.plainVariant;
 
@@ -32,8 +36,45 @@ public class VeggyModModelProvider extends ModelProvider {
         super(output);
     }
 
+    private ResourceLocation modLoc(String path) {
+        return ResourceLocation.fromNamespaceAndPath("veggycraft", path);
+    }
+
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
         blockModelGenerators.run();
+
+        var molassesBlock_ = ModBlocks.MOLASSES_BLOCK.getOrNull();
+
+        if (molassesBlock_ != null) {
+            Block molassesBlock = molassesBlock_;
+
+            TextureMapping textureMapping = new TextureMapping()
+                    .put(ModModelsTemplates.PARTICLE,
+                            TextureMapping.getBlockTexture(molassesBlock, "_top"))
+                    .put(ModModelsTemplates.DOWN,
+                            TextureMapping.getBlockTexture(molassesBlock, "_bottom"))
+                    .put(ModModelsTemplates.UP,
+                            TextureMapping.getBlockTexture(molassesBlock, "_top"))
+                    .put(ModModelsTemplates.SIDE,
+                            TextureMapping.getBlockTexture(molassesBlock, "_side"));
+
+            ResourceLocation modelId = ModelLocationUtils.getModelLocation(molassesBlock);
+
+            ModModelsTemplates.CUSTOM_MOLASSES_TEMPLATE.create(
+                    modelId,
+                    textureMapping,
+                    blockModelGenerators.modelOutput
+            );
+
+//            var theBlockItem = ModBlocks.MOLASSES_BLOCK_ITEM.getOrNull();
+//
+//            assert theBlockItem != null;
+
+//            blockModelGenerators.createFlatItemModelWithBlockTexture(theBlockItem, molassesBlock);
+            blockModelGenerators.registerSimpleFlatItemModel(molassesBlock);
+
+            VeggyCraft.LOGGER.info("#CREATED: molasses block model");
+        }
 
         for (int color_id = 0; color_id < 16; color_id++) {
             RegistrySupplier<Block> curBlockSupplier = ModBlocks.modalFabrics.get(color_id);
@@ -61,6 +102,11 @@ public class VeggyModModelProvider extends ModelProvider {
                 curBlockItem
             );
         }
+
+//        blockModelGenerators.createTrivialCube(ModBlocks.MOLASSES_BLOCK.get());
+//        blockModelGenerators.createFlatItemModelWithBlockTexture(ModBlocks.MOLASSES_BLOCK_ITEM.get(), ModBlocks.MOLASSES_BLOCK.get());
+
+
     }
 
     private void registerFlatItemModel(RegistrySupplier<Item> item, ModelTemplate modelTemplate) {
@@ -120,6 +166,8 @@ public class VeggyModModelProvider extends ModelProvider {
                 )
         );
 
+        registerFlatItemModel(ModItems.BROWN_SUGAR, ModelTemplates.FLAT_ITEM);
+        registerFlatItemModel(ModItems.MOLASSES_BOTTLE, ModelTemplates.FLAT_ITEM);
 
         registerFlatItemModel(ModItems.THIS_MOD_FLOUR, ModelTemplates.FLAT_ITEM);
         registerFlatItemModel(ModItems.WET_RAW_SEITAN, ModelTemplates.FLAT_ITEM);

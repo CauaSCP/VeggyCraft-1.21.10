@@ -46,8 +46,10 @@
     "eiv": ">4.0.7",
     "voxy": "*",
     "sodium": ">0.6.14",
-    "jei": ">25.0.1.4",
     "appleskin": ">=3.0.7",
     "roughlyenoughitems": ">21.9.809"
+  },
+  "breaks": {
+    "jei": "*"
   }
 }

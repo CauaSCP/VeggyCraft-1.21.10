@@ -11,6 +11,7 @@ import net.klayil.klay_api.item.KlayApiModItems;
 import net.klayil.veggycraft.VeggyCraft;
 import net.klayil.veggycraft.block.ModBlocks;
 import net.klayil.veggycraft.datagen.ColoursList;
+import net.klayil.veggycraft.item.tabs.CustomTabsMethods;
 import net.klayil.veggycraft.item.tabs.VeggyCraftCreativeTabsToGet;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.component.DataComponentPatch;
@@ -26,6 +27,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
 import net.minecraft.world.food.FoodProperties;
 
@@ -37,11 +39,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Supplier;
 
-import static net.klayil.klay_api.item.KlayApiModItems.AllKlayApiItems;
-import static net.klayil.klay_api.item.KlayApiModItems.baseProperties;
+import static net.klayil.klay_api.item.KlayApiModItems.*;
 import static net.klayil.veggycraft.item.tabs.VeggyCraftCreativeTabsToGet.REPLACEMENTS;
 
 import net.minecraft.core.Holder;
+import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.component.CustomModelData;
 import net.minecraft.world.item.enchantment.Repairable;
 import net.minecraft.world.level.ItemLike;
@@ -72,8 +74,8 @@ public class ModItems {
 
     public static RegistrySupplier[] VeggyMeats;
 
-
-//    Items.POTION
+    public static RegistrySupplier<Item> BROWN_SUGAR;
+    public static RegistrySupplier<Item> MOLASSES_BOTTLE;
 
     public static DeferredRegister<Item> ITEMS = KlayApiModItems.createItemsRegister(VeggyCraft.MOD_ID);
 
@@ -94,7 +96,7 @@ public class ModItems {
 
                     RegistrySupplier<Block> blockOfLoop = ((RegistrySupplier)KlayApiModBlocks.AllKlayApiBlocks.get(blockLocation.toString()));
 
-
+                    if (blockOfLoop == null) continue;
                     if (blockOfLoop.getKey().location() == block.getKey().location()) {
                         remove_index = index;
                         tabRemove = curTab;
@@ -119,7 +121,7 @@ public class ModItems {
         );
 
         if (remove_index >= 0) {
-            CreativeTabRegistry.append(tabRemove, item);
+            if (tabRemove != null & item != null) CreativeTabRegistry.append(tabRemove, item);
         }
 
         return item;
@@ -166,6 +168,16 @@ public class ModItems {
         return registeredItem;
     }
 
+    private static Item.Properties honeyBottleProps(String id, String ignored) {
+        return (new Item.Properties()).craftRemainder(Items.GLASS_BOTTLE)
+                .food(Foods.HONEY_BOTTLE, Consumables.HONEY_BOTTLE)
+                .usingConvertsTo(Items.GLASS_BOTTLE)
+                .stacksTo(16).setId(ResourceKey.create(
+                        Registries.ITEM,
+                        ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, id)
+                ));
+    }
+
     public static void initItems() {
 //        KlayApiModItems.initItems();
 
@@ -183,6 +195,8 @@ public class ModItems {
                 .append(Component.translatable("item.veggycraft.carbon_space_2"))
                 .append(Component.translatable("item.veggycraft.carbon_suffix"));
 
+        BROWN_SUGAR = createItem("brown_sugar", null, VeggyCraft.MOD_ID);
+        MOLASSES_BOTTLE = createItem("molasses_bottle", null, ModItems::honeyBottleProps, VeggyCraft.MOD_ID);
 
         BLACK_DYE_STACK.set(DataComponents.CUSTOM_MODEL_DATA, data);
         BLACK_DYE_STACK.set(DataComponents.ITEM_NAME, dyeName);
@@ -218,26 +232,30 @@ public class ModItems {
 
         VeggyMeats = new RegistrySupplier[]{SEITAN_COOKED_BEEF};
 
-        int index = 0;
+//        int index = 0;
 
-        for (RegistrySupplier<Block> curModal : ModBlocks.modalFabrics) {
+        for (int i = ModBlocks.modalFabrics.size()-1; i >= 0; i--) {
+            RegistrySupplier<Block> curModal = ModBlocks.modalFabrics.get(i);
             RegistrySupplier<Item> curItem = createBlockItemWithCustomName(
                     curModal.getKey().location().getPath() //"%s_item".formatted(curModal.getKey().location().getPath())
                     ,
                     Component.translatable("item.veggycraft.modal")
                             .append(Component.literal(" "))
-                            .append(Component.translatable("color.minecraft.%s".formatted(ColoursList.listOfColours[index])))
+                            .append(Component.translatable("color.minecraft.%s".formatted(ColoursList.listOfColours[i])))
                             .append(Component.translatable("suffix.veggycraft.modal")),
                     curModal,
                     64
             );
 
             modalFabricItems.add(curItem);
+
+            CustomTabsMethods.addToTab(CreativeModeTabs.COLORED_BLOCKS, curItem, Items.PINK_GLAZED_TERRACOTTA);
 //
 
 //            createDamageableItem("%s_item".formatted(curModal.getKey().location().getPath()), 64, 1000, CreativeModeTabs.INGREDIENTS);
-            index++;
         }
+
+
 
         KlayApiModItems.createItemsOfBlocks();
 

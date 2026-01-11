@@ -1,6 +1,7 @@
 package net.klayil.veggycraft;
 
 //import net.klayil.veggycraft.compat.recipe.ModRecipes;
+import dev.architectury.registry.registries.DeferredRegister;
 import net.klayil.veggycraft.block.ModBlocks;
 import net.klayil.veggycraft.component.ModDataComponentTypes;
 import net.klayil.veggycraft.item.ModItems;

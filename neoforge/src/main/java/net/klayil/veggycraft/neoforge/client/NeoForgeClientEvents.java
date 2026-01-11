@@ -1,19 +1,18 @@
 package net.klayil.veggycraft.neoforge.client;
 
-import dev.architectury.registry.registries.DeferredRegister;
-import net.klayil.klay_api.KlayApi;
-import net.klayil.veggycraft.BuiltinResourcePacks;
 import net.klayil.veggycraft.VeggyCraft;
-import net.minecraft.core.registries.Registries;
+import net.klayil.veggycraft.block.ModBlocks;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.*;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 
 import java.util.Optional;
@@ -22,7 +21,7 @@ import java.util.Optional;
         modid = VeggyCraft.MOD_ID,
         value = Dist.CLIENT
 )
-public final class NeoForgeBuiltinPacks {
+public final class NeoForgeClientEvents {
     @SubscribeEvent
     public static void registerPacks(AddPackFindersEvent event) {
         if (event.getPackType() != PackType.CLIENT_RESOURCES) return;
@@ -58,5 +57,12 @@ public final class NeoForgeBuiltinPacks {
         if (pack != null) {
             event.addRepositorySource(consumer -> consumer.accept(pack));
         }
+    }
+
+    @SubscribeEvent
+    public static void onClientSetup(FMLClientSetupEvent event) {
+        event.enqueueWork(() -> {
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.MOLASSES_BLOCK.get(), ChunkSectionLayer.TRANSLUCENT);
+        });
     }
 }

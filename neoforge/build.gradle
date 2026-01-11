@@ -67,7 +67,10 @@ dependencies {
     implementation project(":common")
     runtimeOnly project(":common")
 
-    modRuntimeOnly "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
+    modCompileOnly "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
+
+//    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
+    modCompileOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
 
     // Architectury API. This is optional, and you can comment it out if you don't need it.
     modImplementation "dev.architectury:architectury-neoforge:$rootProject.architectury_api_version"

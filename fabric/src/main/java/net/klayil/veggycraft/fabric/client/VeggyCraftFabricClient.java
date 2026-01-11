@@ -1,14 +1,15 @@
 package net.klayil.veggycraft.fabric.client;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.klayil.veggycraft.BuiltinResourcePacks;
 import net.klayil.veggycraft.VeggyCraft;
 
-import net.klayil.veggycraft.recipe.ModRecipes;
-import net.klayil.veggycraft.recipe.ReiClientPlugin;
+import net.klayil.veggycraft.block.ModBlocks;
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
@@ -16,11 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 public final class VeggyCraftFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-
-//        VeggyCraft.LOGGER.warn("#PLUGIN: %s".formatted(new net.klayil.veggycraft.compat.JEIPlugin().toString()));
-
-//        ReiClientPlugin a = new ReiClientPlugin();
-
+        BlockRenderLayerMap.putBlock(ModBlocks.MOLASSES_BLOCK.get(), ChunkSectionLayer.TRANSLUCENT);
 
         BuiltinResourcePacks.init(() -> ResourceManagerHelper.registerBuiltinResourcePack(
                 ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "veggycraft_overrides"),

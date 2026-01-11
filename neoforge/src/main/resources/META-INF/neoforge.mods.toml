@@ -43,25 +43,11 @@ ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.veggycraft]]
-type="incompatible"
-versionRange="(0.1,)"
-ordering="NONE"
-side="CLIENT"
-
-[[dependencies.veggycraft]]
-modId="appleskin"
-mandatory=false
-versionRange="[3.0.7,)"
-ordering="NONE"
-side="CLIENT"
-
-#[[dependencies.veggycraft]]
-#modId="cloth"
-#type = "required"
-#mandatory=false
-#versionRange="[3.0.7,)"
-#ordering="NONE"
-#side="BOTH"
+modId = "jei"
+type = "incompatible"
+versionRange = "[0.1,)"
+ordering = "AFTER"
+side = "BOTH"
 
 [[mixins]]
 config = "veggycraft.mixins.json"
