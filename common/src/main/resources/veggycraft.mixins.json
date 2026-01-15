@@ -7,9 +7,14 @@
   ],
   "mixins": [
     "AnvilMenuMixin",
+    "AxeItemAccessor",
+    "CopperGollumMixin",
     "CrafterBlockMixin",
+    "FireBlockAccessor",
     "GrindstoneMenuMixin",
-    "HoneyBlockMixin"
+    "HoneyBlockMixin",
+    "ItemEntityMixin",
+    "ItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1

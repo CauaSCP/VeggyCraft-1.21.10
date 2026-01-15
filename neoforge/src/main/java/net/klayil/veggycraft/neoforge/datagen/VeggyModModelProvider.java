@@ -19,6 +19,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.data.PackOutput;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SaplingBlock;
 import org.jetbrains.annotations.NotNull;
 
 import net.minecraft.client.data.models.model.ItemModelUtils;
@@ -47,33 +49,79 @@ public class VeggyModModelProvider extends ModelProvider {
 
         if (molassesBlock_ != null) {
             Block molassesBlock = molassesBlock_;
-
-            TextureMapping textureMapping = new TextureMapping()
-                    .put(ModModelsTemplates.PARTICLE,
-                            TextureMapping.getBlockTexture(molassesBlock, "_top"))
-                    .put(ModModelsTemplates.DOWN,
-                            TextureMapping.getBlockTexture(molassesBlock, "_bottom"))
-                    .put(ModModelsTemplates.UP,
-                            TextureMapping.getBlockTexture(molassesBlock, "_top"))
-                    .put(ModModelsTemplates.SIDE,
-                            TextureMapping.getBlockTexture(molassesBlock, "_side"));
-
-            ResourceLocation modelId = ModelLocationUtils.getModelLocation(molassesBlock);
-
-            ModModelsTemplates.CUSTOM_MOLASSES_TEMPLATE.create(
-                    modelId,
-                    textureMapping,
-                    blockModelGenerators.modelOutput
-            );
-
-//            var theBlockItem = ModBlocks.MOLASSES_BLOCK_ITEM.getOrNull();
 //
-//            assert theBlockItem != null;
+//            TextureMapping textureMapping = new TextureMapping()
+//                    .put(ModModelsTemplates.PARTICLE,
+//                            TextureMapping.getBlockTexture(molassesBlock, "_top"))
+//                    .put(ModModelsTemplates.DOWN,
+//                            TextureMapping.getBlockTexture(molassesBlock, "_bottom"))
+//                    .put(ModModelsTemplates.UP,
+//                            TextureMapping.getBlockTexture(molassesBlock, "_top"))
+//                    .put(ModModelsTemplates.SIDE,
+//                            TextureMapping.getBlockTexture(molassesBlock, "_side"));
+//
+//            ResourceLocation modelId = ModelLocationUtils.getModelLocation(molassesBlock);
+//
+//            ModModelsTemplates.CUSTOM_MOLASSES_TEMPLATE.create(
+//                    modelId,
+//                    textureMapping,
+//                    blockModelGenerators.modelOutput
+//            );
+
+            boolean carnauba_generating = true;
+
+            for (RegistrySupplier<Block> blockRegistrySupplier : ModBlocks.CARNAUBA_WOODS.values()) {
+                if (blockRegistrySupplier.getOrNull() == null) {
+                    carnauba_generating = false;
+                    break;
+                }
+            }
+
+            if (carnauba_generating) {
+                blockModelGenerators.woodProvider(ModBlocks.CARNAUBA_WOODS.get("log").get())
+                        .logWithHorizontal(ModBlocks.CARNAUBA_WOODS.get("log").get())
+                        .wood(ModBlocks.CARNAUBA_WOODS.get("wood").get());
+
+                blockModelGenerators.woodProvider(ModBlocks.CARNAUBA_WOODS.get("stripped_log").get())
+                        .logWithHorizontal(ModBlocks.CARNAUBA_WOODS.get("stripped_log").get())
+                        .wood(ModBlocks.CARNAUBA_WOODS.get("stripped_wood").get());
+
+
+                Block planks = ModBlocks.CARNAUBA_WOODS.get("planks").get();
+                blockModelGenerators.createTrivialCube(planks);
+                blockModelGenerators.registerSimpleItemModel(planks, ModelLocationUtils.getModelLocation(planks));
+
+                Block leaves = ModBlocks.CARNAUBA_WOODS.get("leaves").get();
+                blockModelGenerators.createTrivialBlock(leaves, TexturedModel.LEAVES);
+                blockModelGenerators.registerSimpleItemModel(leaves, ModelLocationUtils.getModelLocation(leaves));
+
+                SaplingBlock sapling = (SaplingBlock) ModBlocks.CARNAUBA_WOODS.get("sapling").get();
+
+                blockModelGenerators.createCrossBlock(sapling,  BlockModelGenerators.PlantType.TINTED);
+
+                blockModelGenerators.registerSimpleItemModel(
+                        sapling.asItem(), BlockModelGenerators.PlantType.NOT_TINTED.createItemModel(
+                                blockModelGenerators, sapling
+                        )
+                );
+            }
+
+            var theBlockItem = ModBlocks.MOLASSES_BLOCK_ITEM.getOrNull();
+//
+            assert theBlockItem != null;
 
 //            blockModelGenerators.createFlatItemModelWithBlockTexture(theBlockItem, molassesBlock);
-            blockModelGenerators.registerSimpleFlatItemModel(molassesBlock);
 
-            VeggyCraft.LOGGER.info("#CREATED: molasses block model");
+            blockModelGenerators.createFlatItemModelWithBlockTexture(theBlockItem, molassesBlock);
+
+//            blockModelGenerators.createTrivialCube(molassesBlock);
+
+//            blockModelGenerators.createFlatItemModelWithBlockTexture(theBlockItem, molassesBlock);
+//            blockModelGenerators.registerSimpleItemModel(theBlockItem, blockModelGenerators.createFlatItemModelWithBlockTexture(theBlockItem, molassesBlock));
+
+//            blockModelGenerators.registerSimpleFlatItemModel(molassesBlock);
+
+//            VeggyCraft.LOGGER.info("#CREATED: molasses block model");
         }
 
         for (int color_id = 0; color_id < 16; color_id++) {
@@ -102,6 +150,8 @@ public class VeggyModModelProvider extends ModelProvider {
                 curBlockItem
             );
         }
+
+
 
 //        blockModelGenerators.createTrivialCube(ModBlocks.MOLASSES_BLOCK.get());
 //        blockModelGenerators.createFlatItemModelWithBlockTexture(ModBlocks.MOLASSES_BLOCK_ITEM.get(), ModBlocks.MOLASSES_BLOCK.get());
@@ -196,6 +246,14 @@ public class VeggyModModelProvider extends ModelProvider {
         registerFlatItemModel(ModItems.DIAMOND_CARBON_CUTTER, ModelTemplates.FLAT_HANDHELD_ITEM);
 
         registerFlatItemModel(ModItems.FLOUR_BAG, ModelTemplates.FLAT_ITEM);
+
+        registerFlatItemModel(ModItems.SUGAR_BAG, ModelTemplates.FLAT_ITEM);
+
+        registerFlatItemModel(ModItems.DRIED_MOLASSES, ModelTemplates.FLAT_ITEM);
+
+        registerFlatItemModel(ModItems.CARNAUBA_WAX, ModelTemplates.FLAT_ITEM);
+
+        registerFlatItemModel(ModItems.CARNAUBA_POWDER, ModelTemplates.FLAT_ITEM);
 
         ModelTemplates.FLAT_ITEM.create(
                 ResourceLocation.withDefaultNamespace("carbon_black_dye").withPrefix("item/"),

@@ -7,7 +7,6 @@
   ],
   "mixins": [
     "CraftingMenuMixin",
-    "CustomTabsMethodsMixin",
     "HoneyBlockCloneMixin",
     "InventoryMenuMixin",
     "RepairableItemFabricMixin",

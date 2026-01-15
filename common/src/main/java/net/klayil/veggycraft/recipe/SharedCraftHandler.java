@@ -5,6 +5,7 @@ import net.klayil.veggycraft.component.ModDataComponentTypes;
 import net.klayil.veggycraft.item.ModItems;
 import net.klayil.veggycraft.item.RepairableItemsExtension;
 import net.klayil.veggycraft.item.UnrepairableDamageableItems;
+import net.klayil.veggycraft.tags.ModItemTags;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
@@ -26,6 +27,17 @@ public final class SharedCraftHandler {
         Item remainder = inputItem.getCraftingRemainder().getItem();
         ItemStack replace = new ItemStack(remainder);
 
+
+        if (stack.is(ModItemTags.TOOLS_VIA_MOD)) {
+            replace = stack.copy();
+
+            replace.setDamageValue(replace.getDamageValue() + 1);
+            replace.setCount(2);
+
+            if (replace.getDamageValue() >= replace.getMaxDamage()) replace = ItemStack.EMPTY;
+
+            return replace;
+        }
 
         if (!new ItemStack(remainder).isEmpty()) {
             return replace;

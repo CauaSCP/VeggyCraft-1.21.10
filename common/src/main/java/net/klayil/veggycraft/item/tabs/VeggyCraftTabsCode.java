@@ -30,6 +30,8 @@ public class VeggyCraftTabsCode extends VeggyCraftCreativeTabsToGet {
                         () -> new ItemStack(BLACK_OF_COAL_CARBON),
                         () -> BLACK_DYE_STACK,
                         () -> new ItemStack(THIS_MOD_FLOUR),
+                        () -> new ItemStack(CARNAUBA_POWDER),
+                        () -> new ItemStack(CARNAUBA_WAX),
                         () -> {
                             ItemStack bundledAtMaximum = new ItemStack(
                                     FLOUR_BAG

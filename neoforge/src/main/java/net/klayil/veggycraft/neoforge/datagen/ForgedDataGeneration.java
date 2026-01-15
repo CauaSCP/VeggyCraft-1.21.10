@@ -3,7 +3,11 @@ package net.klayil.veggycraft.neoforge.datagen;
 import net.klayil.veggycraft.VeggyCraft;
 import net.klayil.veggycraft.datagen.tags.ModBlockTagsProvider;
 import net.klayil.veggycraft.datagen.tags.ModItemTagsProvider;
+import net.klayil.veggycraft.world.ModConfiguredFeatures;
+import net.klayil.veggycraft.world.ModPlacedFeatures;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Registry;
+import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -13,24 +17,21 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
+import javax.xml.crypto.Data;
 import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 @EventBusSubscriber(modid = VeggyCraft.MOD_ID)
 public class ForgedDataGeneration {
-    /*    ADD VeggyModModelProvider RUNNING HERE    */
-
     private static boolean pathExists(String path) {
         final Path pathVar = Paths.get(path);
         return Files.exists(pathVar) & Files.isDirectory(pathVar);
@@ -117,6 +118,11 @@ public class ForgedDataGeneration {
             );
         }
 
+        RegistrySetBuilder builder = new RegistrySetBuilder()
+                .add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap)
+                .add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
+        event.createDatapackRegistryObjects(builder, Set.of(VeggyCraft.MOD_ID));
+
         generator.addProvider(true, new LootTableProvider(packOutput, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
 
@@ -132,7 +138,7 @@ public class ForgedDataGeneration {
     @SubscribeEvent
     public static void gatherServerData(GatherDataEvent.Server event) {
         DataGenerator generator = event.getGenerator();
-        PackOutput packOutput = generator.getPackOutput();
+//        PackOutput packOutput = generator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
         VeggyCraft.LOGGER.info("#DONE: SERVER | "+lookupProvider.toString());

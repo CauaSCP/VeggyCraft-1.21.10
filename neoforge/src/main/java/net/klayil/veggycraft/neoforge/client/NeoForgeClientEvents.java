@@ -63,6 +63,7 @@ public final class NeoForgeClientEvents {
     public static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.MOLASSES_BLOCK.get(), ChunkSectionLayer.TRANSLUCENT);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.CARNAUBA_WOODS.get("sapling").get(), ChunkSectionLayer.CUTOUT);
         });
     }
 }

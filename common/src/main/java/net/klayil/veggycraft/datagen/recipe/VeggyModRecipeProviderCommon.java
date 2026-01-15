@@ -13,6 +13,7 @@ import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.crafting.Recipe;
 
 import net.klayil.veggycraft.component.ModDataComponentTypes;
@@ -40,6 +41,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import net.minecraft.advancements.Criterion;
 
 //import net.fabricmc.fabric.api.recipe.v1.ingredient.DefaultCustomIngredients;
 
@@ -127,6 +129,13 @@ public class VeggyModRecipeProviderCommon extends RecipeProvider {
 
     public void buildRecipesCommon() {
         ItemStack bag;
+
+        shapedLocal(RecipeCategory.FOOD, new ItemStack(ModItems.BROWN_SUGAR))
+                .pattern("SB")
+                .define('S', ModItemTags.SWORDS)
+                .define('B', ModItems.DRIED_MOLASSES.get())
+                .unlockedBy("has_dried_mol", has(ModItems.DRIED_MOLASSES.get()))
+                .save(output, ResourceKey.create(Registries.RECIPE, ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "brown_sugar_from_bottle")));
 
         @NotNull
         Ingredient ing = Ingredient.of(Items.WHEAT);
@@ -345,6 +354,90 @@ public class VeggyModRecipeProviderCommon extends RecipeProvider {
 
 
         }
+
+
+
+        molassesBlock = ModBlocks.MOLASSES_BLOCK_ITEM.getOrNull();
+        if (molassesBlock != null) {
+
+            cookingRecipeFood(new ItemStack(ModItems.SUGAR_BAG), molassesBlock, 0.8f, 20*15);
+
+            hasBl(shapedLocal(RecipeCategory.FOOD, new ItemStack(ModItems.MOLASSES_BOTTLE, 8))
+                    .pattern("bbb")
+                    .pattern("bMb")
+                    .pattern("bbb")
+                    .define('b', Items.GLASS_BOTTLE)
+                    .define('M', molassesBlock)).save(output);
+
+        }
+
+        shapedLocal(RecipeCategory.FOOD, new ItemStack(ModItems.CHOPPED_APPLE)).pattern("SAB").define('S', ModItemTags.SWORDS)
+                .define('A', Items.APPLE)
+                .define('B', Items.BOWL)
+                .unlockedBy("has_apple", has(Items.APPLE))
+                .save(output);
+
+
+        ItemStack choppedApple = new ItemStack(ModItems.CHOPPED_APPLE);
+
+        SimpleCookingRecipeBuilder.smelting(ComponentIngredientOf(choppedApple), RecipeCategory.FOOD, ModItems.APPLE_SAUCE.get(), 0.5f, 335)
+                .unlockedBy("has_chopped", has(choppedApple.getItem()))
+                .save(output, "%s_furnace".formatted("apple_sauce"));
+
+        SimpleCookingRecipeBuilder.smoking(ComponentIngredientOf(choppedApple), RecipeCategory.FOOD, ModItems.APPLE_SAUCE.get(), 0.5f, 336 / 2)
+                .unlockedBy("has_chopped", has(choppedApple.getItem()))
+                .save(output, "%s_smoker".formatted("apple_sauce"));
+
+        ShapelessRecipeBuilder recipeBuilder = shapeless(RecipeCategory.FOOD, new ItemStack(ModItems.SUGAR_BAG))
+                .requires(Items.SUGAR, 8);
+
+        hasBl(shapeless(RecipeCategory.FOOD, new ItemStack(ModBlocks.MOLASSES_BLOCK_ITEM))
+                .requires(ModItems.MOLASSES_BOTTLE.get(), 8)).save(output);
+
+        Item ice = Items.ICE;
+
+        shapeless(RecipeCategory.FOOD, new ItemStack(ModItems.BROWN_SUGAR, 8))
+                .requires(ModItems.MOLASSES_BOTTLE.get(), 4).requires(ice)
+                .requires(ModItems.MOLASSES_BOTTLE.get(), 4)
+                .unlockedBy("has_ice", has(ice))
+                .save(output, ResourceKey.create(Registries.RECIPE, ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "sugar_brown")));
+
+        for (int i = 1; i < ColoursList.listOfColours.length+1; i++) {
+            recipeBuilder = recipeBuilder.unlockedBy("has_bundle_%d".formatted(i), has(
+                    BuiltInRegistries.ITEM.getValue(
+                            ResourceLocation.withDefaultNamespace(
+                                    ColoursList.listOfColours[i-1]+"_bundle"
+                            )
+                    )
+            ));
+        }
+
+        recipeBuilder.unlockedBy("has_bundle", has(Items.BUNDLE)).save(output);
+
+
+        SimpleCookingRecipeBuilder.smelting(ComponentIngredientOf(new ItemStack(ModItems.CARNAUBA_POWDER)),
+                        RecipeCategory.MISC, ModItems.CARNAUBA_WAX.get(), 0.3f, 45)
+                .unlockedBy("has_power_c", has(new ItemStack(ModItems.CARNAUBA_POWDER).getItem()))
+                .save(output);
+
+        TagKey<Item> axes = TagKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace(
+                "axes"
+        ));
+
+        shapeless(RecipeCategory.BUILDING_BLOCKS, new ItemStack(ModItems.CARNAUBA_POWDER))
+                .requires(axes).requires(ModBlocks.CARNAUBA_WOODS.get("leaves").get().asItem())
+                .unlockedBy("has_an_axe", has(axes))
+                .save(output);
+    }
+
+    ItemLike molassesBlock;
+    int hasMolassesBlockIndex = 1;
+    public RecipeBuilder hasBl(RecipeBuilder recp) {
+        recp = recp.unlockedBy("has_block_m"+hasMolassesBlockIndex, has(molassesBlock));
+
+        hasMolassesBlockIndex++;
+
+        return recp;
     }
 
 //    boolean whiteBedRecipeDone = false;

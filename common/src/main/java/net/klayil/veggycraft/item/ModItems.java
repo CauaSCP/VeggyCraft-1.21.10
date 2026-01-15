@@ -59,6 +59,9 @@ public class ModItems {
 
     public static ArrayList<RegistrySupplier<Item>> modalFabricItems = new ArrayList<>();
 
+    public static String waxID = "carnauba_wax";
+    public static RegistrySupplier<Item> CARNAUBA_WAX;
+    public static RegistrySupplier<Item> CARNAUBA_POWDER;
 
     public static RegistrySupplier<Item> THIS_MOD_FLOUR;
     public static RegistrySupplier<Item> SEITAN_COOKED_BEEF;
@@ -76,6 +79,15 @@ public class ModItems {
 
     public static RegistrySupplier<Item> BROWN_SUGAR;
     public static RegistrySupplier<Item> MOLASSES_BOTTLE;
+    public static RegistrySupplier<Item> DRIED_MOLASSES;
+
+    public static RegistrySupplier<Item> APPLE_SAUCE;
+    public static RegistrySupplier<Item> CHOPPED_APPLE;
+
+    public static RegistrySupplier<Item> SUGAR_BAG;
+
+    @Nullable
+    public static Item BEFORE = null;
 
     public static DeferredRegister<Item> ITEMS = KlayApiModItems.createItemsRegister(VeggyCraft.MOD_ID);
 
@@ -178,7 +190,10 @@ public class ModItems {
                 ));
     }
 
+
     public static void initItems() {
+        String m = VeggyCraft.MOD_ID;
+
 //        KlayApiModItems.initItems();
 
         BLACK_DYE_STACK = new ItemStack(Items.BLACK_DYE);
@@ -195,19 +210,33 @@ public class ModItems {
                 .append(Component.translatable("item.veggycraft.carbon_space_2"))
                 .append(Component.translatable("item.veggycraft.carbon_suffix"));
 
-        BROWN_SUGAR = createItem("brown_sugar", null, VeggyCraft.MOD_ID);
-        MOLASSES_BOTTLE = createItem("molasses_bottle", null, ModItems::honeyBottleProps, VeggyCraft.MOD_ID);
+
+
+        var n = "brown_sugar_in_bottle";
+        DRIED_MOLASSES = createItem(
+                n,
+ null,
+                () -> KlayApiModItems.baseProperties(n, m).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE),
+                m
+        );
+
+        BROWN_SUGAR = createItem("brown_sugar", null, m);
+        MOLASSES_BOTTLE = createItem("molasses_bottle", null, ModItems::honeyBottleProps, m);
 
         BLACK_DYE_STACK.set(DataComponents.CUSTOM_MODEL_DATA, data);
         BLACK_DYE_STACK.set(DataComponents.ITEM_NAME, dyeName);
 
-        SHINY_OF_DIAMOND_COAL_CARBON = KlayApiModItems.createItem("shiny_of_diamond_coal_carbon", CreativeModeTabs.INGREDIENTS, VeggyCraft.MOD_ID);
+        SHINY_OF_DIAMOND_COAL_CARBON = KlayApiModItems.createItem("shiny_of_diamond_coal_carbon", CreativeModeTabs.INGREDIENTS, m);
 
         final String flourName = "wheat_flour";
-        THIS_MOD_FLOUR = KlayApiModItems.createItem(flourName, null, () -> KlayApiModItems.baseProperties(flourName, VeggyCraft.MOD_ID).stacksTo(8), VeggyCraft.MOD_ID);
+        THIS_MOD_FLOUR = KlayApiModItems.createItem(flourName, null, () -> KlayApiModItems.baseProperties(flourName, m).stacksTo(8), m);
+
+        var p = "carnauba_powder";
+        CARNAUBA_POWDER = KlayApiModItems.createItem(p, null, () -> KlayApiModItems.baseProperties(p, m), m);
+        CARNAUBA_WAX = KlayApiModItems.createItem(waxID, null, () -> KlayApiModItems.baseProperties(waxID, m), m);
 
         final FoodProperties SEITAN_COOKED_BEEF_PROPS = new FoodProperties(5 * 2, 7 * 2, false);
-        SEITAN_COOKED_BEEF = KlayApiModItems.createItem("seitan_cooked_beef", null, () -> KlayApiModItems.baseProperties("seitan_cooked_beef", VeggyCraft.MOD_ID).food(SEITAN_COOKED_BEEF_PROPS), VeggyCraft.MOD_ID);
+        SEITAN_COOKED_BEEF = KlayApiModItems.createItem("seitan_cooked_beef", null, () -> KlayApiModItems.baseProperties("seitan_cooked_beef", m).food(SEITAN_COOKED_BEEF_PROPS), m);
 
 //        currentItemName = "08_items_stacked_of_flour";
         FLOUR_BAG = createDamageableItem("items_stacked_of_flour", 1, 64, null);
@@ -219,7 +248,7 @@ public class ModItems {
 //        }
 
 
-        BLACK_OF_COAL_CARBON = KlayApiModItems.createItem("black_of_coal_carbon", null, VeggyCraft.MOD_ID);
+        BLACK_OF_COAL_CARBON = KlayApiModItems.createItem("black_of_coal_carbon", null, m);
 
         COAL_CARBON_CUTTER = createDamageableItem("coal_carbon_cutter", 1, 23, VeggyCraftCreativeTabsToGet.CARBON_AND_DYES_TAB, () -> BLACK_OF_COAL_CARBON.get());
         DIAMOND_CARBON_CUTTER = createDamageableItem("diamond_carbon_cutter", 1, 813, VeggyCraftCreativeTabsToGet.CARBON_AND_DYES_TAB, () -> Items.DIAMOND);
@@ -228,13 +257,13 @@ public class ModItems {
         DRY_RAW_SEITAN_0 = createDamageableItem("dry_raw_seitan", 1, 3, null);
 //        DRY_RAW_SEITAN_1 = createDamageableItem("dry_raw_seitan_1", 1, 3, null);
 //        DRY_RAW_SEITAN_2 = createDamageableItem("dry_raw_seitan_2", 1, 3, null);
-        WET_RAW_SEITAN = KlayApiModItems.createItem("wet_raw_seitan", null, VeggyCraft.MOD_ID);
+        WET_RAW_SEITAN = KlayApiModItems.createItem("wet_raw_seitan", null, m);
 
         VeggyMeats = new RegistrySupplier[]{SEITAN_COOKED_BEEF};
 
 //        int index = 0;
 
-        for (int i = ModBlocks.modalFabrics.size()-1; i >= 0; i--) {
+        for (int i = 0; i < ModBlocks.modalFabrics.size(); i++) {
             RegistrySupplier<Block> curModal = ModBlocks.modalFabrics.get(i);
             RegistrySupplier<Item> curItem = createBlockItemWithCustomName(
                     curModal.getKey().location().getPath() //"%s_item".formatted(curModal.getKey().location().getPath())
@@ -249,16 +278,44 @@ public class ModItems {
 
             modalFabricItems.add(curItem);
 
-            CustomTabsMethods.addToTab(CreativeModeTabs.COLORED_BLOCKS, curItem, Items.PINK_GLAZED_TERRACOTTA);
+            CustomTabsMethods.addToTab(CreativeModeTabs.COLORED_BLOCKS, CustomTabsMethods.BEFORE, curItem, Items.GLASS);
 //
 
 //            createDamageableItem("%s_item".formatted(curModal.getKey().location().getPath()), 64, 1000, CreativeModeTabs.INGREDIENTS);
         }
 
 
-
         KlayApiModItems.createItemsOfBlocks();
 
+        CustomTabsMethods.addToTab(
+                CreativeModeTabs.BUILDING_BLOCKS,
+                CustomTabsMethods.BEFORE,
+                AllKlayApiItems.get(
+                        "BuiltInRegistries.BLOCK.getKey(planks).toString()"
+                ),
+                Items.CRIMSON_STEM
+        );
+
+        String a = "apple";
+        String c = "chopped_";
+        final String s = "_sauce";
+
+        APPLE_SAUCE = createItem(a+s, null, ()-> baseProperties(a+s, m), m);
+        CHOPPED_APPLE = createItem(c+a, null, ()-> baseProperties(c+a, m).usingConvertsTo(Items.BOWL).food(Foods.APPLE), m);
+
+        String sug = "sugar_bag";
+
+        SUGAR_BAG = createItem(sug, null, () -> baseProperties(sug, m).stacksTo(8), m);
+        CustomTabsMethods.addToTab(CreativeModeTabs.INGREDIENTS, CustomTabsMethods.AFTER, SUGAR_BAG, Items.SUGAR);
+
+//        __BEFORE = createItem("__replacements_icon__", null, m);
+
         ITEMS.register();
+
+//        BEFORE = __BEFORE.getOrNull();
+
+//        CustomTabsMethods.addToTab(VeggyCraftCreativeTabsToGet.REPLACEMENTS, __BEFORE, BEFORE);
     }
+
+    public static RegistrySupplier<Item> __BEFORE;
 }

@@ -18,6 +18,7 @@ public final class VeggyCraftFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         BlockRenderLayerMap.putBlock(ModBlocks.MOLASSES_BLOCK.get(), ChunkSectionLayer.TRANSLUCENT);
+        BlockRenderLayerMap.putBlock(ModBlocks.CARNAUBA_WOODS.get("sapling").get(), ChunkSectionLayer.CUTOUT);
 
         BuiltinResourcePacks.init(() -> ResourceManagerHelper.registerBuiltinResourcePack(
                 ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "veggycraft_overrides"),
@@ -27,5 +28,6 @@ public final class VeggyCraftFabricClient implements ClientModInitializer {
                 Component.translatable("veggycraft_overrides"),
                 ResourcePackActivationType.DEFAULT_ENABLED
         ));
+
     }
 }
