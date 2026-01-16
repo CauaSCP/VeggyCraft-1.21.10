@@ -4,6 +4,7 @@ package net.klayil.veggycraft;
 import com.mojang.serialization.Lifecycle;
 import dev.architectury.event.events.common.LifecycleEvent;
 import net.klayil.veggycraft.block.ModBlocks;
+import net.klayil.veggycraft.compat.BedCompat;
 import net.klayil.veggycraft.component.ModDataComponentTypes;
 import net.klayil.veggycraft.item.ModItems;
 
@@ -38,6 +39,8 @@ public final class VeggyCraft {
         VeggyCraftTabsCode.initTabs();
         ModBlocks.initBlocks();
         ModItems.initItems();
+
+        BedCompat.registerBed(ModBlocks.STRAW_BED.get());
 
         ModItemTags.init();
 

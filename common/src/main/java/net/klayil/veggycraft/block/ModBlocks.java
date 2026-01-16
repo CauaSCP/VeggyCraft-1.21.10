@@ -20,7 +20,9 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import org.jetbrains.annotations.Nullable;
 
@@ -33,6 +35,7 @@ public class ModBlocks {
     public static RegistrySupplier<Block> MOLASSES_BLOCK;
     public static RegistrySupplier<Item> MOLASSES_BLOCK_ITEM;
     public static HashMap<String, RegistrySupplier<Block>> CARNAUBA_WOODS = new HashMap<>();
+    public static RegistrySupplier<Block> STRAW_BED;
 
     private static RegistrySupplier[] createHoneyBlockClone(String name, ResourceKey<CreativeModeTab> creativeModeTab, BlockBehaviour.Properties properties) {
         String mod_id = VeggyCraft.MOD_ID;
@@ -73,6 +76,19 @@ public class ModBlocks {
                     VeggyCraft.MOD_ID);
             modalFabrics.add(tmp);
         }
+
+        STRAW_BED = BLOCKS.register(
+                "straw_bed",
+                () -> new ModBedBlock(BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(0.2F).noOcclusion().ignitedByLava().pushReaction(PushReaction.DESTROY).setId(
+                        ResourceKey.create(
+                                Registries.BLOCK,
+                                ResourceLocation.fromNamespaceAndPath(
+                                        VeggyCraft.MOD_ID,
+                                        "straw_bed"
+                                )
+                        )
+                ))
+        );
 
         FireBlock fireBlock = (FireBlock) Blocks.FIRE;
 

@@ -39,6 +39,7 @@ import net.minecraft.world.item.Items;
 
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import net.minecraft.advancements.Criterion;
@@ -309,6 +310,24 @@ public class VeggyModRecipeProviderCommon extends RecipeProvider {
                 .save(output);
 
         cookingRecipeFood(new ItemStack(ModItems.WET_RAW_SEITAN), ModItems.SEITAN_COOKED_BEEF.get(), 0.35f, 200);
+
+        this.shaped(RecipeCategory.FOOD, Blocks.CAKE)
+                .define('A', Items.MILK_BUCKET)
+                .define('B', ModItems.BROWN_SUGAR.get())
+                .define('C', Items.WHEAT)
+                .define('E', ItemTags.EGGS)
+                .pattern("AAA")
+                .pattern("BEB")
+                .pattern("CCC")
+                .unlockedBy("has_egg", this.has(ItemTags.EGGS))
+                .save(output, "veggycraft:cake_brown_sugar");
+        this.shapeless(RecipeCategory.FOOD, Items.PUMPKIN_PIE)
+                .requires(Blocks.PUMPKIN)
+                .requires(ModItems.BROWN_SUGAR.get())
+                .requires(ItemTags.EGGS)
+                .unlockedBy("has_carved_pumpkin", this.has(Blocks.CARVED_PUMPKIN))
+                .unlockedBy("has_pumpkin", this.has(Blocks.PUMPKIN))
+                .save(output, "veggycraft:pie_brown_sugar");
 
         Item dye;
         String curColor = null;

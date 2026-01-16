@@ -32,6 +32,8 @@ public class VeggyCraftTabsCode extends VeggyCraftCreativeTabsToGet {
                         () -> new ItemStack(THIS_MOD_FLOUR),
                         () -> new ItemStack(CARNAUBA_POWDER),
                         () -> new ItemStack(CARNAUBA_WAX),
+                        () -> new ItemStack(CHOPPED_APPLE),
+                        () -> new ItemStack(APPLE_SAUCE),
                         () -> {
                             ItemStack bundledAtMaximum = new ItemStack(
                                     FLOUR_BAG
@@ -49,6 +51,9 @@ public class VeggyCraftTabsCode extends VeggyCraftCreativeTabsToGet {
                         () -> new ItemStack(SEITAN_COOKED_BEEF),
                         () -> new ItemStack(BROWN_SUGAR),
                         () -> new ItemStack(MOLASSES_BOTTLE),
+                        () -> new ItemStack(
+                                STRAW_BED
+                        )
                 }).toList()
         );
 

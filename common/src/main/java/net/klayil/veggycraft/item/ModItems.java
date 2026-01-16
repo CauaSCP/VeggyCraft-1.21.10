@@ -86,6 +86,8 @@ public class ModItems {
 
     public static RegistrySupplier<Item> SUGAR_BAG;
 
+    public static RegistrySupplier<Item> STRAW_BED;
+
     @Nullable
     public static Item BEFORE = null;
 
@@ -219,6 +221,9 @@ public class ModItems {
                 () -> KlayApiModItems.baseProperties(n, m).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE),
                 m
         );
+
+        var b = "straw_bed";
+        STRAW_BED = ITEMS.register(b, () -> new BlockItem(ModBlocks.STRAW_BED.get(), baseProperties(b, m)));
 
         BROWN_SUGAR = createItem("brown_sugar", null, m);
         MOLASSES_BOTTLE = createItem("molasses_bottle", null, ModItems::honeyBottleProps, m);

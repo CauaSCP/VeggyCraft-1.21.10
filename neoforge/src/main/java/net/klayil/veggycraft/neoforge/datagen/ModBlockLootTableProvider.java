@@ -42,6 +42,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 ModBlocks.MOLASSES_BLOCK_ITEM.get()
         );
 
+        dropSelf(ModBlocks.STRAW_BED.get());
+
         for (String key : ModBlocks.CARNAUBA_WOODS.keySet()) {
             @Nullable Block block = ModBlocks.CARNAUBA_WOODS.get(key).getOrNull();
 

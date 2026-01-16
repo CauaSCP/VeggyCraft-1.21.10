@@ -51,7 +51,7 @@ public class CustomTabsMethods {
 
 
     protected void addToTabNonStatic(@NotNull ResourceKey<CreativeModeTab> creativeModeTab, @NotNull ToPutAt ENUM, RegistrySupplier<Item> itemToAdd, @Nullable Item... toAddAfters) {
-        if (toAddAfters.length > 0) {
+        if (toAddAfters.length > 0) { try {
             addListToHashMap(creativeModeTab);
 
             if (toAddAfters[0] == null) return;
@@ -61,6 +61,13 @@ public class CustomTabsMethods {
             to_add_afters.get(creativeModeTab).add(listToAdd);
 
 //            VeggyCraft.LOGGER.info("#Size: %d".formatted(to_add_afters.keySet().size()));
+        } catch (Exception e) {
+            if (e.getMessage() == null) return;
+
+            if (!e.getMessage().toLowerCase().contains("registry object not present")) {
+                throw e;
+            }
+        }
         }
     }
 

@@ -222,6 +222,9 @@ public class VeggyModModelProvider extends ModelProvider {
         registerFlatItemModel(ModItems.THIS_MOD_FLOUR, ModelTemplates.FLAT_ITEM);
         registerFlatItemModel(ModItems.WET_RAW_SEITAN, ModelTemplates.FLAT_ITEM);
 
+        registerFlatItemModel(ModItems.APPLE_SAUCE, ModelTemplates.FLAT_ITEM);
+        registerFlatItemModel(ModItems.CHOPPED_APPLE, ModelTemplates.FLAT_ITEM);
+
 //        for (int i = 0; i < 3; i++) {
 //            final Item item = BuiltInRegistries.ITEM.getValue(ResourceLocation.fromNamespaceAndPath(
 //                    VeggyCraft.MOD_ID,
