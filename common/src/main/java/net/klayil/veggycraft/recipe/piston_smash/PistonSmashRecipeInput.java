@@ -1,4 +1,4 @@
-package net.klayil.veggycraft.recipe;
+package net.klayil.veggycraft.recipe.piston_smash;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeInput;

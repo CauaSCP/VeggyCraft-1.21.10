@@ -9,6 +9,9 @@ import net.klayil.veggycraft.BuiltinResourcePacks;
 import net.klayil.veggycraft.VeggyCraft;
 
 import net.klayil.veggycraft.block.ModBlocks;
+import net.klayil.veggycraft.block.entities.ModBedRenderer;
+import net.klayil.veggycraft.fabric.blocks.entities.ModBlockEntityTypesFabric;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -19,6 +22,7 @@ public final class VeggyCraftFabricClient implements ClientModInitializer {
     public void onInitializeClient() {
         BlockRenderLayerMap.putBlock(ModBlocks.MOLASSES_BLOCK.get(), ChunkSectionLayer.TRANSLUCENT);
         BlockRenderLayerMap.putBlock(ModBlocks.CARNAUBA_WOODS.get("sapling").get(), ChunkSectionLayer.CUTOUT);
+        BlockRenderLayerMap.putBlock(ModBlocks.EVEN_STRIPPED_BIRCH_LOG.get(), ChunkSectionLayer.CUTOUT);
 
         BuiltinResourcePacks.init(() -> ResourceManagerHelper.registerBuiltinResourcePack(
                 ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "veggycraft_overrides"),
@@ -29,5 +33,9 @@ public final class VeggyCraftFabricClient implements ClientModInitializer {
                 ResourcePackActivationType.DEFAULT_ENABLED
         ));
 
+        BlockEntityRenderers.register(
+                ModBlockEntityTypesFabric.STRAW_BED.get(),
+                ModBedRenderer::new
+        );
     }
 }

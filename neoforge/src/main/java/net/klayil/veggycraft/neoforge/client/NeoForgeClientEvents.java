@@ -2,6 +2,7 @@ package net.klayil.veggycraft.neoforge.client;
 
 import net.klayil.veggycraft.VeggyCraft;
 import net.klayil.veggycraft.block.ModBlocks;
+import net.klayil.veggycraft.neoforge.blocks.entites.ModBlockEntityTypesNeoForge;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.network.chat.Component;
@@ -13,7 +14,9 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
+import net.klayil.veggycraft.block.entities.ModBedRenderer;
 
 import java.util.Optional;
 
@@ -22,6 +25,14 @@ import java.util.Optional;
         value = Dist.CLIENT
 )
 public final class NeoForgeClientEvents {
+    @SubscribeEvent
+    public static void registerBERs(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer(
+                ModBlockEntityTypesNeoForge.STRAW_BED.get(),
+                ModBedRenderer::new
+        );
+    }
+
     @SubscribeEvent
     public static void registerPacks(AddPackFindersEvent event) {
         if (event.getPackType() != PackType.CLIENT_RESOURCES) return;
@@ -64,6 +75,7 @@ public final class NeoForgeClientEvents {
         event.enqueueWork(() -> {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.MOLASSES_BLOCK.get(), ChunkSectionLayer.TRANSLUCENT);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.CARNAUBA_WOODS.get("sapling").get(), ChunkSectionLayer.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.EVEN_STRIPPED_BIRCH_LOG.get(), ChunkSectionLayer.CUTOUT);
         });
     }
 }

@@ -2,7 +2,7 @@ package net.klayil.veggycraft.datagen.tags;
 
 import net.klayil.veggycraft.block.ModBlocks;
 import net.klayil.veggycraft.item.ModItems;
-import net.klayil.veggycraft.tags.ModItemTags;
+import net.klayil.veggycraft.tags.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.TagsProvider;
@@ -21,11 +21,11 @@ public class ModItemTagsProvider extends TagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         for (int i = 0; i < 16; i++) {
-            getOrCreateRawBuilder(ModItemTags.TAG_MODAL_FABRIC_ITEMS).add(TagEntry.element(ModBlocks.modalFabrics.get(i).getId()));
+            getOrCreateRawBuilder(ModTags.TAG_MODAL_FABRIC_ITEMS).add(TagEntry.element(ModBlocks.modalFabrics.get(i).getId()));
         }
 
         getOrCreateRawBuilder(ItemTags.WOOL).add(TagEntry.tag(
-                ModItemTags.TAG_MODAL_FABRIC_ITEMS.location()
+                ModTags.TAG_MODAL_FABRIC_ITEMS.location()
         ));
 
         for (String key : ModBlocks.CARNAUBA_WOODS.keySet()) {

@@ -3,10 +3,11 @@ package net.klayil.veggycraft.recipe;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.DeferredSupplier;
 import net.klayil.veggycraft.VeggyCraft;
+import net.klayil.veggycraft.recipe.piston_smash.PistonSmashRecipe;
+import net.klayil.veggycraft.recipe.wait_recipe.WaitRecipe;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.block.entity.BlockEntity;
 
 
 public class ModRecipes {
@@ -25,6 +26,16 @@ public class ModRecipes {
                 }
             });
 
+
+    public static final DeferredSupplier<RecipeType<WaitRecipe>> WAIT_TYPE_RECIPE =
+            TYPES.register("do_wait", () -> new RecipeType<WaitRecipe>() {
+                @Override
+                public String toString() {
+                    return "do_wait";
+                }
+            });
+    public static final DeferredSupplier<RecipeSerializer<WaitRecipe>> WAIT_SERIAL_RECIPE =
+            SERIALIZERS.register("do_wait", WaitRecipe.Serializer::new);
 
     public static void register() {
         SERIALIZERS.register();

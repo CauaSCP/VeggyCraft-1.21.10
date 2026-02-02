@@ -8,14 +8,22 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Unique;
 
+import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class MolassesToBrownSugar {
     final static public int minutesToChill = 4;
     final static public int secondsToChill = 30;
-    static public int itsTimeToChill = 5; // 60 * minutesToChill + secondsToChill;
-    final static public ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+    static public int itsTimeToChill = 60 * minutesToChill + secondsToChill;
+
+    // final static private ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
+    final static public Map<TimeUnit, Integer> waitsValues = Map.of(
+            TimeUnit.MINUTES, 4,
+            TimeUnit.SECONDS, 30
+    );
 
     @Unique
     public static void toChill(ItemEntity self) {
@@ -27,7 +35,6 @@ public class MolassesToBrownSugar {
         int itemCount = self.getItem().getCount();
 
         Vec3 pos = self.position();
-
 
 //        Items.STONE_SWORD
 

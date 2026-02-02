@@ -3,6 +3,7 @@ package net.klayil.veggycraft.neoforge;
 import dev.architectury.registry.registries.RegistrySupplier;
 import me.shedaniel.autoconfig.annotation.Config;
 import net.klayil.veggycraft.item.tabs.CustomTabsMethods;
+import net.klayil.veggycraft.neoforge.blocks.entites.ModBlockEntityTypesNeoForge;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
@@ -37,6 +38,8 @@ public final class VeggyCraftNeoForge {
         modEventBus.addListener(this::addCreative);
 
 //        modContainer.registerConfig(ModConfig.Type.COMMON, );
+
+        ModBlockEntityTypesNeoForge.initBlockEntityTypes();
     }
 
     @SubscribeEvent

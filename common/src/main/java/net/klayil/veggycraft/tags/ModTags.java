@@ -4,10 +4,13 @@ import net.klayil.veggycraft.VeggyCraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
-public class ModItemTags {
+public class ModTags {
+    public static TagKey<Item> MILK;
+
     public static TagKey<Item> TAG_MODAL_FABRIC_ITEMS;
     public static TagKey<Block> TAG_MODAL_FABRIC_BLOCKS;
 
@@ -23,6 +26,11 @@ public class ModItemTags {
         TAG_MODAL_FABRIC_BLOCKS = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(
                 VeggyCraft.MOD_ID,
                 "modal_fabric_block"
+        ));
+
+        MILK = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(
+                "c",
+                "buckets/milk"
         ));
 
         SWORDS = TagKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace(

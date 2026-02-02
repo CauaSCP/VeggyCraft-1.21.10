@@ -1,19 +1,21 @@
-package net.klayil.veggycraft.recipe;
+package net.klayil.veggycraft.recipe.piston_smash;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.klayil.veggycraft.recipe.ModRecipes;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
 public record PistonSmashRecipe(Ingredient inputItem, ItemStack output) implements Recipe<PistonSmashRecipeInput> {
-    // inputItem & output ==> Read From JSON File!
-    // PistonSmashRecipeInput --> INVENTORY of the Block Entity
+    public static final ResourceLocation TEXTURE = ResourceLocation.withDefaultNamespace("textures/gui/container/crafting_table.png");
+
 
     public NonNullList<Ingredient> getIngredients() {
         NonNullList<Ingredient> list = NonNullList.create();

@@ -16,16 +16,22 @@ public class ModLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        if (locale.toLowerCase().startsWith("en_")) {
-            for (Component translatable : LanguagesTextsEnglish.getTranslatableCodes()) {
-                add(translatable.getString(), LanguagesTextsEnglish.get(translatable));
+
+        if ("%s".formatted(locale.toLowerCase()).equals("en_us")) {
+            LanguagesTextsEnglish langTextsEnglish = new LanguagesTextsEnglish();
+
+            for (Component translatable : langTextsEnglish.getTranslatableCodes()) {
+                add(translatable.getString(), langTextsEnglish.get(translatable));
             }
 
             return;
         }
+
         if (locale.toLowerCase().startsWith("pt_")) {
-            for (Component translatable : LanguagesTextsPortuguese.getTranslatableCodes()) {
-                add(translatable.getString(), LanguagesTextsPortuguese.get(translatable));
+            LanguagesTextsPortuguese langTextsPortuguese = new LanguagesTextsPortuguese();
+
+            for (Component translatable : langTextsPortuguese.getTranslatableCodes()) {
+                add(translatable.getString(), langTextsPortuguese.get(translatable));
             }
         }
     }

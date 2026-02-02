@@ -51,17 +51,15 @@ public class VeggyCraftTabsCode extends VeggyCraftCreativeTabsToGet {
                         () -> new ItemStack(SEITAN_COOKED_BEEF),
                         () -> new ItemStack(BROWN_SUGAR),
                         () -> new ItemStack(MOLASSES_BOTTLE),
-                        () -> new ItemStack(
-                                STRAW_BED
-                        )
+                        () -> new ItemStack(BIRCH_PULP),
+                        () -> new ItemStack(STRAW_BED)
                 }).toList()
         );
+
 
         _flourAndStuff.add(
                 () -> new ItemStack(ModBlocks.MOLASSES_BLOCK_ITEM)
         );
-
-
         _flourAndStuff.add(
                 () -> new ItemStack(
                         BuiltInRegistries.ITEM.getValue(
@@ -72,12 +70,18 @@ public class VeggyCraftTabsCode extends VeggyCraftCreativeTabsToGet {
                         )
                 )
         );
+        _flourAndStuff.add(
+                () -> new ItemStack(EVEN_STRIPPED_BIRCH_LOG)
+        );
+        _flourAndStuff.add(
+                () -> new ItemStack(DRIED_MOLASSES)
+        );
+
 
         Supplier<ItemStack>[] flourAndStuff = _flourAndStuff.toArray(new Supplier[_flourAndStuff.size()]);
 
 
         Supplier<ItemStack>[] carbonDyingStuff = new Supplier[] {
-
                 () -> new ItemStack(Items.COAL),
                 () -> new ItemStack(Items.CHARCOAL),
                 () -> new ItemStack(BLACK_OF_COAL_CARBON),

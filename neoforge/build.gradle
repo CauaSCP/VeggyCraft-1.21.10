@@ -60,8 +60,8 @@ repositories {
 dependencies {
     neoForge "net.neoforged:neoforge:$rootProject.neoforge_version"
 
-//    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
-//    runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+    runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
     runtimeOnly "squeek.appleskin:appleskin-neoforge:${appleskin_version}"
 

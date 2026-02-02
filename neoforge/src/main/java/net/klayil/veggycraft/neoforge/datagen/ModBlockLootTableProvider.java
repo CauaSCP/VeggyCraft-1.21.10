@@ -2,6 +2,7 @@ package net.klayil.veggycraft.neoforge.datagen;
 
 import net.klayil.veggycraft.VeggyCraft;
 import net.klayil.veggycraft.block.ModBlocks;
+import net.klayil.veggycraft.item.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -12,7 +13,12 @@ import net.minecraft.tags.TagEntry;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -40,6 +46,18 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropOther(
                 ModBlocks.MOLASSES_BLOCK.get(),
                 ModBlocks.MOLASSES_BLOCK_ITEM.get()
+        );
+
+        dropOther(
+                ModBlocks.EVEN_STRIPPED_BIRCH_LOG.get(),
+                ModItems.EVEN_STRIPPED_BIRCH_LOG.get()
+        );
+
+        add(ModBlocks.HAY_NO_STRIP.get(),
+                LootTable.lootTable().withPool(
+                        LootPool.lootPool().setRolls(ConstantValue.exactly(1f))
+                        .add(EmptyLootItem.emptyItem())
+                )
         );
 
         dropSelf(ModBlocks.STRAW_BED.get());

@@ -4,18 +4,26 @@
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
   "client": [
+    "MixinTimeProperty"
   ],
   "mixins": [
     "AnvilMenuMixin",
     "AxeItemAccessor",
+    "BlockBehaviourMixin",
     "BlockEntityTypeAccessor",
-    "CopperGollumMixin",
+    "BlockMixin",
+    "CopperGolemMixin",
     "CrafterBlockMixin",
     "FireBlockAccessor",
+    "FoliagePlacerTypeInvoker",
     "GrindstoneMenuMixin",
     "HoneyBlockMixin",
     "ItemEntityMixin",
-    "ItemMixin"
+    "ItemMixin",
+    "LevelMixin",
+    "PlayerMixin",
+    "PropertiesAccessor",
+    "TrunkPlacerTypeInvoker"
   ],
   "injectors": {
     "defaultRequire": 1

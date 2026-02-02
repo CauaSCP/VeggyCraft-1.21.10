@@ -15,9 +15,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(CopperGolem.class)
-public class CopperGollumMixin {
+import java.util.Objects;
 
+@Mixin(CopperGolem.class)
+public class CopperGolemMixin {
     @Shadow
     private long nextWeatheringTick;
 
@@ -38,7 +39,7 @@ public class CopperGollumMixin {
             cir.cancel();
         } else if (isMyWax) {
             CopperGolem self = ((CopperGolem) (Object) this);
-            Level level = self.level();
+            Level level = Objects.requireNonNull(self.level());
 
             level.levelEvent(self, 3003, self.blockPosition(), 0);
             this.nextWeatheringTick = -2L;

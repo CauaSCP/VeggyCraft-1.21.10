@@ -2,24 +2,21 @@ package net.klayil.veggycraft.mixin;
 
 import net.klayil.veggycraft.VeggyCraft;
 import net.klayil.veggycraft.item.ModItems;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.coppergolem.CopperGolem;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -28,15 +25,49 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 @Mixin(Item.class)
 public class ItemMixin {
     @Unique
-    ResourceLocation id;
+    ResourceLocation veggycraft$id;
+
+    @Unique
+    Map<ResourceLocation, Component> veggycraft$hoverCases = Map.of(
+            ResourceLocation.withDefaultNamespace("wheat"), Component.translatable("klay_api.smash.wheat")
+            .withStyle(style -> style.withColor(TextColor.fromRgb(0x89F336)))
+
+            ,
+
+            ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "birch_pulp_modal"), Component.translatable(
+            "klay_api.description.pulp")
+                    .withStyle(ChatFormatting.WHITE)
+                    .withStyle(ChatFormatting.ITALIC)
+                    .withStyle(ChatFormatting.BOLD)
+    );
+
+    @Inject(
+            method = "appendHoverText",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    private void onHoverText(ItemStack stack, Item.TooltipContext context, TooltipDisplay tooltipDisplay, Consumer<Component> tooltipAdder, TooltipFlag flag, CallbackInfo ci) {
+        Item self = (Item) (Object) this;
+        veggycraft$id = BuiltInRegistries.ITEM.getKey(self);
+
+        if (!veggycraft$hoverCases.containsKey(veggycraft$id)) {
+            ci.cancel();
+            return;
+        }
+
+        tooltipAdder.accept(veggycraft$hoverCases.get(veggycraft$id));
+    }
 
     @Inject(method = "getName(Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/network/chat/Component;", at = @At("HEAD"), cancellable = true)
     private void onGetName(ItemStack stack, CallbackInfoReturnable<Component> cir) {
@@ -44,30 +75,34 @@ public class ItemMixin {
         ResourceLocation _id = BuiltInRegistries.ITEM.getKey(self);
         if (!_id.getNamespace().equals(VeggyCraft.MOD_ID)) return;
 
-        id = _id;
+        veggycraft$id = _id;
 
 
         MutableComponent res = Component.empty();
 
-        if (self instanceof BlockItem)
-            if (id.getPath().toLowerCase().contains("carnauba")) {
-                String[] splitText = id.getPath().split("_");
+        if (self instanceof BlockItem) {
+            if (veggycraft$id.getPath().toLowerCase().contains("carnauba")) {
+                String bfr = "veggycraft.woods.";
+                String carnauba_translation = "carnauba";
+                String affix = veggycraft$id.getPath().replace("_carnauba", "");
 
-                for (int i = 0; i < splitText.length; i++) {
-                    // Append the translated part
-                    res.append(Component.translatable("veggycraft.woods." + splitText[i]));
+                res.append(Component.translatable(bfr + "prefix." + affix));
+                res.append(Component.translatable(bfr + carnauba_translation));
+                res.append(Component.translatable(bfr + "suffix." + affix));
 
-                    // Add a space between words, but not after the last word
-                    if (i < splitText.length - 1) {
-                        res.append(Component.literal(" "));
-                    }
-                }
-
-                // Return your custom component and stop further execution
                 cir.setReturnValue(res);
             }
 
-        if(Objects.equals(id.getPath(), ModItems.waxID)) {
+            if (ItemStack.isSameItem(new ItemStack(self), new ItemStack(ModItems.EVEN_STRIPPED_BIRCH_LOG))) {
+                res.append(Component.translatable("even_stripped.prefix"));
+                res.append(Component.translatable("block.minecraft.birch_log"));
+                res.append(Component.translatable("even_stripped.suffix"));
+
+                cir.setReturnValue(res);
+            }
+        }
+
+        if(Objects.equals(veggycraft$id.getPath(), ModItems.waxID)) {
             res = res.append(Component.translatable("wax.prefix"));
             res = res.append(Component.translatable("veggycraft.woods.carnauba"));
             res = res.append(Component.translatable("wax.suffix"));
@@ -75,6 +110,7 @@ public class ItemMixin {
             cir.setReturnValue(res);
         }
     }
+
 
 
     /*

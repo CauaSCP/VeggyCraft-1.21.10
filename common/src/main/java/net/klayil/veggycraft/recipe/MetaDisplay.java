@@ -31,7 +31,7 @@ public class MetaDisplay extends BasicDisplay {
 
     @Override
     public CategoryIdentifier<?> getCategoryIdentifier() {
-        return AutoMixingCategory.PISTON_SMASH;
+        return MixedCategories.PISTON_SMASH;
     }
 
     public static final Codec<MetaDisplay> CODEC = RecordCodecBuilder.create(instance -> instance.group(

@@ -6,7 +6,6 @@ import net.klayil.veggycraft.datagen.tags.ModItemTagsProvider;
 import net.klayil.veggycraft.world.ModConfiguredFeatures;
 import net.klayil.veggycraft.world.ModPlacedFeatures;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
@@ -17,7 +16,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
-import javax.xml.crypto.Data;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -86,7 +84,6 @@ public class ForgedDataGeneration {
             }
         }
 
-
         event.addProvider(
             modelProvider
         );
@@ -102,6 +99,10 @@ public class ForgedDataGeneration {
         event.addProvider(
             new ModBlockTagsProvider(packOutput, Registries.BLOCK, lookupProvider)
         );
+//
+//        event.addProvider(
+//            new ModDamageTypeTagsProvider(packOutput, Registries.DAMAGE_TYPE, lookupProvider)
+//        );
 
 
         List<String> locales = List.of("af_za", "ar_sa", "ast_es", "az_az", "ba_ru", "bar", "be_by", "be_latn", "bg_bg", "br_fr", "brb", "bs_ba", "ca_es", "cs_cz", "cy_gb", "da_dk", "de_at", "de_ch", "de_de", "el_gr", "en_au", "en_ca", "en_gb", "en_nz", "en_pt", "en_ud", "en_us", "enp", "enws", "eo_uy", "es_ar", "es_cl", "es_ec", "es_es", "es_mx", "es_uy", "es_ve", "esan", "et_ee", "eu_es", "fa_ir", "fi_fi", "fil_ph", "fo_fo", "fr_ca", "fr_fr", "fra_de", "fur_it", "fy_nl", "ga_ie", "gd_gb", "gl_es", "hal_ua", "haw_us", "he_il", "hi_in", "hn_no", "hr_hr", "hu_hu", "hy_am", "id_id", "ig_ng", "io_en", "is_is", "isv", "it_it", "ja_jp", "jbo_en", "ka_ge", "kk_kz", "kn_in", "ko_kr", "ksh", "kw_gb", "ky_kg", "la_la", "lb_lu", "li_li", "lmo", "lo_la", "lol_us", "lt_lt", "lv_lv", "lzh", "mk_mk", "mn_mn", "ms_my", "mt_mt", "nah", "nds_de", "nl_be", "nl_nl", "nn_no", "no_no", "oc_fr", "ovd", "pl_pl", "pls", "pt_br", "pt_pt", "qcb_es", "qid", "qya_aa", "ro_ro", "rpr", "ru_ru", "ry_ua", "sah_sah", "se_no", "sk_sk", "sl_si", "so_so", "sq_al", "sr_cs", "sr_sp", "sv_se", "sxu", "szl", "ta_in", "th_th", "tl_ph", "tlh_aa", "tok", "tr_tr", "tt_ru", "tzo_mx", "uk_ua", "val_es", "vec_it", "vi_vn", "vp_vl", "yi_de", "yo_ng", "zh_cn", "zh_hk", "zh_tw", "zlm_arab");
@@ -112,7 +113,7 @@ public class ForgedDataGeneration {
                     new MinecraftLanguageProvider(packOutput, locale)
             );
 
-            if (locale.toLowerCase().startsWith("en_") | locale.toLowerCase().startsWith("pt_")) generator.addProvider(
+            if ("%s".formatted(locale.toLowerCase()).equals("en_us") | locale.toLowerCase().startsWith("pt_")) generator.addProvider(
                     true,
                     new ModLanguageProvider(packOutput, locale)
             );

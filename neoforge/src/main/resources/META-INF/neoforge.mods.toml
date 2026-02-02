@@ -42,12 +42,12 @@ versionRange = "[0.0.4,)"
 ordering = "AFTER"
 side = "BOTH"
 
-[[dependencies.veggycraft]]
-modId = "jei"
-type = "incompatible"
-versionRange = "[0.1,)"
-ordering = "AFTER"
-side = "BOTH"
+#[[dependencies.veggycraft]]
+#modId = "jei"
+#type = "incompatible"
+#versionRange = "[0.1,)"
+#ordering = "AFTER"
+#side = "BOTH"
 
 [[mixins]]
 config = "veggycraft.mixins.json"

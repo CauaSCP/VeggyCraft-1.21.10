@@ -5,7 +5,7 @@ import net.klayil.veggycraft.VeggyCraft;
 
 import net.klayil.veggycraft.block.ModBlocks;
 import net.klayil.veggycraft.datagen.ColoursList;
-import net.klayil.veggycraft.tags.ModItemTags;
+import net.klayil.veggycraft.tags.ModTags;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -133,7 +133,7 @@ public class VeggyModRecipeProviderCommon extends RecipeProvider {
 
         shapedLocal(RecipeCategory.FOOD, new ItemStack(ModItems.BROWN_SUGAR))
                 .pattern("SB")
-                .define('S', ModItemTags.SWORDS)
+                .define('S', ModTags.SWORDS)
                 .define('B', ModItems.DRIED_MOLASSES.get())
                 .unlockedBy("has_dried_mol", has(ModItems.DRIED_MOLASSES.get()))
                 .save(output, ResourceKey.create(Registries.RECIPE, ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "brown_sugar_from_bottle")));
@@ -309,10 +309,18 @@ public class VeggyModRecipeProviderCommon extends RecipeProvider {
                 .unlockedBy("has_water", has(Items.WATER_BUCKET))
                 .save(output);
 
+        shapedLocal(RecipeCategory.DECORATIONS, new ItemStack(ModBlocks.modalFabrics.getFirst().get().asItem()))
+                .pattern("PP")
+                .pattern("PP")
+                .define('P', ComponentIngredientOf(new ItemStack(ModItems.BIRCH_PULP)))
+                .unlockedBy("has_pulp", has(new ItemStack(ModItems.BIRCH_PULP).getItem()))
+                .save(output);
+
+        smeltingRecipe(RecipeCategory.DECORATIONS, new ItemStack(ModItems.EVEN_STRIPPED_BIRCH_LOG), ModItems.BIRCH_PULP.get(), 0.4f, 20*10, true);
         cookingRecipeFood(new ItemStack(ModItems.WET_RAW_SEITAN), ModItems.SEITAN_COOKED_BEEF.get(), 0.35f, 200);
 
         this.shaped(RecipeCategory.FOOD, Blocks.CAKE)
-                .define('A', Items.MILK_BUCKET)
+                .define('A', ModTags.MILK)
                 .define('B', ModItems.BROWN_SUGAR.get())
                 .define('C', Items.WHEAT)
                 .define('E', ItemTags.EGGS)
@@ -367,7 +375,7 @@ public class VeggyModRecipeProviderCommon extends RecipeProvider {
           3
             ).pattern("Mn")
             .define('M', modalValueI)
-            .define('n', ModItemTags.TAG_MODAL_FABRIC_ITEMS)
+            .define('n', ModTags.TAG_MODAL_FABRIC_ITEMS)
             .unlockedBy("has_%s_modal".formatted(curColor), has(modalValueI))
             .save(output, "carpet_from_modal_color_%s".formatted(curColor));
 
@@ -390,7 +398,7 @@ public class VeggyModRecipeProviderCommon extends RecipeProvider {
 
         }
 
-        shapedLocal(RecipeCategory.FOOD, new ItemStack(ModItems.CHOPPED_APPLE)).pattern("SAB").define('S', ModItemTags.SWORDS)
+        shapedLocal(RecipeCategory.FOOD, new ItemStack(ModItems.CHOPPED_APPLE)).pattern("SAB").define('S', ModTags.SWORDS)
                 .define('A', Items.APPLE)
                 .define('B', Items.BOWL)
                 .unlockedBy("has_apple", has(Items.APPLE))
@@ -506,11 +514,11 @@ public class VeggyModRecipeProviderCommon extends RecipeProvider {
 
         if (isWhite) {
             bedRecipe = bedRecipe
-                       .define('M', ModItemTags.TAG_MODAL_FABRIC_ITEMS)
+                       .define('M', ModTags.TAG_MODAL_FABRIC_ITEMS)
                        .define('W', WHITE_MODAL_FABRIC_BLOCK);
 
             banner = banner
-                    .define('M', ModItemTags.TAG_MODAL_FABRIC_ITEMS)
+                    .define('M', ModTags.TAG_MODAL_FABRIC_ITEMS)
                     .define('W', WHITE_MODAL_FABRIC_BLOCK);
         } else {
             bedRecipe = bedRecipe.define('M', modal);
@@ -575,5 +583,23 @@ public class VeggyModRecipeProviderCommon extends RecipeProvider {
         SimpleCookingRecipeBuilder.campfireCooking(ComponentIngredientOf(ingredientStack), RecipeCategory.FOOD, result, experience, cookingTime * 3)
                 .unlockedBy(hasIngredientText, has(ingredientStack.getItem()))
                 .save(output, "%s_campfire".formatted(resultName));
+    }
+
+    private void smeltingRecipe(RecipeCategory category, ItemStack ingredientStack, ItemLike result, float experience, int cookingTime, boolean... blasting) {
+        String hasIngredientText = "has_%s".formatted(
+                BuiltInRegistries.ITEM.getKey(ingredientStack.getItem()).getPath()
+        );
+
+        String resultName = BuiltInRegistries.ITEM.getKey(result.asItem()).getPath();
+
+        SimpleCookingRecipeBuilder.smelting(ComponentIngredientOf(ingredientStack), category, result, experience, cookingTime)
+                .unlockedBy(hasIngredientText, has(ingredientStack.getItem()))
+                .save(output, "%s_furnace".formatted(resultName));
+
+        if (blasting.length > 0) if (blasting[0]) {
+            SimpleCookingRecipeBuilder.blasting(ComponentIngredientOf(ingredientStack), category, result, experience, cookingTime / 2)
+                    .unlockedBy(hasIngredientText, has(ingredientStack.getItem()))
+                    .save(output, "%s_blasting".formatted(resultName));
+        }
     }
 }

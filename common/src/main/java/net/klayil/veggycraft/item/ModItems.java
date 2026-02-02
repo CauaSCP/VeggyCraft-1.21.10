@@ -86,7 +86,9 @@ public class ModItems {
 
     public static RegistrySupplier<Item> SUGAR_BAG;
 
+    public static RegistrySupplier<Item> EVEN_STRIPPED_BIRCH_LOG;
     public static RegistrySupplier<Item> STRAW_BED;
+    public static RegistrySupplier<Item> BIRCH_PULP;
 
     @Nullable
     public static Item BEFORE = null;
@@ -222,8 +224,15 @@ public class ModItems {
                 m
         );
 
+        var pulp = "birch_pulp_modal";
+        BIRCH_PULP = createItem(pulp, null, m);
+
         var b = "straw_bed";
-        STRAW_BED = ITEMS.register(b, () -> new BlockItem(ModBlocks.STRAW_BED.get(), baseProperties(b, m)));
+        STRAW_BED = ITEMS.register(b, () -> new BlockItem(ModBlocks.STRAW_BED.get(), baseProperties(b, m).stacksTo(1)));
+
+        var l = "even_stripped_birch_log";
+        EVEN_STRIPPED_BIRCH_LOG = ITEMS.register(l, () -> new BlockItem(ModBlocks.EVEN_STRIPPED_BIRCH_LOG.get(), baseProperties(l, m)));
+        CustomTabsMethods.addToTab(CreativeModeTabs.BUILDING_BLOCKS, CustomTabsMethods.AFTER, EVEN_STRIPPED_BIRCH_LOG, Items.BIRCH_FENCE_GATE);
 
         BROWN_SUGAR = createItem("brown_sugar", null, m);
         MOLASSES_BOTTLE = createItem("molasses_bottle", null, ModItems::honeyBottleProps, m);
@@ -274,7 +283,6 @@ public class ModItems {
                     curModal.getKey().location().getPath() //"%s_item".formatted(curModal.getKey().location().getPath())
                     ,
                     Component.translatable("item.veggycraft.modal")
-                            .append(Component.literal(" "))
                             .append(Component.translatable("color.minecraft.%s".formatted(ColoursList.listOfColours[i])))
                             .append(Component.translatable("suffix.veggycraft.modal")),
                     curModal,

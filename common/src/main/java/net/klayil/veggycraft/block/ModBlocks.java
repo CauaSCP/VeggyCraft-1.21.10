@@ -15,6 +15,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.grower.TreeGrower;
@@ -36,6 +37,8 @@ public class ModBlocks {
     public static RegistrySupplier<Item> MOLASSES_BLOCK_ITEM;
     public static HashMap<String, RegistrySupplier<Block>> CARNAUBA_WOODS = new HashMap<>();
     public static RegistrySupplier<Block> STRAW_BED;
+    public static RegistrySupplier<Block> EVEN_STRIPPED_BIRCH_LOG;
+    public static RegistrySupplier<Block> HAY_NO_STRIP;
 
     private static RegistrySupplier[] createHoneyBlockClone(String name, ResourceKey<CreativeModeTab> creativeModeTab, BlockBehaviour.Properties properties) {
         String mod_id = VeggyCraft.MOD_ID;
@@ -77,9 +80,21 @@ public class ModBlocks {
             modalFabrics.add(tmp);
         }
 
+        HAY_NO_STRIP = BLOCKS.register("__hay_2", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.HAY_BLOCK)
+                .strength(-1.0F, 3600000.0F)
+                .setId(
+                        ResourceKey.create(
+                                Registries.BLOCK,
+                                ResourceLocation.fromNamespaceAndPath(
+                                        VeggyCraft.MOD_ID,
+                                        "__hay_2"
+                                )
+                        )
+                )));
+
         STRAW_BED = BLOCKS.register(
                 "straw_bed",
-                () -> new ModBedBlock(BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(0.2F).noOcclusion().ignitedByLava().pushReaction(PushReaction.DESTROY).setId(
+                () -> new ModBedBlock(0.5f, BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(0.2F).noOcclusion().ignitedByLava().pushReaction(PushReaction.DESTROY).setId(
                         ResourceKey.create(
                                 Registries.BLOCK,
                                 ResourceLocation.fromNamespaceAndPath(
@@ -88,6 +103,12 @@ public class ModBlocks {
                                 )
                         )
                 ))
+        );
+
+        EVEN_STRIPPED_BIRCH_LOG = BLOCKS.register(
+                "even_stripped_birch_log",
+                () -> new PillaredFence(KlayApiModBlocks.baseProperties("even_stripped_birch_log", VeggyCraft.MOD_ID).noCollision()
+                        .ignitedByLava().pushReaction(PushReaction.IGNORE))
         );
 
         FireBlock fireBlock = (FireBlock) Blocks.FIRE;
@@ -126,7 +147,7 @@ public class ModBlocks {
                     )
             );
 
-            RegistrySupplier<Block> curBlock = BLOCKS.register(creatingBlockName, () -> new RotatedPillarBlock(
+            RegistrySupplier<Block> curBlock = BLOCKS.register(creatingBlockName, () -> new PalmLogBlock(
                     props.setId(resourceID)
             ));
 
@@ -145,10 +166,22 @@ public class ModBlocks {
 
         String l = c+"leaves";
         CARNAUBA_WOODS.put("leaves", BLOCKS.register(l,
-                () -> new TintedParticleLeavesBlock(0.01F, BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_LEAVES).setId(
-                        ResourceKey.create(
-                          Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, l)
-                        )
+                () -> new PalmLeavesBlock(
+                        BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_LEAVES)
+                            .mapColor(MapColor.COLOR_LIGHT_GREEN)
+                            .strength(0.2F)
+                            .randomTicks()
+                            .sound(SoundType.GRASS)
+                            .noOcclusion()
+                            .isValidSpawn((s, w, p, entity) -> entity == EntityType.OCELOT || entity == EntityType.PARROT)
+                            .isSuffocating((s, w, p) -> false)
+                            .isViewBlocking((s, w, p) -> false)
+                            .ignitedByLava()
+                            .pushReaction(PushReaction.DESTROY)
+                            .setId(
+                                ResourceKey.create(
+                                    Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, l)
+                                )
                 ))
         ));
 

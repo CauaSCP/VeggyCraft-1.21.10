@@ -8,7 +8,7 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 public class ModTreeGeneration {
     public static void generateTrees() {
         BiomeModifications.addProperties(
-                (context) -> context.getKey().equals(Biomes.JUNGLE),
+                (context) -> context.getKey().equals(Biomes.MANGROVE_SWAMP),
 
                 (context, mutable) -> {
                     mutable.getGenerationProperties().addFeature(

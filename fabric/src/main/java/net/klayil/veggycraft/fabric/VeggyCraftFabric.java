@@ -4,9 +4,11 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
+import net.fabricmc.fabric.api.event.registry.DynamicRegistrySetupCallback;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.klayil.veggycraft.VeggyCraft;
+import net.klayil.veggycraft.fabric.blocks.entities.ModBlockEntityTypesFabric;
 import net.klayil.veggycraft.item.ModItems;
 import net.klayil.veggycraft.item.MolassesToBrownSugar;
 import net.klayil.veggycraft.item.tabs.CustomTabsMethods;
@@ -42,6 +44,7 @@ public final class VeggyCraftFabric implements ModInitializer {
         // Proceed with mild caution.
 
         // Run our common setup.
+
         VeggyCraft.init();
 
         BiConsumer<FabricItemGroupEntries, List> funcConsumer;
@@ -58,6 +61,8 @@ public final class VeggyCraftFabric implements ModInitializer {
                 });
             }
         }
+
+        ModBlockEntityTypesFabric.initBlockEntityTypes();
     }
 
     private ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
