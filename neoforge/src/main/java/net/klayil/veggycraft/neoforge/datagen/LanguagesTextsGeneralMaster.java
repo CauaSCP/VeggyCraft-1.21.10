@@ -22,8 +22,9 @@ public class LanguagesTextsGeneralMaster {
     }
 
     private static List<Component> getListFromMap() {
-        return LanguagesTextsGeneralMaster.texts.keySet().stream().map(
-                (str) -> { return ( (Component) Component.translatable(str) ); }
+        return LanguagesTextsGeneralMaster.texts.keySet().stream().
+                map(
+                (str) -> ( (Component) Component.translatable(str) )
         ).toList();
     }
 
@@ -62,7 +63,7 @@ public class LanguagesTextsGeneralMaster {
 
     public void setTexts(String... keysAndValues) {
         this.setTextsMaster(keysAndValues);
-    };
+    }
 
     void master(String... keysAndValues) {
         this.setTextsMaster(keysAndValues);
@@ -77,7 +78,7 @@ public class LanguagesTextsGeneralMaster {
         classNameFinalized = this.getClass().getSimpleName();
     }
 
-    public LanguagesTextsGeneralMaster(boolean unset) {
+    public LanguagesTextsGeneralMaster(boolean ignoreUnset) {
         self = this;
 
         classNameFinalized = this.getClass().getSimpleName();

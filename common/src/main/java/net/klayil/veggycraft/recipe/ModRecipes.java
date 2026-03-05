@@ -19,7 +19,7 @@ public class ModRecipes {
     public static final DeferredSupplier<RecipeSerializer<PistonSmashRecipe>> PISTON_SMASH_SERIALIZER =
             SERIALIZERS.register("piston_smashin", PistonSmashRecipe.Serializer::new);
     public static final DeferredSupplier<RecipeType<PistonSmashRecipe>> PISTON_SMASH_TYPE =
-            TYPES.register("piston_smashin", () -> new RecipeType<PistonSmashRecipe>() {
+            TYPES.register("piston_smashin", () -> new RecipeType<>() {
                 @Override
                 public String toString() {
                     return "piston_smashin";
@@ -28,7 +28,7 @@ public class ModRecipes {
 
 
     public static final DeferredSupplier<RecipeType<WaitRecipe>> WAIT_TYPE_RECIPE =
-            TYPES.register("do_wait", () -> new RecipeType<WaitRecipe>() {
+            TYPES.register("do_wait", () -> new RecipeType<>() {
                 @Override
                 public String toString() {
                     return "do_wait";

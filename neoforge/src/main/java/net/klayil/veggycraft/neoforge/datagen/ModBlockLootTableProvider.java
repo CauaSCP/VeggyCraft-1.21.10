@@ -37,6 +37,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         for (int id_num = 1; id_num <= 16; id_num++) {
             drop_id = ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "modal_fabric_%02d".formatted(id_num));
 
+//            VeggyCraft.LOGGER.error("#dropId: %s", drop_id.toString());
+
             dropOther(
                     BuiltInRegistries.BLOCK.getValue(drop_id),
                     BuiltInRegistries.ITEM.getValue(drop_id)

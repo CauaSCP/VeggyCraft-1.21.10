@@ -19,7 +19,8 @@ import java.util.List;
 public class MetaDisplay extends BasicDisplay {
     public MetaDisplay(ShapelessCraftingRecipeDisplay recipe) {
         super(recipe.ingredients().stream()
-                        .map(EntryIngredients::ofSlotDisplay)
+                        .
+                        map(EntryIngredients::ofSlotDisplay)
                         .toList(),
                 // Extracting the result from the display logic
                 List.of(EntryIngredients.ofSlotDisplay(recipe.result())));
@@ -31,7 +32,7 @@ public class MetaDisplay extends BasicDisplay {
 
     @Override
     public CategoryIdentifier<?> getCategoryIdentifier() {
-        return MixedCategories.PISTON_SMASH;
+        return MixedCategoriesRei.PISTON_SMASH;
     }
 
     public static final Codec<MetaDisplay> CODEC = RecordCodecBuilder.create(instance -> instance.group(

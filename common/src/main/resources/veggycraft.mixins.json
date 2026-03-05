@@ -4,13 +4,13 @@
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
   "client": [
-    "MixinTimeProperty"
+    "ModIdMixin",
+    "RecipeCategoryIconMixin"
   ],
   "mixins": [
     "AnvilMenuMixin",
     "AxeItemAccessor",
     "BlockBehaviourMixin",
-    "BlockEntityTypeAccessor",
     "BlockMixin",
     "CopperGolemMixin",
     "CrafterBlockMixin",
@@ -22,6 +22,7 @@
     "ItemMixin",
     "LevelMixin",
     "PlayerMixin",
+    "PotionBrewingMixin",
     "PropertiesAccessor",
     "TrunkPlacerTypeInvoker"
   ],

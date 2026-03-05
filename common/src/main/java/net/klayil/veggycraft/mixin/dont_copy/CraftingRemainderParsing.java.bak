@@ -1,0 +1,15 @@
+package net.klayil.veggycraft.mixin.dont_copy;
+
+import dev.architectury.injectables.annotations.ExpectPlatform;
+import net.klayil.veggycraft.item.CustomCraftingRemainder;
+import net.minecraft.world.item.ItemStack;
+import org.spongepowered.asm.mixin.Mixin;
+
+@Mixin(CustomCraftingRemainder.class)
+public interface CraftingRemainderParsing {
+    @ExpectPlatform
+    ItemStack getRecipeRemainder(ItemStack stack);
+
+    @ExpectPlatform
+    ItemStack getCraftingRemainder(ItemStack stack);
+}

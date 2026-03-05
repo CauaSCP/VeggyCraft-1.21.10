@@ -1,0 +1,10 @@
+package net.klayil.veggycraft;
+
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+
+import java.util.Map;
+
+public interface ItemMixinImpl {
+    Map<ResourceLocation, Component> get$HoverCases();
+}

@@ -8,8 +8,8 @@ import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(RepairableItemsExtension.class)
 public abstract class RepairableItemNeoForgeMixin implements IItemExtension {
-    @Override
-    public @NotNull ItemStack getCraftingRemainder(@NotNull ItemStack itemStack) {
-        return RepairableItemsExtension.getCraftingRemainderCommon(itemStack);
-    }
+//    @Override
+//    public @NotNull ItemStack getCraftingRemainder(@NotNull ItemStack itemStack) {
+//        return RepairableItemsExtension.getCraftingRemainderCommon(itemStack);
+//    }
 }

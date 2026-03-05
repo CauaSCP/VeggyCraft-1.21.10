@@ -4,14 +4,14 @@
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
   "client": [
+    "ReiRecipeStationFakeBlueText",
+    "TabWidgetTooltipMixin"
   ],
   "mixins": [
     "CraftingMenuMixin",
     "HoneyBlockCloneMixin",
     "InventoryMenuMixin",
-    "RepairableItemFabricMixin",
-    "ResultSlotMixin",
-    "UnrepairableDamageableItemFabricMixin"
+    "ResultSlotMixin"
   ],
   "injectors": {
     "defaultRequire": 1

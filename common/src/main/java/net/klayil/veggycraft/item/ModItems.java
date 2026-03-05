@@ -1,11 +1,8 @@
 package net.klayil.veggycraft.item;
 
-import com.mojang.serialization.DataResult;
-import dev.architectury.registry.registries.RegistrarManager;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
-import net.klayil.klay_api.KlayApi;
 import net.klayil.klay_api.block.KlayApiModBlocks;
 import net.klayil.klay_api.item.KlayApiModItems;
 import net.klayil.veggycraft.VeggyCraft;
@@ -13,49 +10,45 @@ import net.klayil.veggycraft.block.ModBlocks;
 import net.klayil.veggycraft.datagen.ColoursList;
 import net.klayil.veggycraft.item.tabs.CustomTabsMethods;
 import net.klayil.veggycraft.item.tabs.VeggyCraftCreativeTabsToGet;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.core.component.DataComponentType;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.locale.Language;
-import net.minecraft.nbt.IntTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.StringTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.resources.ReloadableResourceManager;
+import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
 import net.minecraft.world.food.FoodProperties;
 
-
-import net.minecraft.nbt.CompoundTag;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.Map;
+import java.util.Optional;
 import java.util.function.Supplier;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
-import static net.klayil.klay_api.item.KlayApiModItems.*;
-import static net.klayil.veggycraft.item.tabs.VeggyCraftCreativeTabsToGet.REPLACEMENTS;
-
-import net.minecraft.core.Holder;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.component.CustomModelData;
-import net.minecraft.world.item.enchantment.Repairable;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.Nullable;
 
 public class ModItems {
-    private static String currentItemName;
+//    private static String currentItemName;
 
     public static RegistrySupplier<Item> COAL_CARBON_CUTTER;
     public static RegistrySupplier<Item> DIAMOND_CARBON_CUTTER;
     public static RegistrySupplier<Item> SHINY_OF_DIAMOND_COAL_CARBON;
+
+    public static RegistrySupplier<Item> THIS_MOD_CLOCK;
 
     public static ArrayList<RegistrySupplier<Item>> modalFabricItems = new ArrayList<>();
 
@@ -90,9 +83,13 @@ public class ModItems {
     public static RegistrySupplier<Item> STRAW_BED;
     public static RegistrySupplier<Item> BIRCH_PULP;
 
-    @Nullable
-    public static Item BEFORE = null;
+    public static RegistrySupplier<Item> ALGAE_EXTRACT;
 
+    public static ArrayList<ItemStack> MUNDANE_SPLASH_POTION_ITEM_STACKS = new ArrayList<>();
+    public static RegistrySupplier<SplashPotionItem> OTHER_SPLASH_POTION;
+    public static int OTHER_SPLASH_POTION_COLOR = 0xd4d4d5;
+
+    public static DeferredRegister<Potion> POTIONS = DeferredRegister.create(VeggyCraft.MOD_ID, Registries.POTION);
     public static DeferredRegister<Item> ITEMS = KlayApiModItems.createItemsRegister(VeggyCraft.MOD_ID);
 
     private static RegistrySupplier<Item> createBlockItemWithCustomName(String itemId, Component nameToTranslate, RegistrySupplier<Block> block, int maxStackSize) {
@@ -104,13 +101,13 @@ public class ModItems {
 
 
         for (ResourceKey<CreativeModeTab> curTab : KlayApiModBlocks.blockItemCreativeModeTabs.keySet()) {
-            if (!((ArrayList) KlayApiModBlocks.blockItemCreativeModeTabs.get(curTab)).isEmpty()) {
-                ArrayList<String> arr = (ArrayList) KlayApiModBlocks.blockItemCreativeModeTabs.get(curTab);
+            if (!(KlayApiModBlocks.blockItemCreativeModeTabs.get(curTab)).isEmpty()) {
+                ArrayList<String> arr =KlayApiModBlocks.blockItemCreativeModeTabs.get(curTab);
 
-                for(int index = 0; index < arr.size(); ++index) {
-                    ResourceLocation blockLocation = ResourceLocation.parse((String)arr.get(index));
+                for (int index = 0; index < arr.size(); ++index) {
+                    ResourceLocation blockLocation = ResourceLocation.parse(arr.get(index));
 
-                    RegistrySupplier<Block> blockOfLoop = ((RegistrySupplier)KlayApiModBlocks.AllKlayApiBlocks.get(blockLocation.toString()));
+                    RegistrySupplier<Block> blockOfLoop = (KlayApiModBlocks.AllKlayApiBlocks.get(blockLocation.toString()));
 
                     if (blockOfLoop == null) continue;
                     if (blockOfLoop.getKey().location() == block.getKey().location()) {
@@ -122,6 +119,7 @@ public class ModItems {
                 }
             }
         }
+
 
         if (remove_index >= 0) {
             KlayApiModBlocks.blockItemCreativeModeTabs.get(tabRemove).remove(remove_index);
@@ -151,7 +149,7 @@ public class ModItems {
 
         if (repairItemViaList.length >= 1) {
             assert repairItemViaList[0] != null;
-            VeggyCraft.LOGGER.info("#SUP: " + repairItemViaList[0].toString());
+            VeggyCraft.LOGGER.info("#SUP: " + repairItemViaList[0]);
 
             repairItem = repairItemViaList[0];
 
@@ -175,7 +173,7 @@ public class ModItems {
             );
         }
 
-        AllKlayApiItems.put(itemLocation.toString(), registeredItem);
+        KlayApiModItems.AllKlayApiItems.put(itemLocation.toString(), registeredItem);
 
         if (creativeModeTab != null) {
             CreativeTabRegistry.append(creativeModeTab, registeredItem); // probably here is making the error possible
@@ -194,7 +192,6 @@ public class ModItems {
                 ));
     }
 
-
     public static void initItems() {
         String m = VeggyCraft.MOD_ID;
 
@@ -208,6 +205,30 @@ public class ModItems {
                 List.of()
         );
 
+//        ALGAE_EXTRACT = POTIONS.register("algae_extract", () -> new Potion("algae_extract", new MobEffectInstance(ALGAE_EXTRACT_COLOR, 0, 0, false, true, false)));
+
+        String e = "algae_extract";
+        final FoodProperties ALGAE_EXTRACT_PROPS = new FoodProperties(0 , 0, true);
+        ALGAE_EXTRACT = KlayApiModItems.createItem(e, null, () -> KlayApiModItems.baseProperties(e, m).craftRemainder(Items.GLASS_BOTTLE)
+                .food(ALGAE_EXTRACT_PROPS, Consumables.defaultDrink().build())
+                .usingConvertsTo(Items.GLASS_BOTTLE)
+                .stacksTo(1),
+        m);
+
+        CustomTabsMethods.addToTab(CreativeModeTabs.FOOD_AND_DRINKS, CustomTabsMethods.BEFORE, ALGAE_EXTRACT, Items.SPLASH_POTION);
+
+//        Holder<Potion> potionHolder = POTIONS.register("placeholder_effected", () -> new Potion("placeholder_effected", new MobEffectInstance(ModEffects.PLACEHOLDER_EFFECT, 0, 0, true, true, false)));
+
+//        VeggyCraft.LOGGER.info("#Potion: parsed %s", potionHolder);
+
+        String potion_name = "splash_potion_2";
+        OTHER_SPLASH_POTION = ITEMS.register(potion_name, () -> new SplashPotionItem(KlayApiModItems.baseProperties(potion_name, m).stacksTo(1).component(DataComponents.POTION_CONTENTS, new PotionContents(Optional.empty(), Optional.of(OTHER_SPLASH_POTION_COLOR),  List.of(), Optional.empty()))));
+
+//        VeggyCraft.LOGGER.info("#Potion: parsed %s", splashPotionHolder);
+
+        CustomTabsMethods.addToTab(CreativeModeTabs.FOOD_AND_DRINKS, CustomTabsMethods.BEFORE, (RegistrySupplier) OTHER_SPLASH_POTION, Items.LINGERING_POTION);
+//        CreativeTabRegistry.append(VeggyCraftCreativeTabsToGet.REPLACEMENTS, OTHER_SPLASH_POTION);
+
         MutableComponent dyeName = Component.translatable("item.veggycraft.carbon_prefix")
                 .append(Component.translatable("item.veggycraft.carbon_space_1"))
                 .append(Component.translatable("item.minecraft.black_dye"))
@@ -216,8 +237,10 @@ public class ModItems {
 
 
 
+//        ITEMS.register("clock_2_0", () -> new ClockItem);
+
         var n = "brown_sugar_in_bottle";
-        DRIED_MOLASSES = createItem(
+        DRIED_MOLASSES = KlayApiModItems.createItem(
                 n,
  null,
                 () -> KlayApiModItems.baseProperties(n, m).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE),
@@ -225,17 +248,17 @@ public class ModItems {
         );
 
         var pulp = "birch_pulp_modal";
-        BIRCH_PULP = createItem(pulp, null, m);
+        BIRCH_PULP = KlayApiModItems.createItem(pulp, null, m);
 
         var b = "straw_bed";
-        STRAW_BED = ITEMS.register(b, () -> new BlockItem(ModBlocks.STRAW_BED.get(), baseProperties(b, m).stacksTo(1)));
+        STRAW_BED = ITEMS.register(b, () -> new BlockItem(ModBlocks.STRAW_BED.get(), KlayApiModItems.baseProperties(b, m).stacksTo(1)));
 
         var l = "even_stripped_birch_log";
-        EVEN_STRIPPED_BIRCH_LOG = ITEMS.register(l, () -> new BlockItem(ModBlocks.EVEN_STRIPPED_BIRCH_LOG.get(), baseProperties(l, m)));
+        EVEN_STRIPPED_BIRCH_LOG = ITEMS.register(l, () -> new BlockItem(ModBlocks.EVEN_STRIPPED_BIRCH_LOG.get(), KlayApiModItems.baseProperties(l, m)));
         CustomTabsMethods.addToTab(CreativeModeTabs.BUILDING_BLOCKS, CustomTabsMethods.AFTER, EVEN_STRIPPED_BIRCH_LOG, Items.BIRCH_FENCE_GATE);
 
-        BROWN_SUGAR = createItem("brown_sugar", null, m);
-        MOLASSES_BOTTLE = createItem("molasses_bottle", null, ModItems::honeyBottleProps, m);
+        BROWN_SUGAR = KlayApiModItems.createItem("brown_sugar", null, m);
+        MOLASSES_BOTTLE = KlayApiModItems.createItem("molasses_bottle", null, ModItems::honeyBottleProps, m);
 
         BLACK_DYE_STACK.set(DataComponents.CUSTOM_MODEL_DATA, data);
         BLACK_DYE_STACK.set(DataComponents.ITEM_NAME, dyeName);
@@ -300,35 +323,76 @@ public class ModItems {
 
         KlayApiModItems.createItemsOfBlocks();
 
-        CustomTabsMethods.addToTab(
-                CreativeModeTabs.BUILDING_BLOCKS,
-                CustomTabsMethods.BEFORE,
-                AllKlayApiItems.get(
-                        "BuiltInRegistries.BLOCK.getKey(planks).toString()"
-                ),
-                Items.CRIMSON_STEM
+
+
+//        RegisteredBlocks<Block> registeredBlocks = (RegisteredBlocks<Block>) ModBlocks.BLOCKS;
+//
+//        Boolean registered = registeredBlocks.registered();
+//
+//        if (registered) {
+//
+//            StreamSupport.stream(registeredBlocks.spliterator(), true).forEach((registrySupplier -> {
+//                registrySupplier.unwrapKey().ifPresent(blockResourceKey -> {
+//                    VeggyCraft.LOGGER.warn("#Block: %s", blockResourceKey.location());
+//                });
+//                return registrySupplier;
+//            }));
+//        }
+
+
+//        VeggyCraft.LOGGER.warn("#Registered: %s", );
+
+        ModBlocks.CARNAUBA_WOODS.get("planks").unwrapKey().ifPresent(
+                resKey -> {
+//                    VeggyCraft.LOGGER.warn("#PlanksBlock: %s", KlayApiModItems.AllKlayApiItems.get(resKey.location().toString()));
+
+                    CustomTabsMethods.addToTab(
+                            CreativeModeTabs.BUILDING_BLOCKS,
+                            CustomTabsMethods.BEFORE,
+                            KlayApiModItems.AllKlayApiItems.get(
+                                    resKey.location().toString()
+                            ),
+                            Items.CRIMSON_STEM
+                    );
+                }
         );
 
         String a = "apple";
         String c = "chopped_";
         final String s = "_sauce";
 
-        APPLE_SAUCE = createItem(a+s, null, ()-> baseProperties(a+s, m), m);
-        CHOPPED_APPLE = createItem(c+a, null, ()-> baseProperties(c+a, m).usingConvertsTo(Items.BOWL).food(Foods.APPLE), m);
+        APPLE_SAUCE = KlayApiModItems.createItem(a+s, null, ()-> KlayApiModItems.baseProperties(a+s, m), m);
+        CHOPPED_APPLE = KlayApiModItems.createItem(c+a, null, ()-> KlayApiModItems.baseProperties(c+a, m).usingConvertsTo(Items.BOWL).food(Foods.APPLE), m);
 
         String sug = "sugar_bag";
 
-        SUGAR_BAG = createItem(sug, null, () -> baseProperties(sug, m).stacksTo(8), m);
+        SUGAR_BAG = KlayApiModItems.createItem(sug, null, () -> KlayApiModItems.baseProperties(sug, m).stacksTo(8), m);
         CustomTabsMethods.addToTab(CreativeModeTabs.INGREDIENTS, CustomTabsMethods.AFTER, SUGAR_BAG, Items.SUGAR);
 
-//        __BEFORE = createItem("__replacements_icon__", null, m);
+        THIS_MOD_CLOCK = KlayApiModItems.createItem("my_clock", null, m);
+
+//        __BEFORE = KlayApiModItems.createItem("__replacements_icon__", null, m);
 
         ITEMS.register();
+
+
+//        Item[] test =
+
+
+
+//        VeggyCraft.myRecipesStacks.add(
+//                new ItemStack[] {
+//                        waterBottle,
+//                        new ItemStack(ALGAE_EXTRACT.get()),
+//                        new ItemStack(Items.KELP)
+//                }
+//        );
+//
+
+//        POTIONS.register();
 
 //        BEFORE = __BEFORE.getOrNull();
 
 //        CustomTabsMethods.addToTab(VeggyCraftCreativeTabsToGet.REPLACEMENTS, __BEFORE, BEFORE);
     }
-
-    public static RegistrySupplier<Item> __BEFORE;
 }

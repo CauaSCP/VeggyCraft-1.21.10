@@ -2,6 +2,8 @@ package net.klayil.veggycraft.recipe.wait_recipe;
 
 public class GlobalAnimationState {
     public static boolean isREIRendering = false;
+    public static boolean isJEIRendering = false;
 
-    public static float fakeTime = 0.0f;
+    public static float fakeTimeREI = 0;
+    public static float fakeTimeJEI = 0;
 }

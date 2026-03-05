@@ -1,9 +1,10 @@
 {   "parent": "block/block",
+	"render_type": "minecraft:translucent",
 	"textures": {
-		"down": "veggycraft:block/enblocked_molasses_block_bottom",
-		"particle": "veggycraft:block/enblocked_molasses_block_top",
-		"up": "veggycraft:block/enblocked_molasses_block_top",
-		"side": "veggycraft:block/enblocked_molasses_block_side"
+		"down": "veggycraft:block/molasses_block_as_block_bottom",
+		"particle": "veggycraft:block/molasses_block_as_block_top",
+		"up": "veggycraft:block/molasses_block_as_block_top",
+		"side": "veggycraft:block/molasses_block_as_block_side"
 	},
 	"elements": [
 		{   "from": [ 0, 0, 0 ],

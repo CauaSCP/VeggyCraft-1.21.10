@@ -184,7 +184,7 @@ public class DrawContext extends GuiGraphics {
 
     private boolean anyIntersect(ScreenRectangle bounds, @Nullable List<? extends GuiElementRenderState> elementRenderStates) {
         if (elementRenderStates != null) {
-            for(GuiElementRenderState guiElementRenderState : elementRenderStates) {
+            for (GuiElementRenderState guiElementRenderState : elementRenderStates) {
                 ScreenRectangle screenRect = guiElementRenderState.bounds();
                 if (screenRect != null && screenRect.intersects(bounds)) {
                     return true;
@@ -201,7 +201,7 @@ public class DrawContext extends GuiGraphics {
 //        this.currentLayer = new Layer((Layer)null);
         this.rootLayers.add(this.currentLayer);
 
-        for(layer = (Layer)this.rootLayers.getLast(); layer.up != null; layer = layer.up) {
+        for (layer = (Layer)this.rootLayers.getLast(); layer.up != null; layer = layer.up) {
         }
 
         boolean bl = false;
@@ -414,7 +414,7 @@ public class DrawContext extends GuiGraphics {
     }
 
     public void drawWordWrap(Font font, FormattedText text, int x, int y, int lineWidth, int color, boolean dropShadow) {
-        for(FormattedCharSequence formattedCharSequence : font.split(text, lineWidth)) {
+        for (FormattedCharSequence formattedCharSequence : font.split(text, lineWidth)) {
             this.drawString(font, formattedCharSequence, x, y, color, dropShadow);
             Objects.requireNonNull(font);
             y += 9;
@@ -741,7 +741,9 @@ public class DrawContext extends GuiGraphics {
     }
 
     public void setTooltipForNextFrame(Font font, List<Component> lines, Optional<TooltipComponent> tooltipImage, int x, int y, @Nullable ResourceLocation background) {
-        List<ClientTooltipComponent> list = (List)lines.stream().map(Component::getVisualOrderText).map(ClientTooltipComponent::create).collect(Util.toMutableList());
+        List<ClientTooltipComponent> list = lines.stream().
+                map(Component::getVisualOrderText).
+                map(ClientTooltipComponent::create).collect(Util.toMutableList());
         tooltipImage.ifPresent((tooltipComponent) -> list.add(list.isEmpty() ? 0 : 1, ClientTooltipComponent.create(tooltipComponent)));
         this.setTooltipForNextFrameInternal(font, list, x, y, DefaultTooltipPositioner.INSTANCE, background, false);
     }
@@ -787,7 +789,7 @@ public class DrawContext extends GuiGraphics {
 //        int i = 0;
 //        int j = components.size() == 1 ? -2 : 0;
 //
-//        for(ClientTooltipComponent clientTooltipComponent : components) {
+//        for (ClientTooltipComponent clientTooltipComponent : components) {
 //            int k = clientTooltipComponent.getWidth(font);
 //            if (k > i) {
 //                i = k;
@@ -808,7 +810,7 @@ public class DrawContext extends GuiGraphics {
         int i = 0;
         int j = components.size() == 1 ? -2 : 0;
 
-        for(ClientTooltipComponent clientTooltipComponent : components) {
+        for (ClientTooltipComponent clientTooltipComponent : components) {
             int k = clientTooltipComponent.getWidth(font);
             if (k > i) {
                 i = k;
@@ -826,7 +828,7 @@ public class DrawContext extends GuiGraphics {
         TooltipRenderUtil.renderTooltipBackground(this, n, o, i, j, background);
         int p = o;
 
-        for(int q = 0; q < components.size(); ++q) {
+        for (int q = 0; q < components.size(); ++q) {
             ClientTooltipComponent clientTooltipComponent2 = (ClientTooltipComponent)components.get(q);
             clientTooltipComponent2.renderText(this, font, n, p);
             p += clientTooltipComponent2.getHeight(font) + (q == 0 ? 2 : 0);
@@ -834,7 +836,7 @@ public class DrawContext extends GuiGraphics {
 
         p = o;
 
-        for(int q = 0; q < components.size(); ++q) {
+        for (int q = 0; q < components.size(); ++q) {
             ClientTooltipComponent clientTooltipComponent2 = (ClientTooltipComponent)components.get(q);
             clientTooltipComponent2.renderImage(font, n, p, l, m, this);
             p += clientTooltipComponent2.getHeight(font) + (q == 0 ? 2 : 0);
@@ -957,7 +959,7 @@ public class DrawContext extends GuiGraphics {
         GpuTextureView gpuTextureView = textureManager.getTexture(renderState.texture).getTextureView();
         this.submitBlit(RenderPipelines.GUI_TEXTURED, gpuTextureView, 0, 0, 128, 128, 0.0F, 1.0F, 0.0F, 1.0F, -1);
 
-        for(MapRenderState.MapDecorationRenderState mapDecorationRenderState : renderState.decorations) {
+        for (MapRenderState.MapDecorationRenderState mapDecorationRenderState : renderState.decorations) {
             if (mapDecorationRenderState.renderOnFrame) {
                 this.pose.pushMatrix();
                 this.pose.translate((float)mapDecorationRenderState.x / 2.0F + 64.0F, (float)mapDecorationRenderState.y / 2.0F + 64.0F);
