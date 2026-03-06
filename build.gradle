@@ -18,6 +18,8 @@ allprojects {
             url = "https://maven.blamejared.com"
         }
 
+
+
         maven {
             name = "Shedaniel"
             url = "https://maven.shedaniel.me"
