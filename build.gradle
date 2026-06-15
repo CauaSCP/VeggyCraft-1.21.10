@@ -52,8 +52,8 @@ allprojects {
 
             // Configuration for accessing private (or public) packages
             credentials {
-                // Get username from a property 'gpr.user' or environment variable 'USERNAME'
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                // Get username from a property 'gpr.user' or environment variable 'USERNAME_GITHUB'
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME_GITHUB")
 
                 // Get token from a property 'gpr.key' or environment variable 'TOKEN'
                 password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
