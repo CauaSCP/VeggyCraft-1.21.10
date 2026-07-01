@@ -1,7 +1,6 @@
 package net.klayil.veggycraft.item.tabs;
 
 import dev.architectury.registry.CreativeTabRegistry;
-import dev.architectury.registry.registries.RegistrySupplier;
 import net.klayil.klay_api.item.KlayApiModItems;
 import net.klayil.veggycraft.VeggyCraft;
 import net.klayil.veggycraft.block.ModBlocks;
@@ -9,7 +8,6 @@ import net.klayil.veggycraft.component.ModDataComponentTypes;
 import net.klayil.veggycraft.item.ModItems;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
@@ -60,7 +58,7 @@ public class VeggyCraftTabsCode extends VeggyCraftCreativeTabsToGet {
 
 
         _flourAndStuff.add(
-                () -> new ItemStack(ModBlocks.MOLASSES_BLOCK_ITEM.get())
+                () -> new ItemStack(ModBlocks.MOLASSES_BLOCK_ITEM)
         );
         _flourAndStuff.add(
                 () -> new ItemStack(
@@ -78,6 +76,7 @@ public class VeggyCraftTabsCode extends VeggyCraftCreativeTabsToGet {
         _flourAndStuff.add(
                 () -> new ItemStack(DRIED_MOLASSES)
         );
+
 
         Supplier<ItemStack>[] flourAndStuff = _flourAndStuff.toArray(new Supplier[_flourAndStuff.size()]);
 

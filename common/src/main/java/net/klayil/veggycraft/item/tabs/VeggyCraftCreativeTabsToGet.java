@@ -5,8 +5,10 @@ import net.klayil.klay_api.tabs.KlayApiModTabs;
 import net.klayil.veggycraft.VeggyCraft;
 import net.klayil.veggycraft.item.ModItems;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Blocks;
 
 public class VeggyCraftCreativeTabsToGet {
     public static ResourceKey<CreativeModeTab> CARBON_AND_DYES_TAB;

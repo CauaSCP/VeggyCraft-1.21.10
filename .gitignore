@@ -45,3 +45,9 @@ replay_*.log
 
 # datagen
 generated/
+
+
+
+# outs and nohup
+nohup.out
+*.out

@@ -1,0 +1,22 @@
+package net.klayil.veggycraft.mixin;
+
+import net.klayil.veggycraft.recipe.wait_recipe.GlobalAnimationState;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.item.properties.numeric.Time;
+import net.minecraft.world.entity.ItemOwner;
+import net.minecraft.world.item.ItemStack;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+@Mixin(Time.class)
+public class MixinTimeProperty {
+    @Inject(method = "calculate", at = @At("HEAD"), cancellable = true)
+    private void overrideClockSpin(ItemStack stack, ClientLevel level, int seed, ItemOwner owner, CallbackInfoReturnable<Float> cir) {
+        if (GlobalAnimationState.isREIRendering) {
+            // Return our custom looped time (0.0 to 1.0)
+            cir.setReturnValue(GlobalAnimationState.fakeTime);
+        }
+    }
+}

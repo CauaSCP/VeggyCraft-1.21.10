@@ -1,6 +1,5 @@
 package net.klayil;
 
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.spi.LoggingEventBuilder;
 
@@ -18,9 +17,9 @@ public class FinalInfoLogger {
     public static class NumExtensionWithNonNumber extends Number {
         private String superToString;
 
-        final void superToString(Supplier<? extends Number> sup, String percentFormat) {
-
-            superToString = String.format(Locale.US, percentFormat, sup.get());
+        final String superToString(Supplier<? extends Number> sup, String percentFormat) {
+            superToString = percentFormat.formatted(sup.get());
+            return superToString;
         }
 
         @Override
@@ -127,9 +126,9 @@ public class FinalInfoLogger {
         public static NumExtensionWithNonNumber of(Object objVal) {
             var clazzTsDispatcher = Map.of(
                     Long.class, (Function<Object, NumExtensionWithNonNumber>) obj -> (NumExtensionWithNonNumber) of((long)obj),
-                    Integer.class, obj -> of((Integer)obj),
-                    Double.class, obj -> of((double)obj),
-                    Float.class, obj -> of((Float)obj)
+                    Integer.class, obj -> (NumExtensionWithNonNumber) of((Integer)obj),
+                    Double.class, obj -> (NumExtensionWithNonNumber) of((double)obj),
+                    Float.class, obj -> (NumExtensionWithNonNumber) of((Float)obj)
             );
 
             if (objVal == null) {
@@ -150,12 +149,14 @@ public class FinalInfoLogger {
                 };
             }
 
-            return clazzTsDispatcher.get(objVal.getClass()).apply(objVal);
+            return ((Supplier<NumExtensionWithNonNumber>) () -> {
+                return clazzTsDispatcher.get(objVal.getClass()).apply(objVal);
+            }).get();
         }
 
         @Override
         public int intValue() {
-            return ((int) (Number) this.longValue());
+            return ((Integer) (Number) this.longValue());
         }
 
         @Override
@@ -165,7 +166,7 @@ public class FinalInfoLogger {
 
         @Override
         public float floatValue() {
-            return ((float) (Number) this.doubleValue());
+            return ((Float) (Number) this.doubleValue());
         }
 
         @Override
@@ -175,19 +176,7 @@ public class FinalInfoLogger {
     }
 
     private void infoSuperAble(BiConsumer<String, Object[]> superAble, String format, Object[] args) {
-        Object[] wrappedArgs = Arrays.stream(args).
-                map(arg -> {
-                    NumExtensionWithNonNumber res = NumExtensionWithNonNumber.of(arg);
-
-                    if (!res.toString().matches("^[+-]?(\\d+(\\.\\d*)?|\\.\\d+)$") && StringUtils.countMatches(res.toString(), '.') <= 1)
-                        return res;
-
-                    // ^[+-]?(\d+(\.\d*)?|\.\d+)$
-
-                    if (res.longValue() == res.doubleValue()) return res.longValue();
-
-                    return res.doubleValue();
-                }).toArray();
+        Object[] wrappedArgs = Arrays.stream(args).map(NumExtensionWithNonNumber::of).toArray();
 
         final String formatted = format.formatted(wrappedArgs);
 

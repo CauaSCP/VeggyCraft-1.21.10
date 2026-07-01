@@ -335,7 +335,7 @@ public class ModBedBlock extends BedBlock {
     private static Optional<Vec3> findStandUpPositionAtOffset(EntityType<?> entityType, CollisionGetter collisionGetter, BlockPos pos, int[][] offsets, boolean simulate) {
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
 
-        for (int[] is : offsets) {
+        for(int[] is : offsets) {
             mutableBlockPos.set(pos.getX() + is[0], pos.getY(), pos.getZ() + is[1]);
             Vec3 vec3 = DismountHelper.findSafeDismountLocation(entityType, collisionGetter, mutableBlockPos, simulate);
             if (vec3 != null) {

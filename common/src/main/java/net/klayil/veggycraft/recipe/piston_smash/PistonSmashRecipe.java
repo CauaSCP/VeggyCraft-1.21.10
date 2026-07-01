@@ -12,7 +12,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.NotNull;
 
 public record PistonSmashRecipe(Ingredient inputItem, ItemStack output) implements Recipe<PistonSmashRecipeInput> {
     public static final ResourceLocation TEXTURE = ResourceLocation.withDefaultNamespace("textures/gui/container/crafting_table.png");
@@ -24,9 +23,9 @@ public record PistonSmashRecipe(Ingredient inputItem, ItemStack output) implemen
         return list;
     }
 
-    public ItemStack getResultItem(HolderLookup.Provider ignoredParameter) {
+    public ItemStack getResultItem(Object ignoredParameter) {
 
-        return output.copy();
+        return output;
 
     }
 
@@ -40,27 +39,27 @@ public record PistonSmashRecipe(Ingredient inputItem, ItemStack output) implemen
     }
 
     @Override
-    public @NotNull ItemStack assemble(PistonSmashRecipeInput pistonSmashRecipeInput, HolderLookup.Provider provider) {
+    public ItemStack assemble(PistonSmashRecipeInput pistonSmashRecipeInput, HolderLookup.Provider provider) {
         return output.copy();
     }
 
     @Override
-    public @NotNull RecipeSerializer<? extends Recipe<PistonSmashRecipeInput>> getSerializer() {
+    public RecipeSerializer<? extends Recipe<PistonSmashRecipeInput>> getSerializer() {
         return ModRecipes.PISTON_SMASH_SERIALIZER.get();
     }
 
     @Override
-    public @NotNull RecipeType<? extends Recipe<PistonSmashRecipeInput>> getType() {
+    public RecipeType<? extends Recipe<PistonSmashRecipeInput>> getType() {
         return ModRecipes.PISTON_SMASH_TYPE.get();
     }
 
     @Override
-    public @NotNull PlacementInfo placementInfo() {
+    public PlacementInfo placementInfo() {
         return PlacementInfo.create(inputItem);
     }
 
     @Override
-    public @NotNull RecipeBookCategory recipeBookCategory() {
+    public RecipeBookCategory recipeBookCategory() {
         return RecipeBookCategories.CRAFTING_MISC;
     }
 
@@ -77,12 +76,12 @@ public record PistonSmashRecipe(Ingredient inputItem, ItemStack output) implemen
                         PistonSmashRecipe::new);
 
         @Override
-        public @NotNull MapCodec<PistonSmashRecipe> codec() {
+        public MapCodec<PistonSmashRecipe> codec() {
             return CODEC;
         }
 
         @Override
-        public @NotNull StreamCodec<RegistryFriendlyByteBuf, PistonSmashRecipe> streamCodec() {
+        public StreamCodec<RegistryFriendlyByteBuf, PistonSmashRecipe> streamCodec() {
             return STREAM_CODEC;
         }
     }

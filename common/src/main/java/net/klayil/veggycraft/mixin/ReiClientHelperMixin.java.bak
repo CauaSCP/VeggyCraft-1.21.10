@@ -1,8 +1,0 @@
-package net.klayil.veggycraft.mixin;
-
-import me.shedaniel.rei.impl.client.gui.screen.collapsible.CollapsibleEntryWidget;
-import org.spongepowered.asm.mixin.Mixin;
-
-@Mixin(value = CollapsibleEntryWidget.class, remap = false)
-public class ReiClientHelperMixin {
-}

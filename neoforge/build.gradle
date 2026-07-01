@@ -60,8 +60,8 @@ repositories {
 dependencies {
     neoForge "net.neoforged:neoforge:$rootProject.neoforge_version"
 
-//    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
-////    runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+    runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
     runtimeOnly "squeek.appleskin:appleskin-neoforge:${appleskin_version}"
 
@@ -70,12 +70,10 @@ dependencies {
 
     modCompileOnly "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
 
-////    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
-////    modCompileOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
-//
-//    modImplementation "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
-//
-//    // Architectury API. This is optional, and you can comment it out if you don't need it.
+//    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
+    modCompileOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
+
+    // Architectury API. This is optional, and you can comment it out if you don't need it.
     modImplementation "dev.architectury:architectury-neoforge:$rootProject.architectury_api_version"
 
     modImplementation "com.github.CauaSCP:klay-api-neoforge:${klay_api_version}"

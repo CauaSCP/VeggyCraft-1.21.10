@@ -9,14 +9,14 @@ import net.minecraft.client.data.models.*;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.client.data.models.ModelProvider;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SaplingBlock;
 import org.jetbrains.annotations.NotNull;
@@ -26,30 +26,38 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
 
-import static net.klayil.veggycraft.VeggyCraft.comment;
 import static net.minecraft.client.data.models.BlockModelGenerators.createSimpleBlock;
 import static net.minecraft.client.data.models.BlockModelGenerators.plainVariant;
-
-public class VeggyModModelProvider extends ModelProvider {
+    public class VeggyModModelProvider extends ModelProvider {
     private ItemModelGenerators generalItemModelGenerators;
     public static final Supplier<RegistrySupplier<Block>> HAY = () -> ModBlocks.HAY_NO_STRIP;
 
 
-    public VeggyModModelProvider(PackOutput output) {
-        // Registries.BLOCK.location().getNamespace()
+        public VeggyModModelProvider(PackOutput output) {
         super(output);
     }
 
+//    private ResourceLocation modLoc(String path) {
+//        return ResourceLocation.fromNamespaceAndPath("veggycraft", path);
+//    }
+
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
         blockModelGenerators.run();
+//
+//        blockModelGenerators.blockStateOutput.accept(
+//
+//        );
 
         Block hay = HAY.get().get();
+
+//        ResourceLocation modelLoc = TexturedModel.CUBE.create(hay, blockModelGenerators.modelOutput);
+//        Variant variant = new Variant(modelLoc);
 
         blockModelGenerators.blockStateOutput.accept(
                 BlockStateOnlyDefinitionGenerator.create(BuiltInRegistries.BLOCK.getKey(hay))
         );
 
-        @Nullable Block molassesBlock = ModBlocks.MOLASSES_BLOCK.get();
+        @Nullable Block molassesBlock = ModBlocks.MOLASSES_BLOCK.getOrNull();
 
         if (molassesBlock != null) {
             boolean carnauba_generating = true;
@@ -82,31 +90,7 @@ public class VeggyModModelProvider extends ModelProvider {
 
                 SaplingBlock sapling = (SaplingBlock) ModBlocks.CARNAUBA_WOODS.get("sapling").get();
 
-//                TexturedModel.createDefault(TextureMapping::cross, ModelTemplates.CROSS).updateTemplate(t -> t.extend().renderType("minecraft"))
-
-                BlockModelGenerators.PlantType plantType = BlockModelGenerators.PlantType.TINTED;
-                TextureMapping textureMapping = plantType.getTextureMapping(sapling);
-
-//                blockModelGenerators.createCrossBlock(sapling, plantType, textureMapping);
-
-//                Blocks.SUGAR_CANE
-
-                MultiVariant variant = plainVariant(plantType.getCross().extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build().create(sapling, textureMapping, blockModelGenerators.modelOutput));
-                blockModelGenerators.blockStateOutput.accept(createSimpleBlock(sapling, variant));
-
-
-//                blockModelGenerators.createCrossBlock(sapling, BlockModelGenerators.PlantType.TINTED.getCross().extend());
-
-
-
-//                BlockModelGenerators.PlantType.TINTED
-//
-//                TexturedModel.createDefault(TextureMapping::cross, ModelTemplates.TINTED_CROSS).updateTemplate(t -> {
-//                    ModelTemplate cutout = t.extend().renderType("minecraft:cutout").build();
-//
-//                    MultiVariant multiVariant = plainVariant(cutout.create(block, textureMapping, this.modelOutput));
-//                    this.blockStateOutput.accept(createSimpleBlock(block, multiVariant));
-//                })
+                blockModelGenerators.createCrossBlock(sapling,  BlockModelGenerators.PlantType.TINTED);
 
                 blockModelGenerators.registerSimpleItemModel(
                         sapling.asItem(), BlockModelGenerators.PlantType.NOT_TINTED.createItemModel(
@@ -116,16 +100,25 @@ public class VeggyModModelProvider extends ModelProvider {
             }
 
 
-            var theBlockItem = ModBlocks.MOLASSES_BLOCK_ITEM.get();
-            //
+            var theBlockItem = ModBlocks.MOLASSES_BLOCK_ITEM.getOrNull();
+//
             assert theBlockItem != null;
 
-            MultiVariant multivariant = plainVariant(ResourceLocation.parse("bed").withPrefix("block/"));
+            MultiVariant multivariant = plainVariant(ModelLocationUtils.decorateBlockModelLocation("bed"));
             blockModelGenerators.blockStateOutput.accept(createSimpleBlock(ModBlocks.STRAW_BED.get(), multivariant));
 
 
             blockModelGenerators.registerSimpleItemModel(theBlockItem, ModelLocationUtils.getModelLocation(molassesBlock));
             blockModelGenerators.registerSimpleItemModel(ModBlocks.EVEN_STRIPPED_BIRCH_LOG.get(), ModelLocationUtils.getModelLocation(ModBlocks.EVEN_STRIPPED_BIRCH_LOG.get()));
+
+//            blockModelGenerators.createTrivialCube(molassesBlock);
+
+//            blockModelGenerators.createFlatItemModelWithBlockTexture(theBlockItem, molassesBlock);
+//            blockModelGenerators.registerSimpleItemModel(theBlockItem, blockModelGenerators.createFlatItemModelWithBlockTexture(theBlockItem, molassesBlock));
+
+//            blockModelGenerators.registerSimpleFlatItemModel(molassesBlock);
+
+//            VeggyCraft.LOGGER.info("#CREATED: molasses block model");
         }
 
         for (int color_id = 0; color_id < 16; color_id++) {
@@ -145,13 +138,20 @@ public class VeggyModModelProvider extends ModelProvider {
                     )
             );
 
-            //            blockModelGenerators.createFlatItemModelWithBlockTexture(curBlockItem, curWool);
+//            blockModelGenerators.createFlatItemModelWithBlockTexture(curBlockItem, curWool);
 
             blockModelGenerators.itemModelOutput.copy(
-                    curWool.asItem(),
-                    curBlockItem
+                curWool.asItem(),
+                curBlockItem
             );
         }
+
+
+
+//        blockModelGenerators.createTrivialCube(ModBlocks.MOLASSES_BLOCK.get());
+//        blockModelGenerators.createFlatItemModelWithBlockTexture(ModBlocks.MOLASSES_BLOCK_ITEM.get(), ModBlocks.MOLASSES_BLOCK.get());
+
+
     }
 
     private void registerFlatItemModel(RegistrySupplier<Item> item, ModelTemplate modelTemplate) {
@@ -171,13 +171,10 @@ public class VeggyModModelProvider extends ModelProvider {
         this.generalItemModelGenerators = itemModelGenerators;
         generateBlockStateModels(blockModelGenerators);
 
-
-//        BlockModelProvider a = (BlockModelProvider) this;
-
-        ResourceLocation cookedSeitanResourceLocation = ModelLocationUtils.getModelLocation(ModItems.SEITAN_COOKED_BEEF.get());
+        ResourceLocation cookendSeitanResourceLocation = ModelLocationUtils.getModelLocation(ModItems.SEITAN_COOKED_BEEF.get());
 
         this.generalItemModelGenerators.generateLayeredItem(
-                cookedSeitanResourceLocation,
+                cookendSeitanResourceLocation,
                 ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "item/plant_meat"),
                 ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "item/plant_meat_outline"),
                 ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "item/seitan_cooked_beef_extra")
@@ -186,7 +183,7 @@ public class VeggyModModelProvider extends ModelProvider {
         this.generalItemModelGenerators.itemModelOutput.accept(
                 ModItems.SEITAN_COOKED_BEEF.get(),
                 ItemModelUtils.tintedModel(
-                        cookedSeitanResourceLocation,
+                        cookendSeitanResourceLocation,
 
                         ItemModelUtils.constantTint(0xd64320),
                         ItemModelUtils.constantTint(0x631c0d),
@@ -222,23 +219,23 @@ public class VeggyModModelProvider extends ModelProvider {
         registerFlatItemModel(ModItems.APPLE_SAUCE, ModelTemplates.FLAT_ITEM);
         registerFlatItemModel(ModItems.CHOPPED_APPLE, ModelTemplates.FLAT_ITEM);
 
-        comment("""
-                for (int i = 0; i < 3; i++) {
-                    final Item item = BuiltInRegistries.ITEM.getValue(ResourceLocation.fromNamespaceAndPath(
-                            VeggyCraft.MOD_ID,
-                            "dry_raw_seitan_%d".formatted(i)
-                    ));
-                
-                    net.minecraft.client.data.models.model.ModelTemplates.FLAT_ITEM.create(
-                            ModelLocationUtils.getModelLocation(item, ""),
-                            TextureMapping.layer0(ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "dry_raw_seitan")
-                                    .withPrefix("item/")),
-                            this.generalItemModelGenerators.modelOutput
-                    );
-                
-                    this.generalItemModelGenerators.declareCustomModelItem(item);
-                }
-                """);
+        String ignoreComment = """
+        for (int i = 0; i < 3; i++) {
+            final Item item = BuiltInRegistries.ITEM.getValue(ResourceLocation.fromNamespaceAndPath(
+                    VeggyCraft.MOD_ID,
+                    "dry_raw_seitan_%d".formatted(i)
+            ));
+
+            net.minecraft.client.data.models.model.ModelTemplates.FLAT_ITEM.create(
+                    ModelLocationUtils.getModelLocation(item, ""),
+                    TextureMapping.layer0(ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "dry_raw_seitan")
+                            .withPrefix("item/")),
+                    this.generalItemModelGenerators.modelOutput
+            );
+
+            this.generalItemModelGenerators.declareCustomModelItem(item);
+        }
+        """;
 
         registerFlatItemModel(ModItems.DRY_RAW_SEITAN_0, ModelTemplates.FLAT_ITEM);
 
@@ -258,26 +255,6 @@ public class VeggyModModelProvider extends ModelProvider {
         registerFlatItemModel(ModItems.CARNAUBA_POWDER, ModelTemplates.FLAT_ITEM);
 
         registerFlatItemModel(ModItems.BIRCH_PULP, ModelTemplates.FLAT_ITEM);
-
-        registerFlatItemModel(ModItems.THIS_MOD_CLOCK, ModelTemplates.FLAT_ITEM);
-
-        Item algaeExtract = ModItems.ALGAE_EXTRACT.get();
-
-        this.generalItemModelGenerators.itemModelOutput.accept(
-                algaeExtract,
-                ItemModelUtils.tintedModel(
-                        ModelLocationUtils.getModelLocation(Items.POTION),
-                        ItemModelUtils.constantTint(0x419219)
-                )
-        );
-
-        this.generalItemModelGenerators.itemModelOutput.accept(
-                ModItems.OTHER_SPLASH_POTION.get(),
-                ItemModelUtils.tintedModel(
-                        ModelLocationUtils.getModelLocation(Items.SPLASH_POTION),
-                        ItemModelUtils.constantTint(ModItems.OTHER_SPLASH_POTION_COLOR)
-                )
-        );
 
         ModelTemplates.FLAT_ITEM.create(
                 ResourceLocation.withDefaultNamespace("carbon_black_dye").withPrefix("item/"),

@@ -1,5 +1,6 @@
 package net.klayil.veggycraft.block;
 
+import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.klayil.klay_api.block.KlayApiModBlocks;
@@ -7,6 +8,8 @@ import net.klayil.klay_api.item.KlayApiModItems;
 import net.klayil.veggycraft.VeggyCraft;
 import net.klayil.veggycraft.item.ModItems;
 import net.klayil.veggycraft.item.tabs.CustomTabsMethods;
+import net.klayil.veggycraft.item.tabs.VeggyCraftCreativeTabsToGet;
+import net.klayil.veggycraft.mixin.FireBlockAccessor;
 import net.klayil.veggycraft.world.tree.ModSaplingGenerator;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -15,35 +18,34 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
-
 import java.util.function.Supplier;
 
 public class ModBlocks {
     public static DeferredRegister<Block> BLOCKS;
     public static ArrayList<RegistrySupplier<Block>> modalFabrics;
-    public static Supplier<Block> MOLASSES_BLOCK;
-    public static Supplier<Item> MOLASSES_BLOCK_ITEM;
+    public static RegistrySupplier<Block> MOLASSES_BLOCK;
+    public static RegistrySupplier<Item> MOLASSES_BLOCK_ITEM;
     public static HashMap<String, RegistrySupplier<Block>> CARNAUBA_WOODS = new HashMap<>();
     public static RegistrySupplier<Block> STRAW_BED;
     public static RegistrySupplier<Block> EVEN_STRIPPED_BIRCH_LOG;
     public static RegistrySupplier<Block> HAY_NO_STRIP;
 
-    static final String molasses_block_name = "molasses_block";
-
-    private static RegistrySupplier<?>[] createHoneyBlockClone(ResourceKey<CreativeModeTab> ignoreCreativeModeTab, BlockBehaviour.Properties properties) {
+    private static RegistrySupplier[] createHoneyBlockClone(String name, ResourceKey<CreativeModeTab> creativeModeTab, BlockBehaviour.Properties properties) {
         String mod_id = VeggyCraft.MOD_ID;
 
-        ResourceLocation blockLocation = ResourceLocation.fromNamespaceAndPath(mod_id, molasses_block_name+"_as_block");
-        ResourceLocation itemLocation = ResourceLocation.fromNamespaceAndPath(mod_id, molasses_block_name);
-        Supplier<Block> supplierBlock = () -> new HoneyBlockClone(
-            properties.noOcclusion()
-        );
+        ResourceLocation blockLocation = ResourceLocation.fromNamespaceAndPath(mod_id, "enblocked_"+name);
+        ResourceLocation itemLocation = ResourceLocation.fromNamespaceAndPath(mod_id, name);
+        Supplier<Block> supplierBlock = () -> new HoneyBlockClone(properties);
 
         RegistrySupplier<Block> blockRegistry = BLOCKS.register(blockLocation, supplierBlock);
 
@@ -53,29 +55,16 @@ public class ModBlocks {
                 KlayApiModItems.baseProperties(itemLocation.getPath(), itemLocation.getNamespace()));
         RegistrySupplier<Item> blockItemRegistry = ModItems.ITEMS.register(itemLocation.getPath(), blockItemSupplier);
 
-        RegistrySupplier<?>[] res = new RegistrySupplier[2];
+        RegistrySupplier[] res = new RegistrySupplier[2];
         res[0] = blockRegistry;
         res[1] = blockItemRegistry;
 
         return res;
     }
 
-    public static class StringList extends ArrayList<String> implements List<String> {
-        public final List<String> value;
-        static ArrayList<String> self;
-
-        public StringList(Collection<String> param) {
-            super(master(param));
-            value = self;
-        }
-
-        private static Collection<String> master(Collection<String> param) {
-            self = new ArrayList<>(param);
-            return param;
-        }
-    }
-
     public static void initBlocks() {
+//        KlayApiModBlocks.initBlocks();
+
         BLOCKS = KlayApiModBlocks.createBlocksRegister(VeggyCraft.MOD_ID);
 
         modalFabrics = new ArrayList<>();
@@ -105,7 +94,7 @@ public class ModBlocks {
 
         STRAW_BED = BLOCKS.register(
                 "straw_bed",
-                () -> new ModBedBlock(1.9900009, BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(0.2F).noOcclusion().ignitedByLava().pushReaction(PushReaction.DESTROY).setId(
+                () -> new ModBedBlock(0.5f, BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(0.2F).noOcclusion().ignitedByLava().pushReaction(PushReaction.DESTROY).setId(
                         ResourceKey.create(
                                 Registries.BLOCK,
                                 ResourceLocation.fromNamespaceAndPath(
@@ -118,35 +107,24 @@ public class ModBlocks {
 
         EVEN_STRIPPED_BIRCH_LOG = BLOCKS.register(
                 "even_stripped_birch_log",
-                () -> new PillaredFence(
-                        BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_BIRCH_LOG).noOcclusion()
-                        .ignitedByLava().pushReaction(PushReaction.IGNORE)
-                        .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, "even_stripped_birch_log")))
-                )
+                () -> new PillaredFence(KlayApiModBlocks.baseProperties("even_stripped_birch_log", VeggyCraft.MOD_ID).noCollision()
+                        .ignitedByLava().pushReaction(PushReaction.IGNORE))
         );
 
         FireBlock fireBlock = (FireBlock) Blocks.FIRE;
 
-        StringList[] to_loop_in = new StringList[] {
-                new StringList(
-                        List.of("", "log")
-                ),
-                new StringList(
-                        List.of("", "wood")
-                ),
-                new StringList(
-                        List.of("stripped_", "log")
-                ),
-                new StringList(
-                        List.of("stripped_", "wood")
-                )
+        List<String>[] to_loop_in = new List[] {
+                List.of("", "log"),
+                List.of("", "wood"),
+                List.of("stripped_", "log"),
+                List.of("stripped_", "wood")
         };
 
         String c = "carnauba_";
 
-        for (List<String> name_stuff : to_loop_in) {
-            String prefix = name_stuff.getFirst();
-            String suffix = name_stuff.getLast();
+        for (List<String> _name_stuff : to_loop_in) {
+            String prefix = _name_stuff.getFirst();
+            String suffix = _name_stuff.getLast();
 
             String creatingBlockName = prefix+c+suffix;
             String toCopyName = prefix+"jungle_"+suffix;
@@ -155,9 +133,9 @@ public class ModBlocks {
                     ResourceLocation.withDefaultNamespace(toCopyName)
             );
 
-            // VeggyCraft.LOGGER.info("#BLOCK: %s".formatted(vanillaBlock.toString()));
+            VeggyCraft.LOGGER.info("#BLOCK: %s".formatted(vanillaBlock.toString()));
 
-            BlockBehaviour.Properties props = (BuiltInRegistries.BLOCK.getId(vanillaBlock) > 0)
+            BlockBehaviour.Properties props = (vanillaBlock != null)
                     ? BlockBehaviour.Properties.ofFullCopy(vanillaBlock)
                     : BlockBehaviour.Properties.of();
 
@@ -251,16 +229,18 @@ public class ModBlocks {
             VeggyCraft.LOGGER.warn("#ERR `%s` ignored.".formatted(e.getMessage()));
         }
 
-        RegistrySupplier<?>[] molassesBlockSuppliers = createHoneyBlockClone(
+        final String molasses_block_id = "molasses_block";
+        RegistrySupplier[] molassesBlockSuppliers = createHoneyBlockClone(
+                molasses_block_id,
                 null,
                 BlockBehaviour.Properties.ofFullCopy(Blocks.HONEY_BLOCK).setId(ResourceKey.create(
                         Registries.BLOCK,
-                        ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, molasses_block_name)
+                        ResourceLocation.fromNamespaceAndPath(VeggyCraft.MOD_ID, molasses_block_id)
                 )));
 
-        BLOCKS.register();
+        MOLASSES_BLOCK = (RegistrySupplier<Block>) molassesBlockSuppliers[0];
+        MOLASSES_BLOCK_ITEM = (RegistrySupplier<Item>) molassesBlockSuppliers[1];
 
-        MOLASSES_BLOCK = () -> (Block) molassesBlockSuppliers[0].value();
-        MOLASSES_BLOCK_ITEM = () -> (Item) molassesBlockSuppliers[1].value();
+        BLOCKS.register();
     }
 }

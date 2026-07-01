@@ -384,7 +384,7 @@ public class VeggyModRecipeProviderCommon extends RecipeProvider {
 
 
 
-        molassesBlock = ModBlocks.MOLASSES_BLOCK_ITEM.get();
+        molassesBlock = ModBlocks.MOLASSES_BLOCK_ITEM.getOrNull();
         if (molassesBlock != null) {
 
             cookingRecipeFood(new ItemStack(ModItems.SUGAR_BAG), molassesBlock, 0.8f, 20*15);
@@ -418,7 +418,7 @@ public class VeggyModRecipeProviderCommon extends RecipeProvider {
         ShapelessRecipeBuilder recipeBuilder = shapeless(RecipeCategory.FOOD, new ItemStack(ModItems.SUGAR_BAG))
                 .requires(Items.SUGAR, 8);
 
-        hasBl(shapeless(RecipeCategory.FOOD, new ItemStack(ModBlocks.MOLASSES_BLOCK_ITEM.get()))
+        hasBl(shapeless(RecipeCategory.FOOD, new ItemStack(ModBlocks.MOLASSES_BLOCK_ITEM))
                 .requires(ModItems.MOLASSES_BOTTLE.get(), 8)).save(output);
 
         Item ice = Items.ICE;

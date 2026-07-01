@@ -40,11 +40,14 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public class ModBedBlock extends BedBlock {
-    @Nullable final public Double awakenDamage;
+    @Nullable public Float awakenDamage;
     public ModBedEntity bedEntity;
 
     public boolean creativePlayerBroke = false;
@@ -65,7 +68,7 @@ public class ModBedBlock extends BedBlock {
         });
     }
 
-    public ModBedBlock(double awakenDamage, Properties properties) {
+    public ModBedBlock(float awakenDamage, Properties properties) {
         super(DyeColor.LIME, properties);
 
         this.registerDefaultState(this.stateDefinition.any().setValue(PART, BedPart.FOOT).setValue(OCCUPIED, false));
@@ -76,7 +79,7 @@ public class ModBedBlock extends BedBlock {
         super(DyeColor.LIME, properties);
 
         this.registerDefaultState(this.stateDefinition.any().setValue(PART, BedPart.FOOT).setValue(OCCUPIED, false));
-        this.awakenDamage = null;
+        this.awakenDamage = 0.5f;
     }
 
     @Override
@@ -300,7 +303,7 @@ public class ModBedBlock extends BedBlock {
     private static Optional<Vec3> findStandUpPositionAtOffset(EntityType<?> entityType, CollisionGetter collisionGetter, BlockPos pos, int[][] offsets, boolean simulate) {
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
 
-        for (int[] is : offsets) {
+        for(int[] is : offsets) {
             mutableBlockPos.set(pos.getX() + is[0], pos.getY(), pos.getZ() + is[1]);
             Vec3 vec3 = DismountHelper.findSafeDismountLocation(entityType, collisionGetter, mutableBlockPos, simulate);
             if (vec3 != null) {

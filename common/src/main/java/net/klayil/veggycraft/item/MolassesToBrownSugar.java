@@ -1,8 +1,6 @@
 package net.klayil.veggycraft.item;
 
 import net.klayil.veggycraft.item.ModItems;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
@@ -10,13 +8,10 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Unique;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Supplier;
 
 public class MolassesToBrownSugar {
     final static public int minutesToChill = 4;
@@ -29,36 +24,6 @@ public class MolassesToBrownSugar {
             TimeUnit.MINUTES, 4,
             TimeUnit.SECONDS, 30
     );
-
-    public static List<MutableComponent> parsedTexts;
-
-    static {
-        List<MutableComponent> parsedRes = new ArrayList<>(List.of(Component.translatable("klay_api.wait.for").append(" ")));
-        boolean firstForSpace = true;
-
-        for (TimeUnit keyForTextForLabel : List.of(TimeUnit.HOURS, TimeUnit.MINUTES, TimeUnit.SECONDS)) {
-            if (!waitsValues.containsKey(keyForTextForLabel)) continue;
-
-            if (!firstForSpace) parsedRes.add(Component.literal("& "));
-            firstForSpace = false;
-
-            String parsedNumber = "%d".formatted(waitsValues.get(keyForTextForLabel));
-            switch (keyForTextForLabel) {
-                case HOURS -> parsedRes.getLast().append(Component.translatable("klay_api.hours.prefix").append(parsedNumber)
-                        .append(Component.translatable("klay_api.hours.suffix")));
-
-                case MINUTES -> parsedRes.getLast().append(Component.translatable("klay_api.minutes.prefix").append(parsedNumber)
-                        .append(Component.translatable("klay_api.minutes.suffix")));
-
-                case SECONDS -> parsedRes.getLast().append(Component.translatable("klay_api.seconds.prefix").append(parsedNumber)
-                        .append(Component.translatable("klay_api.seconds.suffix")));
-            }
-        }
-
-        parsedRes.add(Component.translatable("master.inFloor"));
-
-        parsedTexts = parsedRes;
-    }
 
     @Unique
     public static void toChill(ItemEntity self) {

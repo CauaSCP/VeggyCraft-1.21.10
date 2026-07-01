@@ -9,8 +9,8 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 public interface FireBlockAccessor {
 
     @Invoker("getIgniteOdds")
-    int igniteOdds(BlockState state);
+    int getEncouragement(BlockState state);
 
     @Invoker("getBurnOdds")
-    int burnOdds(BlockState state);
+    int getFlammabilityOdds(BlockState state);
 }

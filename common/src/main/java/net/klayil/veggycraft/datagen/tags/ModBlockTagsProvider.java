@@ -43,11 +43,9 @@ public class ModBlockTagsProvider extends TagsProvider {
                 if (key.contains(w)) getOrCreateRawBuilder(BlockTags.LOGS_THAT_BURN).add(TagEntry.element(ModBlocks.CARNAUBA_WOODS.get(key).getId()));
             }
         }
-
-        getOrCreateRawBuilder(BlockTags.MINEABLE_WITH_AXE).add(TagEntry.element(ModBlocks.EVEN_STRIPPED_BIRCH_LOG.getId()));
     }
 
-//    public static TagBuilder getRawBuilder2(TagKey<Block> tag) {
-//        return new ModBlockTagsProvider(u,r,l).getOrCreateRawBuilder(tag);
-//    }
+    public static TagBuilder getRawBuilder2(TagKey<Block> tag) {
+        return new ModBlockTagsProvider(u,r,l).getOrCreateRawBuilder(tag);
+    }
 }

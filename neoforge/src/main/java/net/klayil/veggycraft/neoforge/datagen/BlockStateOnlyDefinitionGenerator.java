@@ -26,7 +26,7 @@ public class BlockStateOnlyDefinitionGenerator<T extends Supplier<Block>> implem
     final Supplier<RegistrySupplier<Block>> defaultBlock = VeggyModModelProvider.HAY;
     @Nullable Block blockThatWasSet;
 
-    BlockStateOnlyDefinitionGenerator<T> before(Supplier<?> blockToSet) {
+    BlockStateOnlyDefinitionGenerator before(Supplier<?> blockToSet) {
         Object firstSupplierResult = blockToSet.get();
 
         if (firstSupplierResult instanceof OptionalSupplier<?> optionalSupplier) {
@@ -82,8 +82,8 @@ public class BlockStateOnlyDefinitionGenerator<T extends Supplier<Block>> implem
         );
     }
 
-    public static <T extends Supplier<Block>> BlockModelDefinitionGenerator create(ResourceLocation blockModelName) {
-        BlockModelDefinitionGenerator result = new BlockStateOnlyDefinitionGenerator<T>(blockModelName.withPrefix("block/"), false);
+    public static BlockModelDefinitionGenerator create(ResourceLocation blockModelName) {
+        BlockModelDefinitionGenerator result = new BlockStateOnlyDefinitionGenerator(blockModelName.withPrefix("block/"), false);
         result.create();
 
         return result;

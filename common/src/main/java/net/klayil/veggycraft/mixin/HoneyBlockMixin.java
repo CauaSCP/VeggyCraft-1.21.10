@@ -47,7 +47,7 @@ public class HoneyBlockMixin {
 
                     VeggyCraft.LOGGER.warn("#Running");
 
-                    for (int i = 0; i < particleCount; ++i) {
+                    for(int i = 0; i < particleCount; ++i) {
                         entity.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, blockState), entity.getX(), entity.getY(), entity.getZ(), (double)0.0F, (double)0.0F, (double)0.0F);
                     }
 
