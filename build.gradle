@@ -46,19 +46,13 @@ allprojects {
 
         mavenCentral()
         // Add the GitHub Packages Maven repository
-        maven {
-            // URL format: https://maven.pkg.github.com/OWNER/REPOSITORY
-            url = uri("https://maven.pkg.github.com/CauaSCP/klay-api")
 
-            // Configuration for accessing private (or public) packages
-            credentials {
-                // Get username from a property 'gpr.user' or environment variable 'USERNAME_GITHUB'
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME_GITHUB")
-
-                // Get token from a property 'gpr.key' or environment variable 'TOKEN'
-                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+        /*
+            maven {
+                // URL format: https://maven.pkg.github.com/OWNER/REPOSITORY
+                url = uri("https://maven.pkg.github.com/CauaSCP/klay-api")
             }
-        }
+         */
     }
 }
 
