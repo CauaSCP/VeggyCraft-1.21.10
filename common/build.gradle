@@ -26,7 +26,8 @@ dependencies {
     modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
 
     // Klay-API Dependency
-    /* modImplementation "com.github.CauaSCP:klay-api-common:${klay_api_version}" */
+    ///*
+    modImplementation "com.github.CauaSCP:klay-api-common:${klay_api_version}" // * /
 }
 
 sourceSets {
