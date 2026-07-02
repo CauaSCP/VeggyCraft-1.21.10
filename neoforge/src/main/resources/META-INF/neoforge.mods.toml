@@ -7,6 +7,7 @@ license = "Insert License Here"
 modId = "veggycraft"
 version = "${version}"
 displayName = "VeggyCraft"
+displayURL = "https://github.com/CauaSCP/VeggyCraft-1.21.10/releases/latest"
 authors = "Klayil"
 description = '''
 A mod that adds vegan items and recipes to usual vanilla Minecraft items that aren't vegan themselves!

@@ -52,7 +52,7 @@ allprojects {
                 // URL format: https://maven.pkg.github.com/OWNER/REPOSITORY
                 url = uri("https://maven.pkg.github.com/CauaSCP/klay-api")
             }
-         */
+        */
     }
 }
 

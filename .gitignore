@@ -51,3 +51,9 @@ generated/
 # outs and nohup
 nohup.out
 *.out
+
+
+*.local_bak
+
+neoforge/run/
+fabric/run/
