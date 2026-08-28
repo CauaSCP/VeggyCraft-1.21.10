@@ -1,10 +1,13 @@
 package net.klayil.veggycraft.block;
 
-import com.mojang.math.OctahedralGroup;
+
+//import com.mojang.math.OctahedralGroup;
+
 import com.mojang.math.Quadrant;
 import com.mojang.serialization.MapCodec;
 import net.klayil.veggycraft.VeggyCraft;
 import net.klayil.veggycraft.block.entities.ModBedEntity;
+import net.klayil.veggycraft.compat.BedCompat;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -40,9 +43,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+//import java.util.concurrent.Executors;
+//import java.util.concurrent.ScheduledExecutorService;
+//import java.util.concurrent.TimeUnit;
 
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
@@ -63,7 +66,13 @@ public class ModBedBlock extends BedBlock {
         OCCUPIED = BlockStateProperties.OCCUPIED;
         SHAPES = Util.make(() -> {
             VoxelShape voxelShape = Block.box(0.0F, 0.0F, 0.0F, 3.0F, 3.0F, 3.0F);
-            VoxelShape voxelShape2 = Shapes.rotate(voxelShape, OctahedralGroup.fromXYAngles(Quadrant.R0, Quadrant.R90));
+            VoxelShape voxelShape2 = Shapes.rotate(
+                    voxelShape,
+                    BedCompat.fromXYAngles(
+                            Quadrant.R0,
+                            Quadrant.R90
+                    )
+            );
             return Shapes.rotateHorizontal(Shapes.or(Block.column(16.0F, 3.0F, 9.0F), voxelShape, voxelShape2));
         });
     }

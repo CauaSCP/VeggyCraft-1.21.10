@@ -24,7 +24,7 @@ side = "BOTH"
 [[dependencies.veggycraft]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.10,)"
+versionRange = "[1.21.10,1.21.12)"
 ordering = "NONE"
 side = "BOTH"
 
